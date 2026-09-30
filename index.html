@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>이해준 포트폴리오</title>
+<meta name="description" content="AI 에이전트 도구를 만들고 지표로 검증하는 이해준의 포트폴리오">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<style>
+:root{--bg:#0b0d12;--card:#141821;--tx:#eef0f4;--tx2:#aab0bd;--ac:#FFF4C8}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.7 Pretendard,system-ui,sans-serif}
+main{max-width:880px;margin:0 auto;padding:0 20px 80px}
+header{padding:72px 0 40px}
+h1{font-size:40px;margin:0 0 12px;letter-spacing:-.02em}
+.lead{color:var(--tx2);font-size:18px;margin:0}
+nav{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+nav a{color:var(--tx);background:var(--card);padding:6px 14px;border-radius:99px;text-decoration:none;font-size:14px}
+nav a:hover{color:var(--ac)}
+section{margin-top:40px;background:var(--card);border-radius:20px;padding:32px}
+section h2{margin:0 0 4px;font-size:26px}
+section h2 a{color:var(--ac);text-decoration:none}
+.tag{color:var(--tx2);margin:0 0 16px}
+ul{padding-left:20px;margin:12px 0}
+li{margin:4px 0}
+b{color:var(--ac);font-weight:600}
+img{width:100%;border-radius:12px;margin-top:16px;display:block}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.grid img{margin-top:0}
+.btn{display:inline-block;margin-top:16px;color:#111;background:var(--ac);padding:8px 16px;border-radius:10px;text-decoration:none;font-weight:600;font-size:14px}
+code{background:#1e2430;padding:2px 8px;border-radius:6px;font-size:13px;color:var(--tx2)}
+@media(max-width:640px){h1{font-size:30px}.grid{grid-template-columns:1fr}section{padding:22px}}
+</style>
+</head>
+<body>
+<main>
+<header>
+<h1>이해준</h1>
+<p class="lead">서울시립대 전자전기컴퓨터공학부. AI 에이전트 도구를 만들고, 결과를 지표로 검증합니다.</p>
+<nav>
+<a href="#crew">isnew-crew</a><a href="#wafer">웨이퍼 판독 에이전트</a><a href="#biw">용접 디지털 트윈</a><a href="#rel">신뢰성 · 시스템</a><a href="#awards">수상 · 논문</a>
+</nav>
+</header>
+
+<section id="crew">
+<h2><a href="https://github.com/Haejyn/isnew-crew">isnew-crew</a></h2>
+<p class="tag">사내 AI 에이전트 플랫폼 · TypeScript · Hono · React · vitest</p>
+<ul>
+<li>팀 채팅에서 <code>@crew</code> 로 요청하면 계획 → 병렬 실행 → 검증 → 자기 수정 → 사람 승인 → 반영까지 진행</li>
+<li>Claude Code · Codex 를 격리된 git 워크트리에서 병렬 실행, 판정은 테스트가 수행</li>
+<li>팀 · 업무 템플릿 · 에이전트별 자동 해결률, 승인율, 비용 지표</li>
+<li>실측: 요청 3건 <b>$0.55</b>, 자동 해결 <b>67 %</b>, 승인율 67 %</li>
+</ul>
+<img src="https://raw.githubusercontent.com/Haejyn/isnew-crew/main/docs/media/crew.gif" alt="isnew-crew 데모">
+<div class="grid" style="margin-top:12px">
+<img src="https://raw.githubusercontent.com/Haejyn/isnew-crew/main/docs/shots/chat.png" alt="채팅">
+<img src="https://raw.githubusercontent.com/Haejyn/isnew-crew/main/docs/shots/request.png" alt="요청">
+<img src="https://raw.githubusercontent.com/Haejyn/isnew-crew/main/docs/shots/metrics.png" alt="지표">
+</div>
+<a class="btn" href="https://github.com/Haejyn/isnew-crew">저장소 보기</a>
+</section>
+
+<section id="wafer">
+<h2><a href="https://github.com/Haejyn/wafer-defect-agent">웨이퍼 불량 판독 에이전트</a></h2>
+<p class="tag">SK하이닉스 AI 해커톤 · 실제 팹 웨이퍼 맵 81만 장 · 로컬 LLM</p>
+<ul>
+<li>판정 · 위치 · 유사 사례는 코드가 계산, 로컬 LLM 은 근거 있는 원인 후보 안에서만 판독 카드 작성</li>
+<li>모순은 코드가 검사해 되묻게 해 판독 검사 통과율 <b>8 % → 94 %</b></li>
+<li>처음 보는 패턴 경고 AUROC <b>0.55 → 0.92</b></li>
+</ul>
+<img src="https://raw.githubusercontent.com/Haejyn/wafer-defect-agent/main/docs/media/agent.gif" alt="웨이퍼 에이전트 데모">
+<a class="btn" href="https://github.com/Haejyn/wafer-defect-agent">저장소 보기</a>
+</section>
+
+<section id="biw">
+<h2><a href="https://github.com/Haejyn/biw-weld-twin">차체 용접 디지털 트윈 + AI 제조성 판정</a></h2>
+<p class="tag">KUKA KR210 기구학 · LightGBM 대리 모델 · 혼류 라인 검토</p>
+<ul>
+<li>전체 시뮬레이션 약 3분 → AI 판정 <b>0.05 초</b></li>
+<li>처음 보는 설계 재현율 99.9 % · 정밀도 100 %</li>
+<li>재검증으로 AI 특징 버그를 발견해 수정</li>
+</ul>
+<img src="https://raw.githubusercontent.com/Haejyn/biw-weld-twin/main/docs/media/demo_ai.gif" alt="용접 트윈 데모">
+<a class="btn" href="https://github.com/Haejyn/biw-weld-twin">저장소 보기</a>
+</section>
+
+<section id="rel">
+<h2>신뢰성 · 시스템</h2>
+<p class="tag">AI 가 낸 결과와 코드를 다른 방법으로 다시 확인하는 작업</p>
+<ul>
+<li><b><a style="color:inherit" href="https://github.com/Haejyn/ccsds-downlink-reliability">ccsds-downlink-reliability</a></b> — 실제 위성 신호 복호 수신(C#/.NET), 뮤테이션 테스트 94.7 %</li>
+<li><b><a style="color:inherit" href="https://github.com/Haejyn/orbit-pass-sim">orbit-pass-sim</a></b> — 궤도 전파 · 패스 예측, Java↔C# 차분 520건 일치, PIT 95 %</li>
+</ul>
+<div class="grid">
+<img src="https://raw.githubusercontent.com/Haejyn/ccsds-downlink-reliability/main/docs/media/downlink.gif" alt="다운링크 수신">
+<img src="https://raw.githubusercontent.com/Haejyn/orbit-pass-sim/main/docs/media/passes.gif" alt="패스 예측">
+</div>
+</section>
+
+<section id="awards">
+<h2>수상 · 논문</h2>
+<ul>
+<li>한국수자원공사 사장상 — 드론 다중분광 녹조 탐지 AI, 스컴 미탐지 22.1 % → 3.9 % (2026.09)</li>
+<li>서울시립대학교 총장 최우수상 — 공공기관 AI 프로젝트 챌린지 (2026.09)</li>
+<li>전국학생설계경진대회 동상 (2025.10)</li>
+<li>대한기계학회 국문논문집 C 게재, SW·AI 담당 (2026.09)</li>
+</ul>
+<p class="tag">Python · TypeScript · C# · Java · PyTorch · LightGBM · YOLO · U-Net · Claude Code · Codex · Ollama · React</p>
+</section>
+</main>
+</body>
+</html>
