@@ -4,6 +4,8 @@ GitHub Pages: https://haejyn.github.io/
 
 정적 HTML/CSS/JavaScript 사이트입니다. `python -m http.server 8080`으로 로컬에서 확인할 수 있습니다.
 
+BIW Weld Twin의 차콜 배경(`#1b1c1e`), 패널(`#232427`), 민트 선택 표시(`#5ee1d4`), 얇은 경계선과 작은 모서리를 기준으로 디자인했습니다. 판독 데모에는 좌측 사례 목록·중앙 맵·우측 속성 도크와 하단 판정 영역을 적용했습니다.
+
 ## 데모
 
 - 영상 5개는 `media/`에서 직접 제공합니다. MP4는 H.264 / yuv420p, 빠른 시작용 moov 인덱스를 사용합니다.
