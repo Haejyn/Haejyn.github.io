@@ -44,17 +44,18 @@ code{background:#1e2430;padding:2px 8px;border-radius:6px;font-size:13px;color:v
 
 <section id="willnew">
 <h2><a href="https://github.com/Haejyn/willnew">willnew</a></h2>
-<p class="tag">팀 AI 에이전트 플랫폼 · TypeScript · Hono · React · vitest</p>
+<p class="tag">팀 AI 에이전트 플랫폼 · TypeScript · Hono · React · xterm.js · vitest</p>
 <ul>
-<li>팀 채팅에서 <code>@willnew</code> 로 요청하면 계획 → 병렬 실행 → 검증 → 자기 수정 → 사람 승인 → 반영까지 진행</li>
-<li>Claude Code · Codex 를 격리된 git 워크트리에서 병렬 실행, 판정은 테스트가 수행</li>
-<li>팀 · 업무 템플릿 · 에이전트별 자동 해결률, 승인율, 비용 지표</li>
-<li>실측: 요청 3건 <b>$0.55</b>, 자동 해결 <b>67 %</b>, 승인율 67 %</li>
+<li>팀 채널에서 <code>@willnew</code> 로, 또는 <code>⌘K</code> 로 맡기면 계획 → 병렬 실행 → 검증 → 자기 수정 → 사람 승인 → 병합까지 진행</li>
+<li><b>검증 관문</b>: 테스트를 통과한 결과만 승인으로 올리고, 테스트 파일을 고쳐 통과한 결과와 <code>main</code> 충돌을 병합 전에 걸러냄</li>
+<li><b>겨루고 추천</b>: Claude Code · Codex 가 각자 git 워크트리에서 같은 일을 하고, 시간 · 비용 · 변경 크기로 하나를 추천</li>
+<li><b>IDE 기본기</b>: 에이전트 칸마다 실제 터미널 · 변경 · 미리보기, 일하는 중에도 이어서 지시, 줄 댓글을 모아 다시 맡기기, 휴대폰에서 밀어서 승인</li>
+<li>팀 · 업무 템플릿 · 에이전트별 자동 해결률, 승인율, 비용 · 예산 지표. 실측: 요청 3건 <b>$0.55</b>, 자동 해결 <b>67 %</b>, 승인율 67 %</li>
 </ul>
-<img src="https://raw.githubusercontent.com/Haejyn/willnew/main/docs/media/demo.gif" alt="willnew 데모">
+<img src="https://raw.githubusercontent.com/Haejyn/willnew/main/docs/media/demo.gif" alt="willnew 데모 — 맡기기부터 병합까지">
 <div class="grid" style="margin-top:12px">
-<img src="https://raw.githubusercontent.com/Haejyn/willnew/main/docs/shots/chat.png" alt="채팅">
-<img src="https://raw.githubusercontent.com/Haejyn/willnew/main/docs/shots/request.png" alt="요청">
+<img src="https://raw.githubusercontent.com/Haejyn/willnew/main/docs/shots/ide.png" alt="에이전트 칸 — 터미널과 미리보기">
+<img src="https://raw.githubusercontent.com/Haejyn/willnew/main/docs/shots/review.png" alt="검토 — 줄 댓글과 병합 전 확인">
 <img src="https://raw.githubusercontent.com/Haejyn/willnew/main/docs/shots/metrics.png" alt="지표">
 </div>
 <a class="btn" href="https://github.com/Haejyn/willnew">저장소 보기</a>
