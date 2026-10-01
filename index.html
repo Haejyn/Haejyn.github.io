@@ -24,7 +24,7 @@ section h2 a{color:var(--ac);text-decoration:none}
 ul{padding-left:20px;margin:12px 0}
 li{margin:4px 0}
 b{color:var(--ac);font-weight:600}
-img{width:100%;border-radius:12px;margin-top:16px;display:block}
+img,video{width:100%;border-radius:12px;margin-top:16px;display:block}
 .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
 .grid img{margin-top:0}
 .btn{display:inline-block;margin-top:16px;color:#111;background:var(--ac);padding:8px 16px;border-radius:10px;text-decoration:none;font-weight:600;font-size:14px}
@@ -52,7 +52,12 @@ code{background:#1e2430;padding:2px 8px;border-radius:6px;font-size:13px;color:v
 <li><b>IDE 기본기</b>: 에이전트 칸마다 실제 터미널 · 변경 · 미리보기, 일하는 중에도 이어서 지시, 줄 댓글을 모아 다시 맡기기, 휴대폰에서 밀어서 승인</li>
 <li>팀 · 업무 템플릿 · 에이전트별 자동 해결률, 승인율, 비용 · 예산 지표. 실측: 요청 3건 <b>$0.55</b>, 자동 해결 <b>67 %</b>, 승인율 67 %</li>
 </ul>
-<img src="https://raw.githubusercontent.com/Haejyn/willnew/main/docs/media/demo.gif" alt="willnew 데모 — 맡기기부터 병합까지">
+<video id="willnew-demo" src="media/willnew-demo.webm" poster="media/willnew-poster.jpg" autoplay muted loop playsinline aria-label="willnew 데모 — 맡기기부터 병합까지"></video>
+<script>
+(function(){var v=document.getElementById('willnew-demo');
+function gif(){var i=document.createElement('img');i.src='https://raw.githubusercontent.com/Haejyn/willnew/main/docs/media/demo.gif';i.alt=v.getAttribute('aria-label');v.replaceWith(i)}
+if(!v.canPlayType('video/webm; codecs="vp8"'))gif();else v.addEventListener('error',gif)})();
+</script>
 <div class="grid" style="margin-top:12px">
 <img src="https://raw.githubusercontent.com/Haejyn/willnew/main/docs/shots/ide.png" alt="에이전트 칸 — 터미널과 미리보기">
 <img src="https://raw.githubusercontent.com/Haejyn/willnew/main/docs/shots/review.png" alt="검토 — 줄 댓글과 병합 전 확인">
