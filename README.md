@@ -25,6 +25,7 @@ TVING AI Product Builder 지원용으로 구성한 한 단짜리 문서형 포�
 |---|---|
 | wafer-demo.mp4, wafer-poster.png, demos/wafer | [wafer-defect-agent](https://github.com/Haejyn/wafer-defect-agent) · 개선한 UI로 기록된 결과를 재생 |
 | willnew-demo.mp4, willnew-demo.webm, willnew-poster.jpg | [willnew](https://github.com/Haejyn/willnew) · 기존 WebM에서 호환용 MP4 생성 |
+| willnew-flow-*.mp4/jpg, willnew-selffix.jpg, willnew-merge-check.jpg | willnew-demo.mp4 에서 구간(요청 2–9초 · 실행 9–23초 · 검토 23–35.6초)과 장면(20.5초 · 32.5초)을 잘라 냄 |
 | biw-demo.mp4, biw-ai.gif, biw-poster.png | [biw-weld-twin](https://github.com/Haejyn/biw-weld-twin) · demo_weld.mp4, demo_ai.gif, hero.png |
 | downlink-demo.mp4 | [ccsds-downlink-reliability](https://github.com/Haejyn/ccsds-downlink-reliability) · downlink.mp4 |
 | orbit-demo.mp4 | [orbit-pass-sim](https://github.com/Haejyn/orbit-pass-sim) · passes.mp4 |

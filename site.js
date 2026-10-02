@@ -1,6 +1,6 @@
 "use strict";
 // Playback starts on request; stop other and off-screen demos to save resources.
-const videos = [...document.querySelectorAll("video")];
+const videos = [...document.querySelectorAll("video:not(.flow-clip)")];
 videos.forEach(video => {
   video.addEventListener("play", () => {
     videos.forEach(other => { if (other !== video) other.pause(); });
@@ -56,3 +56,13 @@ window.addEventListener("afterprint", () => {
   openedForPrint.forEach(d => { d.open = false; });
   openedForPrint = [];
 });
+// Workflow clips: play silently while on screen (unless reduced motion), pause otherwise.
+const clips = [...document.querySelectorAll("video.flow-clip")];
+const calm = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+if (calm) clips.forEach(c => { c.controls = true; });
+else if ("IntersectionObserver" in window) {
+  const clipObserver = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.play().catch(() => {}); else e.target.pause(); });
+  }, {threshold: 0.35});
+  clips.forEach(c => clipObserver.observe(c));
+}
