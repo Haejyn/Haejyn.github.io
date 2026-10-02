@@ -5,7 +5,7 @@ videos.forEach(video => {
   video.addEventListener("play", () => {
     videos.forEach(other => { if (other !== video) other.pause(); });
   });
-  const status = video.closest(".project-media, .system-card")?.querySelector(".media-status");
+  const status = video.closest(".media")?.querySelector(".media-status");
   const showError = () => {
     if (status) status.textContent = "영상을 불러오지 못했습니다. 영상 파일 링크에서 직접 열거나 저장소에서 데모를 확인해주세요.";
   };
@@ -25,3 +25,23 @@ if ("IntersectionObserver" in window) {
   }, {threshold: 0.05});
   videos.forEach(video => observer.observe(video));
 }
+// BIW: switch the demo between the simulation video and the AI judgement GIF.
+document.querySelectorAll(".swap").forEach(button => {
+  const figure = button.closest(".media");
+  const video = figure.querySelector("video");
+  let gif;
+  button.addEventListener("click", () => {
+    if (!gif) {
+      gif = document.createElement("img");
+      gif.src = button.dataset.gif;
+      gif.alt = "설계 조건에 따른 AI 제조성 판정과 비교 결과";
+      video.after(gif);
+    } else {
+      gif.hidden = !gif.hidden;
+    }
+    const showingGif = !gif.hidden;
+    video.hidden = showingGif;
+    if (showingGif) video.pause();
+    button.textContent = showingGif ? "시뮬레이션 영상 보기" : "AI 제조성 판정 데모 보기";
+  });
+});
