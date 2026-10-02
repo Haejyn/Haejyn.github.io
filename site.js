@@ -5,7 +5,7 @@ videos.forEach(video => {
   video.addEventListener("play", () => {
     videos.forEach(other => { if (other !== video) other.pause(); });
   });
-  const status = video.closest(".project-media, .system-card")?.querySelector(".media-status");
+  const status = video.closest(".media, .block")?.querySelector(".media-status");
   const showError = () => {
     if (status) status.textContent = "영상을 불러오지 못했습니다. 영상 파일 링크에서 직접 열거나 저장소에서 데모를 확인해주세요.";
   };
