@@ -1,7 +1,7 @@
 :root {
   --bg:#ffffff;
-  --ink:#333333;
-  --hi:#1f1f1f;
+  --ink:#111111;
+  --hi:#111111;
   --rule:#dcdcdc;
   --soft:#f6f6f6;
   --mark:rgba(108,190,120,.32);
@@ -14,7 +14,7 @@ body {
   font:17px/1.75 "Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
   word-break:keep-all; -webkit-font-smoothing:antialiased
 }
-a { color:var(--hi); text-decoration:underline; text-decoration-color:#9a9a9a; text-underline-offset:3px }
+a { color:var(--hi); text-decoration:underline; text-decoration-color:currentColor; text-underline-offset:3px }
 a:hover { text-decoration-color:var(--hi) }
 button, table { font:inherit }
 a:focus-visible, button:focus-visible, summary:focus-visible, video:focus-visible { outline:2px solid var(--hi); outline-offset:3px }
@@ -55,7 +55,7 @@ table.props td { font-size:16px }
 .media figcaption { margin-top:8px; font-size:15px }
 .media-status { margin:6px 0 0; font-size:14px; color:#c4443c }
 .media-status:empty { display:none }
-.swap { border:0; background:none; padding:0; font-size:15px; color:var(--hi); cursor:pointer; text-decoration:underline; text-decoration-color:#9a9a9a; text-underline-offset:3px }
+.swap { border:0; background:none; padding:0; font-size:15px; color:var(--hi); cursor:pointer; text-decoration:underline; text-decoration-color:currentColor; text-underline-offset:3px }
 
 h4 { margin:30px 0 6px; font-size:17px; font-weight:700; color:var(--hi) }
 .desc { margin:0; padding-left:22px }
@@ -94,3 +94,6 @@ h3.year { margin:36px 0 10px; display:inline-block; font-size:24px; font-weight:
   .shots { grid-template-columns:1fr }
 }
 @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto } }
+.desc ul { margin:2px 0 4px; padding-left:20px; list-style:"– " }
+.desc ul li { margin:2px 0 }
+.desc > li > b:only-child { display:inline }
