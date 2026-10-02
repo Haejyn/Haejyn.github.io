@@ -137,3 +137,16 @@ a.company:hover { color:var(--hi); transform:translate(-3px,-3px); box-shadow:6p
 }
 .terminal .who { color:#ff8a9c; font-weight:700 }
 @media (max-width:640px) { .terminal { font-size:12px; padding:16px } }
+.compare-wrap, table.compare { margin-bottom:0 }
+table.compare { min-width:560px }
+table.compare + * { margin-top:0 }
+table.compare tbody th { width:84px; white-space:nowrap }
+table.compare thead th:last-child, table.compare td:last-child { background:rgba(255,21,60,.06) }
+table.compare code { font:13px ui-monospace,"SF Mono",Menlo,Consolas,monospace }
+.project > .table-scroll:has(table.compare) { margin:4px 0 28px }
+@media (max-width:640px) {
+  table.compare { min-width:0; font-size:13px }
+  table.compare tbody th { width:auto; white-space:normal; padding-right:8px }
+  table.compare td { padding-right:8px }
+  table.compare code { font-size:11px; word-break:break-all }
+}
