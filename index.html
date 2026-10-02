@@ -70,11 +70,12 @@
         <div><dt>승인율</dt><dd>67%</dd></div>
         <div><dt>요청 3건 총비용</dt><dd>$0.55</dd></div>
       </dl>
-      <ul class="points">
-        <li><b>병렬 실행</b> Claude Code와 Codex를 격리된 워크트리에서 동시에 돌리고 시간·비용·변경을 비교합니다.</li>
-        <li><b>자기 수정</b> 검증 명령의 종료 코드로 판정하고, 실패하면 로그를 돌려 한 번 더 고칩니다.</li>
-        <li><b>사람의 승인</b> 줄 댓글과 병합 전 확인을 거쳐 사람이 승인하거나 사유를 남겨 반려합니다.</li>
-      </ul>
+      <dl class="spec">
+        <div><dt>배경</dt><dd>팀이 AI에게 맡긴 작업도 결과 확인과 병합 판단은 사람이 여러 도구를 오가며 해야 했습니다.</dd></div>
+        <div><dt>구현</dt><dd>팀 채널 요청을 계획 에이전트가 실행 단계와 검증 명령으로 바꾸고, Claude Code와 Codex를 격리된 워크트리에서 병렬 실행합니다. 터미널·변경·미리보기를 한 화면에서 봅니다.</dd></div>
+        <div><dt>검증</dt><dd>검증 명령의 종료 코드로 판정하고, 실패하면 로그를 돌려 한 번 더 수정합니다. 마지막은 사람이 줄 댓글과 병합 전 확인(테스트 파일 변경·main 충돌)을 거쳐 승인합니다.</dd></div>
+        <div><dt>성과</dt><dd>실패 테스트 7개가 있는 예제 저장소에서 요청 3건 실측 — 자동 해결 67% · 승인 67% · 총비용 $0.55.</dd></div>
+      </dl>
     </div>
 
     <ol class="flow" aria-label="작업 흐름">
@@ -126,11 +127,12 @@
         <div><dt>학습에 없던 패턴 AUROC</dt><dd><span class="was">0.55</span> → 0.92</dd></div>
         <div><dt>LLM 판독 검사 통과</dt><dd><span class="was">8%</span> → 94%</dd></div>
       </dl>
-      <ul class="points">
-        <li><b>배경</b>분류 모델의 확신도로는 새 패턴을 우연 수준으로만 가려냈습니다.</li>
-        <li><b>구현</b>모델 임베딩에서 기존 패턴과 떨어진 정도로 경고하고, 판정·위치·유사 사례는 코드가 계산합니다. 로컬 LLM(Qwen3.5 4B)은 논문 근거가 있는 원인 후보 안에서만 판독 카드를 쓰고, 모순은 코드가 검사해 되묻습니다.</li>
-        <li><b>성과</b>기존 9종에 없는 줄무늬·혼합 패턴 발견, 나중 로트 성능 하락(0.963 → 0.743) 측정.</li>
-      </ul>
+      <dl class="spec">
+        <div><dt>배경</dt><dd>분류 모델의 확신도로는 학습에 없던 새 불량 패턴을 우연 수준(AUROC 0.55)으로만 가려냈습니다.</dd></div>
+        <div><dt>구현</dt><dd>모델 임베딩에서 기존 패턴과 떨어진 정도로 새 패턴을 경고합니다. 판정·위치·유사 사례는 코드가 계산하고, 로컬 LLM(Qwen3.5 4B)은 논문 근거가 있는 원인 후보 안에서만 판독 카드를 씁니다.</dd></div>
+        <div><dt>검증</dt><dd>불량 8종을 하나씩 학습에서 빼는 실험과 로트 단위 분할로 평가했습니다. LLM 판독 카드는 6종 코드 검사를 거치고, 위반하면 다시 묻습니다.</dd></div>
+        <div><dt>성과</dt><dd>새 패턴 AUROC 0.55 → 0.92 · 판독 검사 통과 8% → 94% · 기존 9종에 없는 줄무늬·혼합 패턴 발견 · 나중 로트 성능 하락(0.963 → 0.743) 확인.</dd></div>
+      </dl>
       <p class="links"><span class="stack">PyTorch · 임베딩 kNN · Grad-CAM · Ollama</span><a href="demos/wafer/">판독 화면 열기</a><a href="https://github.com/Haejyn/wafer-defect-agent">저장소</a></p>
     </div>
   </section>
@@ -149,11 +151,12 @@
         <div><dt>AI 판정</dt><dd>0.05초</dd></div>
         <div><dt>전체 시뮬레이션</dt><dd>약 3분</dd></div>
       </dl>
-      <ul class="points">
-        <li>KUKA KR210 기구학으로 로봇 도달성과 용접 경로 시뮬레이션</li>
-        <li>LightGBM 대리 모델로 혼류 라인 설계 검토를 빠르게 반복</li>
-        <li>전체 시뮬레이션과 다시 대조해 AI 특징 계산 버그 수정</li>
-      </ul>
+      <dl class="spec">
+        <div><dt>배경</dt><dd>전체 로봇 시뮬레이션은 설계안 하나를 판정하는 데 약 3분이 걸려 설계 검토를 빠르게 반복하기 어려웠습니다.</dd></div>
+        <div><dt>구현</dt><dd>KUKA KR210 기구학으로 로봇 도달성과 용접 경로를 시뮬레이션하고, LightGBM 대리 모델로 혼류 라인의 제조성을 판정합니다.</dd></div>
+        <div><dt>검증</dt><dd>대리 모델의 판정을 전체 시뮬레이션 결과와 다시 대조해 AI 특징 계산의 버그를 찾아 고쳤습니다.</dd></div>
+        <div><dt>성과</dt><dd>제조성 판정 약 3분 → 0.05초.</dd></div>
+      </dl>
       <p class="links"><span class="stack">Robotics · LightGBM · Python</span><a href="https://github.com/Haejyn/biw-weld-twin">저장소</a></p>
     </div>
   </section>
@@ -166,8 +169,12 @@
         <figure class="media"><img src="media/ground-station.png" alt="ASRTU-1 실제 수신 패스의 예측 도플러와 실측 반송파 비교 그래프" loading="lazy" width="1102" height="831"></figure>
         <h3>위성 지상국 수신 처리기</h3>
         <p class="big">115 / 115</p>
-        <p class="sub">gr-satellites 독립 복호와 바이트 단위 일치</p>
-        <p>원시 IQ 녹음에서 실제 위성 프레임까지. 궤도 기반 도플러 보정, 복조·복호를 구현했습니다.</p>
+        <dl class="spec">
+          <div><dt>배경</dt><dd>녹음한 원시 IQ 신호에는 위성 이동에 따른 도플러 편이가 섞여 있습니다.</dd></div>
+          <div><dt>구현</dt><dd>궤도(SGP4) 기반 도플러 보정과 복조·복호를 C#으로 구현했습니다.</dd></div>
+          <div><dt>검증</dt><dd>gr-satellites 독립 복호 결과와 바이트 단위로 대조했습니다.</dd></div>
+          <div><dt>성과</dt><dd>독립 복호 합집합 115개 프레임과 바이트 일치.</dd></div>
+        </dl>
         <p class="links"><span class="stack">C# · SGP4 · DSP</span><a href="https://github.com/Haejyn/ground-station-rx">저장소</a></p>
       </article>
       <article id="downlink">
@@ -177,8 +184,12 @@
         </figure>
         <h3>SpaceLink · CCSDS 다운링크</h3>
         <p class="big">94.65%</p>
-        <p class="sub">뮤테이션 테스트 점수 · 요구사항 30/30</p>
-        <p>위성 비트열을 전송 프레임과 패킷으로 복원하고, 손상 가능한 패킷을 걸러냅니다.</p>
+        <dl class="spec">
+          <div><dt>배경</dt><dd>위성 비트열에는 손상된 프레임과 패킷이 섞일 수 있습니다.</dd></div>
+          <div><dt>구현</dt><dd>CCSDS 전송 프레임·패킷을 복원하고 손상 가능한 패킷을 걸러냅니다.</dd></div>
+          <div><dt>검증</dt><dd>표준 값·독립 복호기와 대조, 테스트 139개와 뮤테이션 테스트로 점검했습니다.</dd></div>
+          <div><dt>성과</dt><dd>뮤테이션 점수 94.65% · 요구사항 30/30 충족.</dd></div>
+        </dl>
         <p class="links"><span class="stack">C# · CCSDS · 139 tests</span><a href="https://github.com/Haejyn/ccsds-downlink-reliability">저장소</a></p>
       </article>
       <article id="orbit">
@@ -188,8 +199,12 @@
         </figure>
         <h3>위성 궤도 · 패스 예측</h3>
         <p class="big">520</p>
-        <p class="sub">Java ↔ C# 차분 시험 일치</p>
-        <p>지상국에서 위성이 보이는 시간과 고도각을 예측합니다. 무작위 시험으로 제품 결함을 찾았습니다.</p>
+        <dl class="spec">
+          <div><dt>배경</dt><dd>지상국 운용에는 위성이 보이는 시간과 고도각 예측이 필요합니다.</dd></div>
+          <div><dt>구현</dt><dd>궤도·패스 예측을 Java와 C#으로 각각 구현했습니다.</dd></div>
+          <div><dt>검증</dt><dd>두 구현을 520건 차분 시험으로 대조하고, 무작위 시험과 PIT 뮤테이션(95%)으로 점검했습니다.</dd></div>
+          <div><dt>성과</dt><dd>520건 일치 · 무작위 시험으로 제품 결함 발견.</dd></div>
+        </dl>
         <p class="links"><span class="stack">Java · C# · PIT 95%</span><a href="https://github.com/Haejyn/orbit-pass-sim">저장소</a></p>
       </article>
     </div>
