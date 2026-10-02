@@ -45,3 +45,14 @@ document.querySelectorAll(".swap").forEach(button => {
     button.textContent = showingGif ? "시뮬레이션 영상 보기" : "AI 제조성 판정 데모 보기";
   });
 });
+// Print / Save as PDF: open collapsed sections and load lazy images first.
+let openedForPrint = [];
+window.addEventListener("beforeprint", () => {
+  openedForPrint = [...document.querySelectorAll("details:not([open])")];
+  openedForPrint.forEach(d => { d.open = true; });
+  document.querySelectorAll('img[loading="lazy"]').forEach(img => { img.loading = "eager"; });
+});
+window.addEventListener("afterprint", () => {
+  openedForPrint.forEach(d => { d.open = false; });
+  openedForPrint = [];
+});

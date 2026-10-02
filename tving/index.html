@@ -5,12 +5,15 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#faf6f1">
 <title>이해준 — TVING AI Product Builder 포트폴리오</title>
-<meta name="description" content="AI 에이전트, 제조 시뮬레이션, 위성 수신 시스템. 프로젝트의 기능, 구현 범위와 실측 결과를 담은 이해준의 개발 포트폴리오.">
-<meta property="og:title" content="이해준 — AI · Engineering Portfolio">
-<meta property="og:description" content="이해준의 개발 포트폴리오. willnew 팀 AI 플랫폼, 제조 AI, 위성 수신 시스템의 기능과 실측 결과.">
+<meta name="description" content="CJ ENM-TVING AI Product Builder 지원 · willnew 팀 AI 작업 공간, wasnew, 웨이퍼 판독 에이전트 등 프로젝트의 구현과 실측 결과.">
+<meta property="og:title" content="이해준 — AI Product Builder (CJ ENM-TVING)">
+<meta property="og:description" content="willnew 자동 해결 67% · wasnew 테스트 78개 · 웨이퍼 새 불량 패턴 AUROC 0.55 → 0.92">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://haejyn.github.io/">
-<meta property="og:image" content="https://haejyn.github.io/media/willnew-workspace.png">
+<meta property="og:image" content="https://haejyn.github.io/media/og-tving.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="canonical" href="https://haejyn.github.io/">
 <link rel="stylesheet" href="../styles.css">
@@ -47,7 +50,7 @@
 <tr><th scope="row">기술</th><td>TypeScript · React · Hono · vitest</td></tr>
 <tr><th scope="row">코드</th><td><a href="https://github.com/Haejyn/willnew/blob/main/src/server/runs.ts#L183">검증 판정</a> · <a href="https://github.com/Haejyn/willnew/blob/main/tests/e2e.test.ts">E2E 테스트</a> · <a href="https://github.com/Haejyn/willnew#실측">측정 근거</a> · <a href="https://github.com/Haejyn/willnew">저장소</a></td></tr>
   </tbody></table>
-  <figure class="media"><video id="willnew-demo" controls muted loop playsinline preload="metadata" poster="../media/willnew-poster.jpg" aria-label="willnew 데모: 작업 요청부터 검토와 병합까지"><source src="../media/willnew-demo.mp4" type="video/mp4"><source src="../media/willnew-demo.webm" type="video/webm">영상 재생을 지원하지 않는 브라우저입니다.</video><p class="media-status" aria-live="polite"></p></figure>
+  <figure class="media"><video id="willnew-demo" controls muted loop playsinline preload="metadata" poster="../media/willnew-poster.jpg" aria-label="willnew 데모: 작업 요청부터 검토와 병합까지"><source src="../media/willnew-demo.mp4" type="video/mp4"><source src="../media/willnew-demo.webm" type="video/webm">영상 재생을 지원하지 않는 브라우저입니다.</video><img class="print-poster" src="../media/willnew-poster.jpg" alt="willnew 데모: 작업 요청부터 검토와 병합까지"><p class="media-status" aria-live="polite"></p></figure>
   <h4>Description</h4>
   <ul class="desc">
 <li><b>배경</b> AI에 맡긴 작업도 결과 확인·병합 판단은 사람이 여러 도구를 오가며 처리</li>
@@ -128,7 +131,7 @@
 <tr><th scope="row">데모</th><td><a href="../demos/wafer/">판독 화면 열기</a></td></tr>
 <tr><th scope="row">코드</th><td><a href="https://github.com/Haejyn/wafer-defect-agent/blob/main/src/wafer/ood.py">새 패턴 감지</a> · <a href="https://github.com/Haejyn/wafer-defect-agent/blob/main/src/wafer/agent.py#L81">판독 검사기</a> · <a href="https://github.com/Haejyn/wafer-defect-agent/blob/main/tests/test_agent_check.py">검사기 테스트</a> · <a href="https://github.com/Haejyn/wafer-defect-agent">저장소</a></td></tr>
   </tbody></table>
-  <figure class="media"><video id="wafer-demo" controls muted loop playsinline preload="metadata" poster="../media/wafer-poster.png" aria-label="웨이퍼 판독 데모: 첫 답 검사 통과와 재질문 후 수정"><source src="../media/wafer-demo.mp4" type="video/mp4">영상 재생을 지원하지 않는 브라우저입니다.</video><p class="media-status" aria-live="polite"></p></figure>
+  <figure class="media"><video id="wafer-demo" controls muted loop playsinline preload="metadata" poster="../media/wafer-poster.png" aria-label="웨이퍼 판독 데모: 첫 답 검사 통과와 재질문 후 수정"><source src="../media/wafer-demo.mp4" type="video/mp4">영상 재생을 지원하지 않는 브라우저입니다.</video><img class="print-poster" src="../media/wafer-poster.png" alt="웨이퍼 판독 데모: 첫 답 검사 통과와 재질문 후 수정"><p class="media-status" aria-live="polite"></p></figure>
   <h4>Description</h4>
   <ul class="desc">
 <li><b>배경</b> 분류 모델 확신도로는 새 불량 패턴 구분이 우연 수준(AUROC 0.55)</li>
@@ -146,7 +149,7 @@
 <tr><th scope="row">기술</th><td>Python · KUKA KR210 기구학 · LightGBM</td></tr>
 <tr><th scope="row">코드</th><td><a href="https://github.com/Haejyn/biw-weld-twin/blob/main/src/surrogate.py">대리 모델</a> · <a href="https://github.com/Haejyn/biw-weld-twin/blob/main/tests/test_core.py">테스트</a> · <a href="https://github.com/Haejyn/biw-weld-twin">저장소</a></td></tr>
   </tbody></table>
-  <figure class="media"><video id="biw-demo" controls muted loop playsinline preload="metadata" poster="../media/biw-poster.png" aria-label="차체 용접 로봇 시뮬레이션 데모"><source src="../media/biw-demo.mp4" type="video/mp4">영상 재생을 지원하지 않는 브라우저입니다.</video><figcaption><button class="swap" type="button" data-gif="../media/biw-ai.gif">AI 제조성 판정 데모 보기</button></figcaption><p class="media-status" aria-live="polite"></p></figure>
+  <figure class="media"><video id="biw-demo" controls muted loop playsinline preload="metadata" poster="../media/biw-poster.png" aria-label="차체 용접 로봇 시뮬레이션 데모"><source src="../media/biw-demo.mp4" type="video/mp4">영상 재생을 지원하지 않는 브라우저입니다.</video><img class="print-poster" src="../media/biw-poster.png" alt="차체 용접 로봇 시뮬레이션 데모"><figcaption><button class="swap" type="button" data-gif="../media/biw-ai.gif">AI 제조성 판정 데모 보기</button></figcaption><p class="media-status" aria-live="polite"></p></figure>
   <h4>Description</h4>
   <ul class="desc">
 <li><b>배경</b> 전체 로봇 시뮬레이션은 설계안 1개 판정에 약 3분 소요 → 설계 검토 반복이 느림</li>
