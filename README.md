@@ -14,7 +14,7 @@ TVING AI Product Builder 지원용으로 구성한 한 단짜리 문서형 포�
 
 - 영상은 `media/`에서 직접 제공합니다. 위성 프로젝트 3개는 글로만 소개하며, 해당 미디어 파일은 저장소에 남겨 둡니다. MP4는 H.264 / yuv420p, 빠른 시작용 moov 인덱스를 사용합니다.
 - 방문자가 재생을 시작하며, 다른 영상 또는 화면 밖 영상은 일시정지합니다. 기본 컨트롤에서 탐색과 전체 화면을 사용할 수 있습니다.
-- willnew는 MP4와 기존 WebM을 함께 제공합니다. 각 영상에 포스터와 재생 오류 안내가 있습니다.
+- willnew 데모는 원본 녹화에 단계 자막 · 강조 상자 · 앞뒤 안내 화면을 넣은 해설판(0.85배속)입니다. 각 영상에 포스터와 재생 오류 안내가 있습니다.
 - `demos/wafer/`는 wafer-defect-agent의 기록된 판독 8건과 UMAP 표본을 보여줍니다. 모델을 실행하거나 새 웨이퍼를 업로드하는 서비스가 아닙니다. 지도에는 Plotly CDN 연결이 필요합니다.
 
 ## 미디어 출처
@@ -24,8 +24,8 @@ TVING AI Product Builder 지원용으로 구성한 한 단짜리 문서형 포�
 | 파일 | 출처 |
 |---|---|
 | wafer-demo.mp4, wafer-poster.png, demos/wafer | [wafer-defect-agent](https://github.com/Haejyn/wafer-defect-agent) · 개선한 UI로 기록된 결과를 재생 |
-| willnew-demo.mp4, willnew-demo.webm, willnew-poster.jpg | [willnew](https://github.com/Haejyn/willnew) · 기존 WebM에서 호환용 MP4 생성 |
-| willnew-flow-*.mp4/jpg, willnew-selffix.jpg, willnew-merge-check.jpg | willnew-demo.mp4 에서 구간(요청 2–9초 · 실행 9–23초 · 검토 23–35.6초)과 장면(20.5초 · 32.5초)을 잘라 냄 |
+| willnew-demo.mp4, willnew-poster.jpg | [willnew](https://github.com/Haejyn/willnew) · 원본 데모 녹화(35.6초)에 단계 자막 9개 · 강조 상자 · 안내 화면을 입힌 해설판 |
+| willnew-flow-*.mp4/jpg, willnew-selffix.jpg, willnew-merge-check.jpg | 원본 데모 녹화에서 구간(요청 2–9초 · 실행 9–23초 · 검토 23–35.6초)과 장면(20.5초 · 32.5초)을 잘라 냄 |
 | biw-demo.mp4, biw-ai.gif, biw-poster.png | [biw-weld-twin](https://github.com/Haejyn/biw-weld-twin) · demo_weld.mp4, demo_ai.gif, hero.png |
 | downlink-demo.mp4 | [ccsds-downlink-reliability](https://github.com/Haejyn/ccsds-downlink-reliability) · downlink.mp4 |
 | orbit-demo.mp4 | [orbit-pass-sim](https://github.com/Haejyn/orbit-pass-sim) · passes.mp4 |
