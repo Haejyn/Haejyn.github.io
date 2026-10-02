@@ -107,6 +107,7 @@ h1 span { font-size:18px; font-weight:400; color:var(--ink); letter-spacing:0; m
 .links a { color:var(--hi); border-bottom:1px solid var(--rule) }
 .links a:hover { border-color:var(--hi) }
 .stack { font-size:13px; font-weight:500; color:var(--ink); width:100% }
+.code-label { font-size:13px; font-weight:700; color:var(--hi); margin-right:-8px }
 
 /* Featured willnew */
 .feature { padding-block:120px 0 }

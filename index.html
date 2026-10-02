@@ -111,7 +111,7 @@
       <p>절약 시간은 템플릿의 가정치이며 실측값이 아닙니다.</p>
     </details>
 
-    <p class="links"><span class="stack">TypeScript · React · Hono · vitest</span><a href="https://github.com/Haejyn/willnew">저장소</a><a href="https://github.com/Haejyn/willnew#실측">측정 근거</a></p>
+    <p class="links"><span class="stack">TypeScript · React · Hono · vitest</span><span class="code-label">코드</span><a href="https://github.com/Haejyn/willnew/blob/main/src/server/runs.ts#L183">검증 판정</a><a href="https://github.com/Haejyn/willnew/blob/main/tests/e2e.test.ts">E2E 테스트</a><a href="https://github.com/Haejyn/willnew#실측">측정 근거</a><a href="https://github.com/Haejyn/willnew">저장소</a></p>
   </section>
 
   <!-- 02 wafer -->
@@ -133,7 +133,7 @@
         <div><dt>검증</dt><dd>불량 8종을 하나씩 학습에서 빼는 실험과 로트 단위 분할로 평가했습니다. LLM 판독 카드는 6종 코드 검사를 거치고, 위반하면 다시 묻습니다.</dd></div>
         <div><dt>성과</dt><dd>새 패턴 AUROC 0.55 → 0.92 · 판독 검사 통과 8% → 94% · 기존 9종에 없는 줄무늬·혼합 패턴 발견 · 나중 로트 성능 하락(0.963 → 0.743) 확인.</dd></div>
       </dl>
-      <p class="links"><span class="stack">PyTorch · 임베딩 kNN · Grad-CAM · Ollama</span><a href="demos/wafer/">판독 화면 열기</a><a href="https://github.com/Haejyn/wafer-defect-agent">저장소</a></p>
+      <p class="links"><span class="stack">PyTorch · 임베딩 kNN · Grad-CAM · Ollama</span><a href="demos/wafer/">판독 화면 열기</a><span class="code-label">코드</span><a href="https://github.com/Haejyn/wafer-defect-agent/blob/main/src/wafer/ood.py">새 패턴 감지</a><a href="https://github.com/Haejyn/wafer-defect-agent/blob/main/src/wafer/agent.py#L81">판독 검사기</a><a href="https://github.com/Haejyn/wafer-defect-agent/blob/main/tests/test_agent_check.py">검사기 테스트</a><a href="https://github.com/Haejyn/wafer-defect-agent">저장소</a></p>
     </div>
   </section>
 
@@ -157,7 +157,7 @@
         <div><dt>검증</dt><dd>대리 모델의 판정을 전체 시뮬레이션 결과와 다시 대조해 AI 특징 계산의 버그를 찾아 고쳤습니다.</dd></div>
         <div><dt>성과</dt><dd>제조성 판정 약 3분 → 0.05초.</dd></div>
       </dl>
-      <p class="links"><span class="stack">Robotics · LightGBM · Python</span><a href="https://github.com/Haejyn/biw-weld-twin">저장소</a></p>
+      <p class="links"><span class="stack">Robotics · LightGBM · Python</span><span class="code-label">코드</span><a href="https://github.com/Haejyn/biw-weld-twin/blob/main/src/surrogate.py">대리 모델</a><a href="https://github.com/Haejyn/biw-weld-twin/blob/main/tests/test_core.py">테스트</a><a href="https://github.com/Haejyn/biw-weld-twin">저장소</a></p>
     </div>
   </section>
 
@@ -175,7 +175,7 @@
           <div><dt>검증</dt><dd>gr-satellites 독립 복호 결과와 바이트 단위로 대조했습니다.</dd></div>
           <div><dt>성과</dt><dd>독립 복호 합집합 115개 프레임과 바이트 일치.</dd></div>
         </dl>
-        <p class="links"><span class="stack">C# · SGP4 · DSP</span><a href="https://github.com/Haejyn/ground-station-rx">저장소</a></p>
+        <p class="links"><span class="stack">C# · SGP4 · DSP</span><span class="code-label">코드</span><a href="https://github.com/Haejyn/ground-station-rx/blob/main/src/GroundStationRx/Orbit/DopplerResidualFit.cs">도플러 보정</a><a href="https://github.com/Haejyn/ground-station-rx/blob/main/tests/GroundStationRx.Tests/Receiver/FullPassTests.cs">실제 패스 대조</a><a href="https://github.com/Haejyn/ground-station-rx">저장소</a></p>
       </article>
       <article id="downlink">
         <figure class="media">
@@ -190,7 +190,7 @@
           <div><dt>검증</dt><dd>표준 값·독립 복호기와 대조, 테스트 139개와 뮤테이션 테스트로 점검했습니다.</dd></div>
           <div><dt>성과</dt><dd>뮤테이션 점수 94.65% · 요구사항 30/30 충족.</dd></div>
         </dl>
-        <p class="links"><span class="stack">C# · CCSDS · 139 tests</span><a href="https://github.com/Haejyn/ccsds-downlink-reliability">저장소</a></p>
+        <p class="links"><span class="stack">C# · CCSDS · 139 tests</span><span class="code-label">코드</span><a href="https://github.com/Haejyn/ccsds-downlink-reliability/blob/main/tests/SpaceLink.Tests/StandardConformanceTests.cs">표준 적합성</a><a href="https://github.com/Haejyn/ccsds-downlink-reliability/blob/main/tests/SpaceLink.Tests/LibfecCrossCheckTests.cs">libfec 대조</a><a href="https://github.com/Haejyn/ccsds-downlink-reliability">저장소</a></p>
       </article>
       <article id="orbit">
         <figure class="media">
@@ -205,7 +205,7 @@
           <div><dt>검증</dt><dd>두 구현을 520건 차분 시험으로 대조하고, 무작위 시험과 PIT 뮤테이션(95%)으로 점검했습니다.</dd></div>
           <div><dt>성과</dt><dd>520건 일치 · 무작위 시험으로 제품 결함 발견.</dd></div>
         </dl>
-        <p class="links"><span class="stack">Java · C# · PIT 95%</span><a href="https://github.com/Haejyn/orbit-pass-sim">저장소</a></p>
+        <p class="links"><span class="stack">Java · C# · PIT 95%</span><span class="code-label">코드</span><a href="https://github.com/Haejyn/orbit-pass-sim/blob/main/src/test/java/orbitsim/DifferentialTest.java">차분 시험</a><a href="https://github.com/Haejyn/orbit-pass-sim/blob/main/csharp/OrbitSim.Tests/DifferentialGoldenTests.cs">C# 대조</a><a href="https://github.com/Haejyn/orbit-pass-sim">저장소</a></p>
       </article>
     </div>
   </section>
