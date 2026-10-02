@@ -1,11 +1,12 @@
 :root {
-  --bg:#ffffff;
-  --ink:#111111;
-  --hi:#111111;
-  --rule:#dcdcdc;
-  --soft:#f6f6f6;
-  --mark:rgba(108,190,120,.32);
-  color-scheme:light
+  --bg:#000000;
+  --ink:#f2f2f2;
+  --hi:#ffffff;
+  --red:#ff153c;
+  --rule:#2a2a2a;
+  --soft:#141414;
+  --mark:rgba(255,21,60,.55);
+  color-scheme:dark
 }
 * { box-sizing:border-box }
 html { scroll-behavior:smooth }
@@ -15,7 +16,7 @@ body {
   word-break:keep-all; -webkit-font-smoothing:antialiased
 }
 a { color:var(--hi); text-decoration:underline; text-decoration-color:currentColor; text-underline-offset:3px }
-a:hover { text-decoration-color:var(--hi) }
+a:hover { color:var(--red); text-decoration-color:var(--red) }
 button, table { font:inherit }
 a:focus-visible, button:focus-visible, summary:focus-visible, video:focus-visible { outline:2px solid var(--hi); outline-offset:3px }
 img, video { display:block; max-width:100% }
@@ -44,23 +45,23 @@ h2 span { background:linear-gradient(transparent 62%, var(--mark) 62%); padding:
 /* Projects */
 .project { margin-top:64px }
 .project h3 { display:flex; align-items:center; gap:10px; margin:0; font-size:27px; line-height:1.35; font-weight:700; letter-spacing:-.015em; color:var(--hi) }
-.dot { width:9px; height:9px; border-radius:50%; flex:none; align-self:flex-start; margin-top:8px; margin-left:-4px }
-.app-icon { width:36px; height:36px; border-radius:9px }
+.dot { background:var(--red) !important; width:9px; height:9px; border-radius:50%; flex:none; align-self:flex-start; margin-top:8px; margin-left:-4px }
+.app-icon { width:36px; height:36px; border-radius:9px; box-shadow:0 0 0 1px #333 }
 .oneline { margin:8px 0 22px }
 table.props { margin-bottom:28px }
 table.props td { font-size:16px }
 
 .media { margin:0 }
-.media video, .media > img { width:100%; height:auto; border-radius:6px; border:1px solid #eeeeee; background:var(--soft) }
+.media video, .media > img { width:100%; height:auto; border-radius:6px; border:1px solid #222222; background:var(--soft) }
 .media figcaption { margin-top:8px; font-size:15px }
-.media-status { margin:6px 0 0; font-size:14px; color:#c4443c }
+.media-status { margin:6px 0 0; font-size:14px; color:#ff8a9c }
 .media-status:empty { display:none }
 .swap { border:0; background:none; padding:0; font-size:15px; color:var(--hi); cursor:pointer; text-decoration:underline; text-decoration-color:currentColor; text-underline-offset:3px }
 
 h4 { margin:30px 0 6px; font-size:17px; font-weight:700; color:var(--hi) }
 .desc { margin:0; padding-left:22px }
 .desc li { margin:6px 0 }
-.desc li::marker { color:var(--hi) }
+.desc li::marker { color:var(--red) }
 .desc b { margin-right:4px }
 
 .more { margin-top:18px }
@@ -68,7 +69,7 @@ h4 { margin:30px 0 6px; font-size:17px; font-weight:700; color:var(--hi) }
 .more p { margin:12px 0 0; font-size:15px }
 .shots { display:grid; grid-template-columns:1fr 1fr; gap:22px 16px; margin-top:16px }
 .shots figure { margin:0 }
-.shots img { width:100%; height:auto; aspect-ratio:16/10; object-fit:cover; object-position:top; border-radius:6px; border:1px solid #eeeeee }
+.shots img { width:100%; height:auto; aspect-ratio:16/10; object-fit:cover; object-position:top; border-radius:6px; border:1px solid #222222 }
 .shots .phone img { object-fit:contain; background:var(--soft) }
 .shots figcaption { margin-top:6px; font-size:15px }
 .table-scroll { overflow-x:auto; margin-top:12px }
@@ -97,3 +98,5 @@ h3.year { margin:36px 0 10px; display:inline-block; font-size:24px; font-weight:
 .desc ul { margin:2px 0 4px; padding-left:20px; list-style:"– " }
 .desc ul li { margin:2px 0 }
 .desc > li > b:only-child { display:inline }
+.more summary::marker { color:var(--red) }
+.swap:hover { color:var(--red) }
