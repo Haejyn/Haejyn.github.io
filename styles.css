@@ -834,3 +834,31 @@ footer .wordmark span {
     transition:none
   }
 }
+
+/* Featured willnew case study */
+.willnew-detail {border:1px solid var(--line); border-top:0; padding:32px; margin-bottom:32px; background:var(--panel)}
+.detail-heading {max-width:850px; margin-bottom:24px}
+.detail-heading h3 {font-size:26px; margin:6px 0 12px}
+.detail-heading p,.willnew-shot p,.willnew-flow p {color:var(--muted); line-height:1.85}
+.willnew-flow {list-style:none; padding:0; display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:1px; background:var(--line); border:1px solid var(--line); margin:28px 0 44px}
+.willnew-flow li {background:var(--bg); padding:22px}
+.willnew-flow span,.willnew-shot figcaption>span {font:10px var(--mono); color:var(--green)}
+.willnew-flow h4,.willnew-shot h4 {font-size:18px; margin:12px 0 8px}
+.willnew-flow p {font-size:12px; margin:0}
+.willnew-gallery {display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px}
+.willnew-shot {margin:0; min-width:0; background:var(--bg); border:1px solid var(--line)}
+.willnew-shot>a {display:block; background:#111; border-bottom:1px solid var(--line)}
+.willnew-shot img {display:block; width:100%; height:auto}
+.willnew-shot figcaption {padding:22px}
+.willnew-shot p {font-size:13px; margin:0 0 16px}
+.phone-shot {grid-column:1/-1; display:grid; grid-template-columns:260px 1fr; align-items:center}
+.phone-shot>a {border-bottom:0; border-right:1px solid var(--line)}
+.phone-shot figcaption {max-width:650px; padding:32px}
+.willnew-results {margin-top:40px; padding-top:32px; border-top:1px solid var(--line)}
+.results-scroll {overflow:auto}
+.willnew-results table {border-collapse:collapse; width:100%; font-size:12px; text-align:left}
+.willnew-results caption {text-align:left; color:var(--muted); padding-bottom:12px}
+.willnew-results th,.willnew-results td {padding:16px; border:1px solid var(--line)}
+.willnew-results thead {background:var(--field); color:var(--green)}
+@media(max-width:900px) {.willnew-flow {grid-template-columns:repeat(2,minmax(0,1fr))}.willnew-detail {padding:24px}}
+@media(max-width:600px) {.willnew-gallery,.willnew-flow {grid-template-columns:minmax(0,1fr)}.willnew-detail {padding:16px}.detail-heading h3 {font-size:22px}.phone-shot {display:block}.phone-shot>a {border-right:0; border-bottom:1px solid var(--line)}.phone-shot img {max-width:260px; margin:auto}.phone-shot figcaption {padding:22px}.willnew-results table {min-width:650px}.topbar nav a {padding-inline:5px}}
