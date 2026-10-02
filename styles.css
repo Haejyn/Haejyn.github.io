@@ -175,3 +175,34 @@ table.compare code { font:13px ui-monospace,"SF Mono",Menlo,Consolas,monospace }
   .project + h2 { break-before:page }
   a { text-decoration:none }
 }
+
+/* Draft company pages (skeletons) */
+.draft-note { margin:0 0 28px; padding:8px 12px; border:1px dashed currentColor; font-size:14px; font-weight:600; width:fit-content }
+.apply-mark { display:grid; place-items:center; width:64px; height:64px; border-radius:14px; flex:none; background:var(--red); color:#fff; font-weight:900; font-size:24px }
+.apply-role .wordmark { font-weight:900 }
+.media-slot { display:grid; place-items:center; aspect-ratio:16/9; border:2px dashed var(--rule); border-radius:16px; font-size:15px; font-weight:600; color:var(--ink); background:var(--soft) }
+.project.is-draft .props td, .project.is-draft .desc li { opacity:.75 }
+
+/* 쎄트렉아이 — deep space navy, signal blue */
+.co-satreci { --bg:#07122a; --ink:#e7edf8; --hi:#ffffff; --red:#2f7cff; --rule:#22355a; --soft:#0e1d3d; color-scheme:dark }
+.co-satreci .intro h1 span { color:#7fd0ff }
+.co-satreci .media-slot { border-color:#3a5687 }
+.co-satreci table.info, .co-satreci table.props { border-top-color:#7fd0ff }
+
+/* SK하이닉스 해커톤 — white, SK red and orange */
+.co-skhynix { --bg:#ffffff; --ink:#1a1a1a; --hi:#000000; --red:#ea002c; --rule:#e3e3e3; --soft:#fff4ee; color-scheme:light }
+.co-skhynix .intro h1 span { color:#f47725 }
+.co-skhynix h2 span { background:linear-gradient(90deg,#ea002c,#f47725) }
+.co-skhynix .apply-mark { background:linear-gradient(135deg,#ea002c,#f47725) }
+
+/* 현대오토에버 — cool grey, Hyundai navy and sky */
+.co-autoever { --bg:#f4f6f9; --ink:#1c2633; --hi:#002c5f; --red:#002c5f; --rule:#d5dbe3; --soft:#e9eef4; color-scheme:light }
+.co-autoever .intro h1 span { color:#00aad2 }
+.co-autoever .dot { background:#00aad2 !important }
+.co-autoever .desc li::marker, .co-autoever .desc ul li::marker { color:#00aad2 }
+.co-autoever h3.year { border-bottom-color:#00aad2 }
+
+/* chooser marks in each company's colour */
+.company-mark.co-satreci-mark { background:#07122a; color:#7fd0ff }
+.company-mark.co-skhynix-mark { background:linear-gradient(135deg,#ea002c,#f47725) }
+.company-mark.co-autoever-mark { background:#002c5f; color:#fff }
