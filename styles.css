@@ -69,10 +69,14 @@ p { margin:0 }
 .cover { padding-block:72px 0 }
 h1 { font-size:36px; line-height:1.3; letter-spacing:-.025em; font-weight:750; color:var(--hi); margin:0 }
 h1 span { font-size:18px; font-weight:500; color:var(--faint); letter-spacing:0; margin-left:8px }
-.lead { font-size:17px; color:var(--ink); margin-top:10px }
-.facts { font-size:14px; color:var(--muted); margin-top:4px }
-.facts a { border-bottom:1px solid var(--line) }
-.facts a:hover { color:var(--accent) }
+.profile { margin:18px 0 0; font-size:15px }
+.profile div { display:flex; gap:20px; padding:2px 0 }
+.profile dt { width:36px; flex:none; color:var(--faint) }
+.profile dd { margin:0; color:var(--ink) }
+.profile a { border-bottom:1px solid var(--line) }
+.profile a:hover { color:var(--accent) }
+.nums .was { text-decoration:none; color:var(--faint); font-weight:500 }
+.points b { display:inline-block; min-width:38px }
 
 .glance {
   list-style:none; padding:0; margin:48px 0 0;
@@ -191,7 +195,8 @@ footer a:hover { color:var(--hi) }
   .topbar { justify-content:flex-end }
   .cover { padding-top:48px }
   h1 { font-size:30px }
-  .lead { font-size:16px }
+  .profile { font-size:14px }
+  .profile div { gap:12px }
   .glance { gap:14px; margin-top:36px }
   .feature, .project, .systems, .awards { padding-top:96px }
   .feature-head h2 { font-size:32px }
