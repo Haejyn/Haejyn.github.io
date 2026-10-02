@@ -4,7 +4,7 @@ GitHub Pages: https://haejyn.github.io/
 
 정적 HTML/CSS/JavaScript 사이트입니다. `python -m http.server 8080`으로 로컬에서 확인할 수 있습니다.
 
-BIW Weld Twin의 차콜 배경(`#1b1c1e`), 패널(`#232427`), 민트 선택 표시(`#5ee1d4`), 얇은 경계선과 작은 모서리를 기준으로 디자인했습니다. 판독 데모에는 좌측 사례 목록·중앙 맵·우측 속성 도크와 하단 판정 영역을 적용했습니다.
+이름과 개발 분야, 프로젝트 기능과 실측 결과를 중심으로 구성한 포트폴리오입니다. 중립 배경과 절제된 파란색 강조를 사용하며, 상단 버튼으로 라이트·다크 모드를 전환할 수 있습니다. 최초 테마는 시스템 설정을 따르고, 사용자가 고른 테마는 저장됩니다. 웨이퍼 판독 데모는 기존 도크 UI를 유지합니다.
 
 ## 데모
 
@@ -27,3 +27,4 @@ BIW Weld Twin의 차콜 배경(`#1b1c1e`), 패널(`#232427`), 민트 선택 표�
 | ground-station.png | [ground-station-rx](https://github.com/Haejyn/ground-station-rx) · doppler_pass.png |
 
 다운링크와 궤도 영상의 포스터는 해당 영상의 2초 시점 프레임입니다.
+
