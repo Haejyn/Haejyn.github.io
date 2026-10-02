@@ -9,7 +9,7 @@
     root.dataset.theme = theme;
     root.style.colorScheme = theme;
     const dark = theme === "dark";
-    document.querySelector('meta[name="theme-color"]')?.setAttribute("content", dark ? "#191919" : "#ffffff");
+    document.querySelector('meta[name="theme-color"]')?.setAttribute("content", dark ? "#141414" : "#fbfbfa");
     const button = document.querySelector(".theme-toggle");
     if (button) {
       button.setAttribute("aria-label", dark ? "라이트 모드로 전환" : "다크 모드로 전환");
