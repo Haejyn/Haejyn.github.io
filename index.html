@@ -83,12 +83,24 @@
 
 <article id="wasnew" class="project">
   <h3><img class="app-icon" src="media/wasnew-icon.png" alt="" width="36" height="36">wasnew<span class="dot" style="background:#ff153c" aria-hidden="true"></span></h3>
-  <p class="oneline">AI 에이전트가 옮기고 지운 파일을 작업 단위로 되돌리는 도구</p>
+  <p class="oneline">git이 못 되돌리는 AI 에이전트의 파일 이동·삭제를, 아무 폴더에서 작업 단위로 되돌리는 도구</p>
   <table class="props"><tbody>
 <tr><th scope="row">결과</th><td><b>테스트 78개</b> · MCP 도구 12개 · 의존성 0개 · 이동 2,625건 되돌리기 2.9초</td></tr>
 <tr><th scope="row">기술</th><td>TypeScript · Node 20+ · MCP(stdio) · GitHub Actions(ubuntu·windows·macOS × Node 20·22)</td></tr>
 <tr><th scope="row">코드</th><td><a href="https://github.com/Haejyn/wasnew/blob/main/src/index.ts#L908">계획 · 승인 · 적용</a> · <a href="https://github.com/Haejyn/wasnew/blob/main/src/index.ts#L1018">크래시 복구</a> · <a href="https://github.com/Haejyn/wasnew/blob/main/src/mcp.ts">MCP 도구</a> · <a href="https://github.com/Haejyn/wasnew">저장소</a></td></tr>
   </tbody></table>
+  <h4>git과 다른 점</h4>
+  <div class="table-scroll"><table class="runs compare">
+    <thead><tr><th scope="col"></th><th scope="col">git</th><th scope="col">wasnew</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">대상</th><td>사람이 커밋하는 코드</td><td><b>아무 폴더</b> (다운로드 · 바탕화면 · NAS), 프로그램이 한 조작</td></tr>
+      <tr><th scope="row">지우기</th><td><code>reset --hard</code> · <code>clean</code>으로 실제 삭제</td><td><b>휴지통으로 이동만</b>, 진짜 삭제는 사람의 <code>empty-trash</code> 뿐</td></tr>
+      <tr><th scope="row">이동</th><td>삭제 + 추가로 추론</td><td><b>저널에 기록</b>, 에이전트 작업(batch) 단위로 되돌림</td></tr>
+      <tr><th scope="row">누가 · 왜</th><td>커밋 작성자</td><td>이동마다 <b>에이전트 · 모델 · 사유</b>, 파일별 이름 변천</td></tr>
+      <tr><th scope="row">큰 변경</th><td>리뷰는 저장소 밖의 일</td><td>정책을 넘으면 <b>계획 → 사람 승인 → 적용</b></td></tr>
+      <tr><th scope="row">충돌</th><td>사람이 해결</td><td>원래 자리에 새 파일이 있으면 <b>덮지 않고</b> 이유와 함께 건너뜀</td></tr>
+    </tbody>
+  </table></div>
   <figure class="media"><pre class="terminal" aria-label="wasnew 계획 · 승인 · 적용 · 되돌리기 흐름"><code><span class="who">agent </span> wasnew_plan   → plan baebff75: 3 operations, needs the user's approval
 <span class="who">person</span> wasnew show baebff75
 <span class="who">person</span> wasnew approve baebff75
