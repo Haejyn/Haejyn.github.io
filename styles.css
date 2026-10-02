@@ -3,8 +3,6 @@
   --ink:#111111;
   --hi:#000000;
   --red:#ff153c;
-  --sky:#00d7e9;
-  --sky-p3:color(display-p3 .380 .831 .902);
   --rule:#d9d1c6;
   --soft:#efe9e1;
   color-scheme:light
@@ -27,7 +25,7 @@ b { font-weight:700; color:var(--hi) }
 
 /* Intro + info table */
 .intro h1 { font-size:56px; line-height:1.15; font-weight:900; letter-spacing:-.03em; color:var(--hi); margin:0 }
-.intro h1 span { font-size:22px; font-weight:800; margin-left:8px; letter-spacing:0; color:var(--sky); color:var(--sky-p3) }
+.intro h1 span { font-size:22px; font-weight:800; margin-left:8px; letter-spacing:0; color:#00d7e9; color:color(display-p3 .380 .831 .902) }
 .intro p { margin:14px 0 40px; font-size:18px }
 .intro p mark { background:var(--red); color:#fff; font-weight:700; padding:2px 8px }
 
