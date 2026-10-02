@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#000000">
+<meta name="theme-color" content="#faf6f1">
 <title>이해준 — AI · Engineering Portfolio</title>
 <meta name="description" content="AI 에이전트, 제조 시뮬레이션, 위성 수신 시스템. 프로젝트의 기능, 구현 범위와 실측 결과를 담은 이해준의 개발 포트폴리오.">
 <meta property="og:title" content="이해준 — AI · Engineering Portfolio">
@@ -19,7 +19,7 @@
 <main class="doc">
   <header class="intro">
     <h1>이해준 <span>Lee Haejun</span></h1>
-    <p>AI 에이전트 · 제조 AI · 시스템 개발</p>
+    <p><mark>AI 에이전트 · 제조 AI · 시스템 개발</mark></p>
   </header>
 
   <table class="info"><tbody>
@@ -125,7 +125,6 @@
 <tr><th scope="row">기술</th><td>C# / .NET · SGP4 · DSP</td></tr>
 <tr><th scope="row">코드</th><td><a href="https://github.com/Haejyn/ground-station-rx/blob/main/src/GroundStationRx/Orbit/DopplerResidualFit.cs">도플러 보정</a> · <a href="https://github.com/Haejyn/ground-station-rx/blob/main/tests/GroundStationRx.Tests/Receiver/FullPassTests.cs">실제 패스 대조</a> · <a href="https://github.com/Haejyn/ground-station-rx">저장소</a></td></tr>
   </tbody></table>
-  <figure class="media"><img src="media/ground-station.png" alt="ASRTU-1 실제 수신 패스의 예측 도플러와 실측 반송파 비교 그래프" loading="lazy" width="1102" height="831"><p class="media-status" aria-live="polite"></p></figure>
   <h4>Description</h4>
   <ul class="desc">
 <li><b>배경</b> 녹음된 원시 IQ 신호에 위성 이동에 따른 도플러 편이 존재</li>
@@ -143,7 +142,6 @@
 <tr><th scope="row">기술</th><td>C# / .NET · CCSDS · 테스트 139개</td></tr>
 <tr><th scope="row">코드</th><td><a href="https://github.com/Haejyn/ccsds-downlink-reliability/blob/main/tests/SpaceLink.Tests/StandardConformanceTests.cs">표준 적합성</a> · <a href="https://github.com/Haejyn/ccsds-downlink-reliability/blob/main/tests/SpaceLink.Tests/LibfecCrossCheckTests.cs">libfec 대조</a> · <a href="https://github.com/Haejyn/ccsds-downlink-reliability">저장소</a></td></tr>
   </tbody></table>
-  <figure class="media"><video id="downlink-demo" controls muted loop playsinline preload="metadata" poster="media/downlink-poster.jpg" aria-label="SpaceLink 실제 위성 신호의 프레임 복호 데모"><source src="media/downlink-demo.mp4" type="video/mp4">영상 재생을 지원하지 않는 브라우저입니다.</video><p class="media-status" aria-live="polite"></p></figure>
   <h4>Description</h4>
   <ul class="desc">
 <li><b>배경</b> 위성 비트열에 손상된 프레임·패킷이 섞일 수 있음</li>
@@ -161,7 +159,6 @@
 <tr><th scope="row">기술</th><td>Java · C# · PIT 95%</td></tr>
 <tr><th scope="row">코드</th><td><a href="https://github.com/Haejyn/orbit-pass-sim/blob/main/src/test/java/orbitsim/DifferentialTest.java">차분 시험</a> · <a href="https://github.com/Haejyn/orbit-pass-sim/blob/main/csharp/OrbitSim.Tests/DifferentialGoldenTests.cs">C# 대조</a> · <a href="https://github.com/Haejyn/orbit-pass-sim">저장소</a></td></tr>
   </tbody></table>
-  <figure class="media"><video id="orbit-demo" controls muted loop playsinline preload="metadata" poster="media/orbit-poster.jpg" aria-label="대전 지상국에서 관측한 위성 패스 다섯 개의 궤적 데모"><source src="media/orbit-demo.mp4" type="video/mp4">영상 재생을 지원하지 않는 브라우저입니다.</video><p class="media-status" aria-live="polite"></p></figure>
   <h4>Description</h4>
   <ul class="desc">
 <li><b>배경</b> 지상국 운용에 위성 가시 시간·고도각 예측 필요</li>

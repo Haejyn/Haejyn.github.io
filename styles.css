@@ -1,12 +1,11 @@
 :root {
-  --bg:#000000;
-  --ink:#f2f2f2;
-  --hi:#ffffff;
+  --bg:#faf6f1;
+  --ink:#111111;
+  --hi:#000000;
   --red:#ff153c;
-  --rule:#2a2a2a;
-  --soft:#141414;
-  --mark:rgba(255,21,60,.55);
-  color-scheme:dark
+  --rule:#d9d1c6;
+  --soft:#efe9e1;
+  color-scheme:light
 }
 * { box-sizing:border-box }
 html { scroll-behavior:smooth }
@@ -25,11 +24,12 @@ b { font-weight:700; color:var(--hi) }
 .doc { max-width:800px; margin:0 auto; padding:96px 24px 120px }
 
 /* Intro + info table */
-.intro h1 { font-size:40px; line-height:1.25; font-weight:800; letter-spacing:-.02em; color:var(--hi); margin:0 }
-.intro h1 span { font-size:20px; font-weight:500; margin-left:6px; letter-spacing:0 }
-.intro p { margin:10px 0 40px; font-size:18px }
+.intro h1 { font-size:56px; line-height:1.15; font-weight:900; letter-spacing:-.03em; color:var(--hi); margin:0 }
+.intro h1 span { font-size:22px; font-weight:800; margin-left:8px; letter-spacing:0; color:var(--red) }
+.intro p { margin:14px 0 40px; font-size:18px }
+.intro p mark { background:var(--red); color:#fff; font-weight:700; padding:2px 8px }
 
-table.info, table.props { width:100%; border-collapse:collapse; border-top:1px solid var(--rule) }
+table.info, table.props { width:100%; border-collapse:collapse; border-top:2px solid var(--hi) }
 table.info th, table.info td, table.props th, table.props td {
   text-align:left; vertical-align:top; padding:14px 0; border-bottom:1px solid var(--rule)
 }
@@ -39,26 +39,26 @@ table.props th { width:132px; white-space:nowrap }
 .toc { display:flex; flex-wrap:wrap; gap:6px 22px; margin-top:28px; font-size:15px }
 
 /* Section titles with a highlighter stroke */
-h2 { margin:110px 0 8px; font-size:36px; line-height:1.3; font-weight:800; letter-spacing:-.02em; color:var(--hi) }
-h2 span { background:linear-gradient(transparent 62%, var(--mark) 62%); padding:0 4px 0 0 }
+h2 { margin:110px 0 8px; font-size:34px; line-height:1.3; font-weight:900; letter-spacing:-.02em; color:var(--hi) }
+h2 span { background:var(--red); color:#fff; padding:2px 12px }
 
 /* Projects */
 .project { margin-top:64px }
-.project h3 { display:flex; align-items:center; gap:10px; margin:0; font-size:27px; line-height:1.35; font-weight:700; letter-spacing:-.015em; color:var(--hi) }
+.project h3 { display:flex; align-items:center; gap:10px; margin:0; font-size:28px; line-height:1.35; font-weight:900; letter-spacing:-.015em; color:var(--hi) }
 .dot { background:var(--red) !important; width:9px; height:9px; border-radius:50%; flex:none; align-self:flex-start; margin-top:8px; margin-left:-4px }
-.app-icon { width:36px; height:36px; border-radius:9px; box-shadow:0 0 0 1px #333 }
+.app-icon { width:36px; height:36px; border-radius:9px }
 .oneline { margin:8px 0 22px }
 table.props { margin-bottom:28px }
 table.props td { font-size:16px }
 
 .media { margin:0 }
-.media video, .media > img { width:100%; height:auto; border-radius:6px; border:1px solid #222222; background:var(--soft) }
+.media video, .media > img { width:100%; height:auto; border-radius:16px; border:2px solid var(--hi); background:var(--soft) }
 .media figcaption { margin-top:8px; font-size:15px }
-.media-status { margin:6px 0 0; font-size:14px; color:#ff8a9c }
+.media-status { margin:6px 0 0; font-size:14px; color:#c8102e }
 .media-status:empty { display:none }
 .swap { border:0; background:none; padding:0; font-size:15px; color:var(--hi); cursor:pointer; text-decoration:underline; text-decoration-color:currentColor; text-underline-offset:3px }
 
-h4 { margin:30px 0 6px; font-size:17px; font-weight:700; color:var(--hi) }
+h4 { margin:30px 0 6px; font-size:17px; font-weight:900; color:var(--hi) }
 .desc { margin:0; padding-left:22px }
 .desc li { margin:6px 0 }
 .desc li::marker { color:var(--red) }
@@ -69,24 +69,24 @@ h4 { margin:30px 0 6px; font-size:17px; font-weight:700; color:var(--hi) }
 .more p { margin:12px 0 0; font-size:15px }
 .shots { display:grid; grid-template-columns:1fr 1fr; gap:22px 16px; margin-top:16px }
 .shots figure { margin:0 }
-.shots img { width:100%; height:auto; aspect-ratio:16/10; object-fit:cover; object-position:top; border-radius:6px; border:1px solid #222222 }
+.shots img { width:100%; height:auto; aspect-ratio:16/10; object-fit:cover; object-position:top; border-radius:12px; border:2px solid var(--hi) }
 .shots .phone img { object-fit:contain; background:var(--soft) }
 .shots figcaption { margin-top:6px; font-size:15px }
 .table-scroll { overflow-x:auto; margin-top:12px }
-table.runs { width:100%; min-width:620px; border-collapse:collapse; font-size:15px; border-top:1px solid var(--rule) }
+table.runs { width:100%; min-width:620px; border-collapse:collapse; font-size:15px; border-top:2px solid var(--hi) }
 table.runs th, table.runs td { text-align:left; vertical-align:top; padding:10px 12px 10px 0; border-bottom:1px solid var(--rule) }
 table.runs thead th { font-weight:700; color:var(--hi) }
 table.runs tbody th { font-weight:600 }
 
 /* Awards */
-h3.year { margin:36px 0 10px; display:inline-block; font-size:24px; font-weight:800; color:var(--hi); padding-bottom:6px; border-bottom:1px solid var(--rule); min-width:240px }
+h3.year { margin:36px 0 10px; display:inline-block; font-size:26px; font-weight:900; color:var(--hi); padding-bottom:4px; border-bottom:3px solid var(--red); min-width:120px }
 
 .updated { margin-top:90px; font-size:15px }
 
 @media (max-width:640px) {
   body { font-size:16px }
   .doc { padding:56px 16px 80px }
-  .intro h1 { font-size:32px }
+  .intro h1 { font-size:40px }
   .intro h1 span { display:block; margin:2px 0 0; font-size:17px }
   table.info th { width:84px }
   table.props th { width:96px; white-space:normal }
