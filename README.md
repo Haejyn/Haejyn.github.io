@@ -27,4 +27,3 @@ GitHub Pages: https://haejyn.github.io/
 | ground-station.png | [ground-station-rx](https://github.com/Haejyn/ground-station-rx) · doppler_pass.png |
 
 다운링크와 궤도 영상의 포스터는 해당 영상의 2초 시점 프레임입니다.
-
