@@ -50,6 +50,26 @@
 <tr><th scope="row">코드</th><td><a href="https://github.com/Haejyn/willnew/blob/main/src/server/runs.ts#L183">검증 판정</a> · <a href="https://github.com/Haejyn/willnew/blob/main/tests/e2e.test.ts">E2E 테스트</a> · <a href="https://github.com/Haejyn/willnew#실측">측정 근거</a> · <a href="https://github.com/Haejyn/willnew">저장소</a></td></tr>
   </tbody></table>
   <figure class="media"><video id="willnew-demo" controls muted loop playsinline preload="metadata" poster="media/willnew-poster.jpg" aria-label="willnew 데모: 작업 요청부터 검토와 병합까지"><source src="media/willnew-demo.mp4" type="video/mp4"><source src="media/willnew-demo.webm" type="video/webm">영상 재생을 지원하지 않는 브라우저입니다.</video><img class="print-poster" src="media/willnew-poster.jpg" alt="willnew 데모: 작업 요청부터 검토와 병합까지"><p class="media-status" aria-live="polite"></p></figure>
+  <h4>작업 흐름</h4>
+  <ol class="flow-steps">
+    <li class="flow-step">
+      <figure class="flow-media"><video class="flow-clip" muted loop playsinline preload="none" poster="media/willnew-flow-request.jpg" aria-label="요청 · 계획"><source src="media/willnew-flow-request.mp4" type="video/mp4"></video><img class="print-poster" src="media/willnew-flow-request.jpg" alt="요청 · 계획"></figure>
+      <div class="flow-text"><span class="flow-no">1</span><h5>요청 · 계획</h5><ul><li>새 요청 창에서 작업 유형 · 채널 · 에이전트 · 검증 명령 선택</li><li>계획 에이전트가 실행 단계와 검증 명령으로 나눔</li></ul></div>
+    </li>
+    <li class="flow-step">
+      <figure class="flow-media"><video class="flow-clip" muted loop playsinline preload="none" poster="media/willnew-flow-run.jpg" aria-label="병렬 실행 · 자기 수정"><source src="media/willnew-flow-run.mp4" type="video/mp4"></video><img class="print-poster" src="media/willnew-flow-run.jpg" alt="병렬 실행 · 자기 수정"></figure>
+      <div class="flow-text"><span class="flow-no">2</span><h5>병렬 실행 · 자기 수정</h5><ul><li>Claude Code · Codex가 각자의 워크트리에서 동시에 작업</li><li>검증 실패 시 로그를 받아 다시 고침 (자기 수정 2/2)</li><li>작업 중 사람이 추가 지시 — 같은 세션에 반영</li></ul></div>
+    </li>
+    <li class="flow-step">
+      <figure class="flow-media"><video class="flow-clip" muted loop playsinline preload="none" poster="media/willnew-flow-review.jpg" aria-label="검토 · 승인 · 병합"><source src="media/willnew-flow-review.mp4" type="video/mp4"></video><img class="print-poster" src="media/willnew-flow-review.jpg" alt="검토 · 승인 · 병합"></figure>
+      <div class="flow-text"><span class="flow-no">3</span><h5>검토 · 승인 · 병합</h5><ul><li>시간 · 비용 · 변경 크기로 추천 결과 제시</li><li>줄 댓글 · 병합 전 확인(검증 통과, 테스트 파일 그대로, main 충돌 없음)</li><li>사람이 승인하면 main에 병합</li></ul></div>
+    </li>
+  </ol>
+  <h4>핵심 화면</h4>
+  <div class="key-shots">
+    <figure><a href="media/willnew-selffix.jpg"><img src="media/willnew-selffix.jpg" alt="Codex가 검증 실패 로그를 받아 자기 수정하는 화면" loading="lazy" width="1440" height="900"></a><figcaption><b>병렬 실행 · 자기 수정</b> 왼쪽은 첫 검증 통과, 오른쪽은 실패 로그로 다시 고치는 중 · 오른쪽 위 검증 관문과 추천</figcaption></figure>
+    <figure><a href="media/willnew-merge-check.jpg"><img src="media/willnew-merge-check.jpg" alt="줄 댓글과 병합 전 확인, 에이전트 비교 화면" loading="lazy" width="1440" height="900"></a><figcaption><b>병합 전 확인</b> 변경 · 줄 댓글 · 검증 통과 · 테스트 파일 그대로 · main 충돌 없음 · 두 에이전트 비교</figcaption></figure>
+  </div>
   <h4>Description</h4>
   <ul class="desc">
 <li><b>배경</b> AI에 맡긴 작업도 결과 확인·병합 판단은 사람이 여러 도구를 오가며 처리</li>
