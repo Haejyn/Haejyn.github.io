@@ -244,3 +244,28 @@ table.compare code { font:13px ui-monospace,"SF Mono",Menlo,Consolas,monospace }
   .flow-step { break-inside:avoid; grid-template-columns:1.2fr 1fr }
   .key-shots figure { break-inside:avoid }
 }
+
+/* wasnew usage scenario */
+.scenario { list-style:none; padding:0; margin:8px 0 26px; display:grid; grid-template-columns:repeat(3,1fr); gap:12px; counter-reset:none }
+.scenario li { position:relative; padding:16px 16px 14px; border:2px solid var(--hi); border-radius:14px; background:#fff }
+.scenario li + li::before { content:"→"; position:absolute; left:-15px; top:50%; transform:translate(-50%,-50%); font-weight:900; color:var(--red) }
+.sc-no { display:inline-grid; place-items:center; width:26px; height:26px; border-radius:50%; background:var(--red); color:#fff; font-weight:900; font-size:14px; margin-bottom:8px }
+.scenario b { display:block; font-size:17px; font-weight:900; color:var(--hi); margin-bottom:4px }
+.scenario p { margin:0; font-size:14px; line-height:1.6 }
+.scenario code { display:inline-block; margin-top:8px; font:12.5px ui-monospace,"SF Mono",Menlo,Consolas,monospace; background:var(--soft); padding:2px 7px; border-radius:6px }
+@media (max-width:760px) {
+  .scenario { grid-template-columns:1fr }
+  .scenario li + li::before { content:"↓"; left:50%; top:-13px }
+}
+@media print { .scenario li { break-inside:avoid } }
+/* compact: three workflow steps side by side */
+.flow-steps { grid-template-columns:repeat(3,1fr); gap:14px }
+.flow-step { grid-template-columns:1fr; gap:8px; align-items:start }
+.flow-text h5 { font-size:16px; margin:6px 0 4px; display:inline-block; margin-left:6px; vertical-align:middle }
+.flow-no { width:24px; height:24px; font-size:13px; vertical-align:middle }
+.flow-text ul { font-size:13.5px; padding-left:16px }
+@media (max-width:760px) { .flow-steps { grid-template-columns:1fr } }
+@media print { .flow-step { grid-template-columns:1fr } }
+.flow-text { display:grid; grid-template-columns:24px 1fr; column-gap:8px; align-items:center }
+.flow-text h5 { margin:0; display:block }
+.flow-text ul { grid-column:1 / -1; margin-top:6px }
