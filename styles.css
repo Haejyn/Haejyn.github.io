@@ -269,3 +269,5 @@ table.compare code { font:13px ui-monospace,"SF Mono",Menlo,Consolas,monospace }
 .flow-text { display:grid; grid-template-columns:24px 1fr; column-gap:8px; align-items:center }
 .flow-text h5 { margin:0; display:block }
 .flow-text ul { grid-column:1 / -1; margin-top:6px }
+.intro p:has(+ .lead) { margin-bottom:0 }
+.intro .lead { margin:12px 0 40px; font-size:17px; max-width:640px }

@@ -7,7 +7,7 @@
 <title>이해준 — TVING AI Product Builder 포트폴리오</title>
 <meta name="description" content="CJ ENM-TVING AI Product Builder 지원 · willnew 팀 AI 작업 공간, wasnew, 웨이퍼 판독 에이전트 등 프로젝트의 구현과 실측 결과.">
 <meta property="og:title" content="이해준 — AI Product Builder (CJ ENM-TVING)">
-<meta property="og:description" content="willnew 자동 해결 67% · wasnew 테스트 78개 · 웨이퍼 새 불량 패턴 AUROC 0.55 → 0.92">
+<meta property="og:description" content="willnew 맡기기부터 병합까지 47초 · wasnew 이동 2,625건 되돌리기 2.9초 · 웨이퍼 처음 보는 불량 패턴 AUROC 0.92">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://haejyn.github.io/">
 <meta property="og:image" content="https://haejyn.github.io/media/og-tving.png">
@@ -27,6 +27,7 @@
     </div>
     <h1>이해준 <span>Lee Haejun</span></h1>
     <p><mark>AI 에이전트 · 제조 AI · 시스템 개발</mark></p>
+    <p class="lead">AI나 프로그램이 낸 결과를 그대로 믿지 않고, 테스트 · 코드 검사 · 다른 구현과의 대조로 확인하는 장치를 함께 만듭니다.</p>
   </header>
 
   <table class="info"><tbody>
@@ -43,34 +44,46 @@
 
 <article id="willnew" class="project">
   <h3><img class="app-icon" src="media/willnew-icon.png" alt="" width="36" height="36">willnew<span class="dot" style="background:#ff7a2f" aria-hidden="true"></span></h3>
-  <p class="oneline">AI 에이전트 결과 중 검증을 통과한 것만 사람에게 올리는 팀 AI 작업 공간</p>
+  <p class="oneline">한 줄로 맡긴 코드 수정을 AI 에이전트가 하고, 테스트를 통과한 수정만 승인 버튼과 함께 올라오는 도구</p>
   <table class="props"><tbody>
-<tr><th scope="row">결과</th><td><b>자동 해결 67%</b> · 승인 67% · 요청 3건 총비용 $0.55</td></tr>
+<tr><th scope="row">결과</th><td><b>맡기기부터 병합까지 약 47초</b> (실제 Claude Code, 1건) · 요청 3건 중 2건 병합, 검증 실패 1건은 승인 차단</td></tr>
 <tr><th scope="row">기술</th><td>TypeScript · React · Hono · vitest</td></tr>
 <tr><th scope="row">코드</th><td><a href="https://github.com/Haejyn/willnew/blob/main/src/server/runs.ts#L183">검증 판정</a> · <a href="https://github.com/Haejyn/willnew/blob/main/tests/e2e.test.ts">E2E 테스트</a> · <a href="https://github.com/Haejyn/willnew#실측">측정 근거</a> · <a href="https://github.com/Haejyn/willnew">저장소</a></td></tr>
   </tbody></table>
   <figure class="media"><video id="willnew-demo" controls muted loop playsinline preload="metadata" poster="media/willnew-poster.jpg" aria-label="willnew 데모(단계 자막 포함): 한 줄로 맡기기부터 계획, 실행, 검증, 승인과 병합까지"><source src="media/willnew-demo.mp4" type="video/mp4">영상 재생을 지원하지 않는 브라우저입니다.</video><img class="print-poster" src="media/willnew-poster.jpg" alt="willnew 데모(단계 자막 포함): 한 줄로 맡기기부터 계획, 실행, 검증, 승인과 병합까지"><p class="media-status" aria-live="polite"></p></figure>
-  <h4>작업 흐름</h4>
+  <h4>이럴 때 씁니다</h4>
   <ol class="flow-steps">
     <li class="flow-step">
       <figure class="flow-media"><video class="flow-clip" muted loop playsinline preload="none" poster="media/willnew-flow-request.jpg" aria-label="맡기기 · 계획"><source src="media/willnew-flow-request.mp4" type="video/mp4"></video><img class="print-poster" src="media/willnew-flow-request.jpg" alt="맡기기 · 계획"></figure>
-      <div class="flow-text"><span class="flow-no">1</span><h5>맡기기 · 계획</h5><ul><li>채널이나 ⌘K에 한 줄로 맡김</li><li>계획 에이전트가 유형 · 에이전트 · 검증 명령을 정함</li></ul></div>
+      <div class="flow-text"><span class="flow-no">1</span><h5>맡기기 · 계획</h5><ul><li>#backend 채널이나 ⌘K에 「formatDuration이 0초면 빈 문자열 나옴. '0s'로 나오게 해주세요」</li><li>계획 에이전트가 '버그 수정 · claude-sonnet과 codex가 겨룸 · npm test로 확인'으로 정리</li></ul></div>
     </li>
     <li class="flow-step">
       <figure class="flow-media"><video class="flow-clip" muted loop playsinline preload="none" poster="media/willnew-flow-run.jpg" aria-label="실행 · 검증"><source src="media/willnew-flow-run.mp4" type="video/mp4"></video><img class="print-poster" src="media/willnew-flow-run.jpg" alt="실행 · 검증"></figure>
-      <div class="flow-text"><span class="flow-no">2</span><h5>실행 · 검증</h5><ul><li>에이전트가 격리된 워크트리에서 작업, 진행 단계를 달 모양으로 표시</li><li>검증 명령이 실패하면 로그를 넘겨 1회 재작업</li></ul></div>
+      <div class="flow-text"><span class="flow-no">2</span><h5>실행 · 검증</h5><ul><li>에이전트마다 따로 만든 git 워크트리에서 코드를 읽고 고침. main은 그대로</li><li>끝나면 willnew가 npm test를 직접 돌려 판정. 실패하면 로그를 붙여 한 번 더 시킴 (영상의 codex는 두 번째에 통과)</li></ul></div>
     </li>
     <li class="flow-step">
       <figure class="flow-media"><video class="flow-clip" muted loop playsinline preload="none" poster="media/willnew-flow-review.jpg" aria-label="내 차례 · 결정"><source src="media/willnew-flow-review.mp4" type="video/mp4"></video><img class="print-poster" src="media/willnew-flow-review.jpg" alt="내 차례 · 결정"></figure>
-      <div class="flow-text"><span class="flow-no">3</span><h5>내 차례 · 결정</h5><ul><li>검증을 통과한 결과만 첫 화면 '내 차례'에 올라옴</li><li>승인 · 고쳐 달라 · 반려 중 하나를 고르면 main에 병합</li></ul></div>
+      <div class="flow-text"><span class="flow-no">3</span><h5>내 차례 · 결정</h5><ul><li>통과한 결과만 첫 화면 '내 차례'에 올라오고, 더 빠르고 변경이 작은 쪽을 추천</li><li>'테스트 파일 그대로 · main과 충돌 없음'을 보고 승인하면 main에 병합. 고쳐 달라 · 반려도 한 번에</li></ul></div>
     </li>
   </ol>
+  <h4>Claude Code를 직접 쓸 때와 다른 점</h4>
+  <div class="table-scroll"><table class="runs compare">
+    <thead><tr><th scope="col"></th><th scope="col">Claude Code 직접</th><th scope="col">willnew</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">끝났다는 판단</th><td>에이전트의 "다 고쳤어요"를 보고 사람이 테스트를 다시 돌림</td><td>willnew가 검증 명령을 돌려 <b>종료 코드로 판정</b></td></tr>
+      <tr><th scope="row">실패했을 때</th><td>사람이 로그를 복사해 다시 지시</td><td><b>로그를 붙여 한 번 자동 재작업</b></td></tr>
+      <tr><th scope="row">테스트를 고쳐 통과</th><td>diff를 끝까지 읽어야 발견</td><td>테스트 파일 변경을 표시하고 <b>바로 승인을 막음</b></td></tr>
+      <tr><th scope="row">main 충돌</th><td>병합할 때 발견</td><td><b>승인 전에 미리 확인</b></td></tr>
+      <tr><th scope="row">사람이 보는 것</th><td>터미널 · diff · 테스트 로그</td><td><b>통과한 결과 하나와 추천 근거</b></td></tr>
+    </tbody>
+  </table></div>
   <h4>Description</h4>
   <ul class="desc">
-<li><b>배경</b> AI에 맡긴 작업도 결과 확인 · 병합 판단은 사람이 여러 도구를 오가며 처리</li>
-<li><b>구현</b><ul><li>팀 채널 요청 → 계획 에이전트가 실행 단계 · 검증 명령으로 변환</li><li>Claude Code · Codex를 격리된 워크트리에서 병렬 실행</li><li>진행 단계를 달 모양 하나로 표시하고, 사람이 결정할 일만 첫 화면에 모음</li></ul></li>
-<li><b>검증</b><ul><li>검증 명령 종료 코드로 판정, 실패 시 로그를 넘겨 1회 재작업</li><li>테스트 파일을 고쳐 통과한 결과와 main 충돌은 바로 승인하지 못하게 막고 검토를 거침</li></ul></li>
-<li><b>성과</b> 실패 테스트 7개 예제 저장소 요청 3건 — 자동 해결 67% · 승인 67% · 총비용 $0.55</li>
+<li><b>배경</b> 에이전트가 "끝났다"고 해도 그대로 병합할 수 없음. 테스트를 다시 돌리고 diff를 열어 보고, 실패하면 로그를 복사해 다시 시킴. 테스트 기대값을 바꿔 통과시키는 경우도 있어 테스트 파일까지 봐야 함</li>
+<li><b>구현</b><ul><li>채팅 · ⌘K 요청 → 계획 에이전트(Haiku)가 유형 · 지시문 · 검증 명령으로 변환</li><li>Claude Code · Codex CLI를 각자 git 워크트리에서 실행, 겨루면 시간 · 비용 · 변경 크기로 하나 추천</li><li>진행 단계를 달이 차는 모양으로 표시. 보름달(사람이 결정할 차례)이 뜬 일만 첫 화면에 모음</li></ul></li>
+<li><b>검증</b><ul><li>판정은 검증 명령 종료 코드. 테스트 파일을 고쳤거나 main과 충돌하면 검토 화면을 거쳐야 승인</li><li>테스트 20개 — 오프라인 에이전트로 실행 · 재작업 · 충돌 확인 · 터미널까지</li></ul></li>
+<li><b>성과</b> 실패 테스트 7개짜리 예제 저장소에 요청 3건 — 2건 병합(1건은 재작업 후 통과), 1건은 재작업 후에도 실패해 승인까지 가지 않음 · 총 $0.55</li>
+<li><b>한계</b> 계정이 없어 지금은 한 사람이 자기 PC · 자기 구독으로 씀. 한 사람 구독으로 팀원 요청을 처리하는 건 Anthropic 이용 조건에 맞지 않아, 팀원마다 자기 PC에서 실행하는 구조(허브 · 러너)를 설계 중</li>
   </ul>
   <details class="more">
     <summary>화면 8개 보기</summary>
@@ -127,48 +140,53 @@
   </table></div>
   <h4>Description</h4>
   <ul class="desc">
-<li><b>배경</b> 에이전트 체크포인트는 에이전트가 직접 편집한 파일만 되돌림 — 셸의 rm · mv, git 밖 폴더는 대상 밖</li>
-<li><b>구현</b><ul><li>스냅샷(sha256) · 이동 저널 · 휴지통으로 아무 폴더나 작업 단위로 되돌림</li><li>MCP 도구 12개로 에이전트에 연결, 승인 도구는 MCP에서 제외</li></ul></li>
-<li><b>검증</b><ul><li>사용자 파일을 지우지 않음 — 진짜 삭제는 사람의 empty-trash 뿐</li><li>테스트 78개 · CI 3개 OS × Node 2개 버전</li></ul></li>
+<li><b>배경</b> Claude Code의 체크포인트는 에이전트가 직접 편집한 파일만 되돌림. 셸에서 실행한 rm · mv, git 밖 폴더(다운로드 · 바탕화면)는 되돌릴 방법이 없음</li>
+<li><b>구현</b><ul><li>에이전트가 mv · rm 대신 MCP 도구(wasnew_move · wasnew_trash)를 부르면 원래 위치 · 에이전트 · 사유를 저널에 남김</li><li>스냅샷(sha256) · 이동 저널 · 휴지통으로 작업 묶음 단위 되돌리기</li><li>셸의 rm · mv는 선택형 훅(PreToolUse)이 막고 wasnew_trash를 쓰라고 돌려보냄. 승인 도구는 MCP에서 빼서 에이전트가 스스로 승인하지 못함</li></ul></li>
+<li><b>검증</b><ul><li>사용자 파일을 지우지 않음. 진짜 삭제는 사람이 empty-trash 할 때만</li><li>테스트 78개 · CI 3개 OS × Node 2개 버전</li></ul></li>
 <li><b>성과</b> 이동 2,625건 2.9초 · 같은 묶음 되돌리기 2.9초 (Linux 1대, 3회 중앙값)</li>
+<li><b>한계</b> 훅은 명령 문자열만 보므로 스크립트 안에서 지우는 건 못 막음. 실제 Claude Desktop · Claude Code에 붙인 사용은 아직 시험 전</li>
   </ul>
 </article>
 
 <article id="wafer" class="project">
   <h3>웨이퍼 맵 불량 패턴 판독 에이전트<span class="dot" style="background:#19b5a5" aria-hidden="true"></span></h3>
-  <p class="oneline">학습에 없던 새 불량 패턴을 경고하는 웨이퍼 맵 판독 에이전트</p>
+  <p class="oneline">웨이퍼 맵을 넣으면 쉬운 건 바로 판정하고, 처음 보는 패턴이나 깨진 맵은 LLM 에이전트가 도구로 조사해 새 패턴 후보 · 맵 이상 · 사람 확인으로 나누는 판독 시스템</p>
   <table class="props"><tbody>
 <tr><th scope="row">구분</th><td>개인 · 2026.09</td></tr>
-<tr><th scope="row">결과</th><td><b>새 패턴 AUROC 0.55 → 0.92</b> · LLM 판독 검사 통과 8% → 94%</td></tr>
+<tr><th scope="row">결과</th><td><b>처음 보는 패턴 감지 AUROC 0.92</b> (분류 확신도로는 0.55) · 아는 패턴 96장 중 판정을 낸 79장에서 78장 정답</td></tr>
 <tr><th scope="row">기술</th><td>PyTorch · 임베딩 kNN · Grad-CAM · Ollama(Qwen3.5 4B)</td></tr>
 <tr><th scope="row">데모</th><td><a href="demos/wafer/">판독 화면 열기</a></td></tr>
-<tr><th scope="row">코드</th><td><a href="https://github.com/Haejyn/wafer-defect-agent/blob/main/src/wafer/ood.py">새 패턴 감지</a> · <a href="https://github.com/Haejyn/wafer-defect-agent/blob/main/src/wafer/agent.py#L81">판독 검사기</a> · <a href="https://github.com/Haejyn/wafer-defect-agent/blob/main/tests/test_agent_check.py">검사기 테스트</a> · <a href="https://github.com/Haejyn/wafer-defect-agent">저장소</a></td></tr>
+<tr><th scope="row">코드</th><td><a href="https://github.com/Haejyn/wafer-defect-agent/blob/main/src/wafer/ood.py">새 패턴 감지</a> · <a href="https://github.com/Haejyn/wafer-defect-agent/blob/main/src/wafer/agent.py#L81">판독 검사기</a> · <a href="https://github.com/Haejyn/wafer-defect-agent/blob/main/src/wafer/investigate.py">조사 에이전트</a> · <a href="https://github.com/Haejyn/wafer-defect-agent">저장소</a></td></tr>
   </tbody></table>
   <figure class="media"><video id="wafer-demo" controls muted loop playsinline preload="metadata" poster="media/wafer-poster.png" aria-label="웨이퍼 판독 데모: 첫 답 검사 통과와 재질문 후 수정"><source src="media/wafer-demo.mp4" type="video/mp4">영상 재생을 지원하지 않는 브라우저입니다.</video><img class="print-poster" src="media/wafer-poster.png" alt="웨이퍼 판독 데모: 첫 답 검사 통과와 재질문 후 수정"><p class="media-status" aria-live="polite"></p></figure>
   <h4>Description</h4>
   <ul class="desc">
-<li><b>배경</b> 분류 모델 확신도로는 새 불량 패턴 구분이 우연 수준(AUROC 0.55)</li>
-<li><b>구현</b><ul><li>모델 임베딩 거리로 새 패턴 경고</li><li>판정·위치·유사 사례는 코드가 계산</li><li>로컬 LLM(Qwen3.5 4B)은 논문 근거가 있는 원인 후보 안에서만 판독 카드 작성</li></ul></li>
-<li><b>검증</b><ul><li>불량 8종을 하나씩 제외하는 학습 실험 · 로트 단위 분할 평가</li><li>LLM 판독 카드에 6종 코드 검사, 위반 시 재질문</li></ul></li>
-<li><b>성과</b><ul><li>새 패턴 AUROC 0.55 → 0.92 · 판독 검사 통과 8% → 94%</li><li>기존 9종에 없는 줄무늬·혼합 패턴 발견</li><li>나중 로트 성능 하락(0.963 → 0.743) 확인</li></ul></li>
+<li><b>배경</b> 분류 모델은 처음 보는 패턴도 아는 패턴으로 높은 확신을 붙여 배정함(예: Edge-Ring을 91% 확신으로 Edge-Loc). 확신도로 새 패턴을 가려내면 AUROC 0.55, 동전 던지기 수준</li>
+<li><b>구현</b><ul><li>WM-811K 웨이퍼 맵 → 판정 · 위치 · Grad-CAM · 비슷한 웨이퍼 5장 · 판독 카드</li><li>판정 · 위치 · 유사 사례는 코드가 계산하고, 로컬 LLM(Qwen3.5 4B)은 논문 근거가 있는 원인 표 안에서 원인 후보 · 점검 순서만 작성</li><li>모델 임베딩 거리로 처음 보는 패턴을 경고</li><li>경고가 켜졌거나 확신이 낮거나 맵이 깨진 웨이퍼는 조사 에이전트로. LLM이 분류 · 위치 · 비슷한 웨이퍼 · 이웃 로트 · 원인 표 도구 중 무엇을 부를지 정하고, 판정 · 새 패턴 후보 · 맵 이상 · 사람 확인 중 하나로 보냄</li></ul></li>
+<li><b>검증</b><ul><li>불량 8종을 하나씩 빼고 학습해, 뺀 패턴을 가려내는지 평가 · 로트 단위 분할</li><li>판독 카드를 코드로 6가지 검사(판정 · 위치가 계산값과 같은지, 원인이 표 안인지, 표 밖 공정 용어가 없는지 등), 걸리면 재질문</li><li>에이전트가 근거로 적은 값이 실제 도구 결과와 다르면 코드가 제출을 거절. 새 패턴 후보는 이웃 로트 근거가 있어야 통과</li></ul></li>
+<li><b>성과</b><ul><li>처음 보는 패턴 AUROC 0.55 → 0.92 (확신도 → 임베딩 kNN)</li><li>같은 120장에서 판독 카드 첫 답 규칙 통과 8% → 94% (프롬프트 3차 수정). 규칙을 지킨 비율이지 원인이 맞은 비율은 아님</li><li>160장 평가(파이프라인만 → 에이전트 혼합): 학습에서 뺀 패턴을 판정하지 않고 넘긴 비율 63% → 79%, 깨진 맵 20장 중 16장을 맵 이상으로 분류, 지어낸 근거 18건 거절</li><li>라벨 없는 맵에서 기존 9종에 없는 줄무늬 · 혼합 패턴 후보 발견</li><li>나중 로트에서 성능 하락(0.963 → 0.743) 확인</li></ul></li>
+<li><b>한계</b> 아는 패턴 정답률은 파이프라인만 쓸 때보다 낮음(87% → 81%). 확신이 낮은 웨이퍼를 사람에게 넘긴 대가. 4B 모델이라 조사에 장당 수십 초</li>
   </ul>
 </article>
 
 <article id="biw" class="project">
   <h3>차체 용접 디지털 트윈 + AI 제조성 판정<span class="dot" style="background:#22b14c" aria-hidden="true"></span></h3>
-  <p class="oneline">로봇 용접 시뮬레이션 + 대리 모델로 제조성 판정 시간 단축</p>
+  <p class="oneline">신차 차체 설계안을 기존 용접 라인 로봇이 전부 용접할 수 있는지 AI로 먼저 걸러 내고, 못 하는 곳이 있으면 에이전트가 한국어 요청대로 고친 설계를 찾아 시뮬레이터로 확인하는 도구</p>
   <table class="props"><tbody>
-<tr><th scope="row">결과</th><td><b>제조성 판정 약 3분 → 0.05초</b></td></tr>
-<tr><th scope="row">기술</th><td>Python · KUKA KR210 기구학 · LightGBM</td></tr>
-<tr><th scope="row">코드</th><td><a href="https://github.com/Haejyn/biw-weld-twin/blob/main/src/surrogate.py">대리 모델</a> · <a href="https://github.com/Haejyn/biw-weld-twin/blob/main/tests/test_core.py">테스트</a> · <a href="https://github.com/Haejyn/biw-weld-twin">저장소</a></td></tr>
+<tr><th scope="row">결과</th><td><b>설계 1만 안 탐색 약 11시간 → 4.7분</b> · 용접 못 하는 타점 재현율 99.9% (학습에 없던 설계 200개)</td></tr>
+<tr><th scope="row">기술</th><td>Python · KUKA KR210 기구학 · LightGBM · Ollama(Qwen3.5 4B) 도구 호출</td></tr>
+<tr><th scope="row">코드</th><td><a href="https://github.com/Haejyn/biw-weld-twin/blob/main/src/surrogate.py">대리 모델</a> · <a href="https://github.com/Haejyn/biw-weld-twin/blob/main/src/agent.py">설계 수정 에이전트</a> · <a href="https://github.com/Haejyn/biw-weld-twin/blob/main/tests/test_core.py">테스트</a> · <a href="https://github.com/Haejyn/biw-weld-twin">저장소</a></td></tr>
   </tbody></table>
   <figure class="media"><video id="biw-demo" controls muted loop playsinline preload="metadata" poster="media/biw-poster.png" aria-label="차체 용접 로봇 시뮬레이션 데모"><source src="media/biw-demo.mp4" type="video/mp4">영상 재생을 지원하지 않는 브라우저입니다.</video><img class="print-poster" src="media/biw-poster.png" alt="차체 용접 로봇 시뮬레이션 데모"><figcaption><button class="swap" type="button" data-gif="media/biw-ai.gif">AI 제조성 판정 데모 보기</button></figcaption><p class="media-status" aria-live="polite"></p></figure>
   <h4>Description</h4>
   <ul class="desc">
-<li><b>배경</b> 전체 로봇 시뮬레이션은 설계안 1개 판정에 약 3분 소요 → 설계 검토 반복이 느림</li>
-<li><b>구현</b><ul><li>KUKA KR210 기구학으로 로봇 도달성·용접 경로 시뮬레이션</li><li>LightGBM 대리 모델로 혼류 라인 제조성 판정</li></ul></li>
-<li><b>검증</b> 대리 모델 판정을 전체 시뮬레이션 결과와 재대조 → AI 특징 계산 버그 수정</li>
-<li><b>성과</b> 제조성 판정 약 3분 → 0.05초</li>
+<li><b>배경</b> 설계안 하나를 로봇 시뮬레이션으로 확인하면 판정만 약 10초, 로봇 배정까지 약 3분. 설계 1만 안을 보려면 약 11시간(3코어)</li>
+<li><b>구현</b><ul><li>설계 변수 10개(플랜지 폭 · 첫 타점 거리 등) → 판재 15장 · 스폿 용접 타점 75개 생성</li><li>KUKA KR210 기구학으로 타점마다 로봇이 닿는지 판정(관절 한계 · 간섭 · 접근 경로)</li><li>LightGBM 대리 모델이 같은 판정을 설계 1개당 0.05초에</li></ul></li>
+<li><b>예시</b> 설계안 A는 못 하는 타점 2개(S23, M00) → 플랜지만 넓힌 B도 2개 → 첫 타점 거리 80 mm · 실–B필러 간격 50 mm로 바꾼 C는 0개</li>
+<li><b>검증</b><ul><li>학습에 없던 설계 200개를 시뮬레이터와 대조. 첫 판 정밀도 93.4%에서 특징 계산 버그를 찾아 고친 뒤 100%</li><li>AI가 추천한 20안을 시뮬레이터로 다시 돌려 18안 일치, 틀린 2안은 경계 바로 옆</li></ul></li>
+<li><b>설계 수정 에이전트</b><ul><li>「플랜지 폭은 그대로, 첫 타점 거리는 60 이하」 같은 요청을 LLM(qwen3.5 4B)이 제약으로 바꾸고, 후보 탐색 · 시뮬레이션 · 제출 도구를 불러 가장 적게 바꾼 설계를 찾음</li><li>시뮬레이터가 못 하는 타점 0개를 확인한 설계만 제출 가능, 제약 위반은 코드가 거절</li></ul></li>
+<li><b>성과</b><ul><li>1만 안 탐색 약 11시간 → 4.7분. AI는 1차 선별, 경계 근처는 시뮬레이터가 확정</li><li>에이전트: 시작 설계 12개 전부 시뮬레이터 확인까지 성공, 실행당 평균 66초. 단변수 훑기만 주면 8/12였고 후보 탐색 도구를 준 뒤 12/12</li></ul></li>
+<li><b>한계</b> 변수 하나를 고정하면 에이전트 3/12, 전수 탐색 4/12. 제약 해석 12건 중 1건 틀림</li>
   </ul>
 </article>
 
@@ -176,52 +194,53 @@
 
 <article id="ground" class="project">
   <h3>위성 지상국 수신 처리기<span class="dot" style="background:#1e9bf0" aria-hidden="true"></span></h3>
-  <p class="oneline">원시 IQ 녹음에서 실제 위성 프레임까지 복원하는 수신 처리기</p>
+  <p class="oneline">위성이 지나갈 때 녹음한 전파 신호(IQ)에서 위성이 보낸 데이터 프레임을 꺼내는 수신 소프트웨어</p>
   <table class="props"><tbody>
-<tr><th scope="row">결과</th><td><b>115 / 115</b> 독립 복호 합집합과 바이트 일치</td></tr>
+<tr><th scope="row">결과</th><td><b>프레임 119장 복원</b> · 다른 복호기(gr-satellites)가 꺼낸 115장 전부와 바이트 일치</td></tr>
 <tr><th scope="row">기술</th><td>C# / .NET · SGP4 · DSP</td></tr>
 <tr><th scope="row">코드</th><td><a href="https://github.com/Haejyn/ground-station-rx/blob/main/src/GroundStationRx/Orbit/DopplerResidualFit.cs">도플러 보정</a> · <a href="https://github.com/Haejyn/ground-station-rx/blob/main/tests/GroundStationRx.Tests/Receiver/FullPassTests.cs">실제 패스 대조</a> · <a href="https://github.com/Haejyn/ground-station-rx">저장소</a></td></tr>
   </tbody></table>
   <h4>Description</h4>
   <ul class="desc">
-<li><b>배경</b> 녹음된 원시 IQ 신호에 위성 이동에 따른 도플러 편이 존재</li>
-<li><b>구현</b> 궤도(SGP4) 기반 도플러 보정 · 복조 · 복호를 C#으로 구현</li>
-<li><b>검증</b> gr-satellites 독립 복호 결과와 바이트 단위 대조</li>
-<li><b>성과</b> 독립 복호 합집합 115개 프레임과 바이트 일치</li>
+<li><b>배경</b> 저궤도 위성은 빠르게 지나가서 받는 주파수가 계속 바뀜(도플러). 이걸 따라가지 못하면 신호를 풀 수 없음</li>
+<li><b>구현</b><ul><li>큐브샛 ASRTU-1의 11분 패스 녹음(드빙겔로 25 m 전파망원경 공개 자료)을 입력으로</li><li>궤도(SGP4)로 주파수 변화를 예측해 보정 → 복조 · 복호를 C#으로 구현</li></ul></li>
+<li><b>검증</b> 같은 녹음을 gr-satellites로 푼 115장과 바이트 단위 대조 · 시험 84개 · 뮤테이션 95.53%</li>
+<li><b>성과</b> 119장 복원 — 115장 전부 일치, 4장은 gr-satellites가 반송파를 찾던 구간에서 추가로 받음 · 도플러 예측 오차 RMS 5.1 Hz · 11분 패스 처리 약 20초</li>
   </ul>
 </article>
 
 <article id="downlink" class="project">
   <h3>SpaceLink · CCSDS 다운링크<span class="dot" style="background:#8b5cf6" aria-hidden="true"></span></h3>
-  <p class="oneline">위성 비트열 → 전송 프레임·패킷 복원 및 손상 패킷 필터링</p>
+  <p class="oneline">위성에서 내려온 비트열을 표준 규격(CCSDS)의 프레임 · 패킷으로 풀고, 손상됐을 수 있는 패킷은 내보내지 않는 처리기</p>
   <table class="props"><tbody>
-<tr><th scope="row">결과</th><td><b>뮤테이션 점수 94.65%</b> · 요구사항 30/30</td></tr>
+<tr><th scope="row">결과</th><td><b>실제 위성 녹음에서 SatNOGS가 못 푼 6장 추가 복원</b> · 시험 139개 · 뮤테이션 94.65%</td></tr>
 <tr><th scope="row">기술</th><td>C# / .NET · CCSDS · 테스트 139개</td></tr>
 <tr><th scope="row">코드</th><td><a href="https://github.com/Haejyn/ccsds-downlink-reliability/blob/main/tests/SpaceLink.Tests/StandardConformanceTests.cs">표준 적합성</a> · <a href="https://github.com/Haejyn/ccsds-downlink-reliability/blob/main/tests/SpaceLink.Tests/LibfecCrossCheckTests.cs">libfec 대조</a> · <a href="https://github.com/Haejyn/ccsds-downlink-reliability">저장소</a></td></tr>
   </tbody></table>
   <h4>Description</h4>
   <ul class="desc">
-<li><b>배경</b> 위성 비트열에 손상된 프레임·패킷이 섞일 수 있음</li>
-<li><b>구현</b> CCSDS 전송 프레임·패킷 복원, 손상 가능 패킷 필터링</li>
-<li><b>검증</b> 표준 값·독립 복호기 대조 · 테스트 139개 · 뮤테이션 테스트</li>
-<li><b>성과</b> 뮤테이션 점수 94.65% · 요구사항 30/30 충족</li>
+<li><b>배경</b> 받은 비트열에는 손상된 프레임이 섞임. 손상된 패킷을 조용히 내보내면 아예 잃는 것보다 나쁨</li>
+<li><b>구현</b><ul><li>프레임 동기 · 오류 정정 · 가상 채널별 패킷 복원을 C#으로</li><li>손상 가능성이 있는 패킷은 버리고, 손상과 무관한 패킷은 전부 살리는 규칙</li></ul></li>
+<li><b>검증</b><ul><li>실제 위성 녹음(Astrocast 0.1, EIRSAT-1)을 SatNOGS 복호 결과 · libfec와 대조</li><li>일부러 넣은 오류 822개 중 시험이 잡은 비율(뮤테이션) 94.65% · 요구사항 30개 전부 시험과 연결</li></ul></li>
+<li><b>성과</b> SatNOGS 결과와 25/26장 바이트 일치, SatNOGS가 못 푼 6장 추가 복원 · 처리량 1.9 Gbps(병렬)</li>
   </ul>
 </article>
 
 <article id="orbit" class="project">
   <h3>위성 궤도 · 패스 예측<span class="dot" style="background:#f2b100" aria-hidden="true"></span></h3>
-  <p class="oneline">지상국 기준 위성 가시 시간·고도각 예측</p>
+  <p class="oneline">지상국에서 위성이 언제 떠서 언제 지는지, 얼마나 높이 뜨는지 계산하는 패스 예측기</p>
   <table class="props"><tbody>
-<tr><th scope="row">결과</th><td><b>Java ↔ C# 차분 시험 520건 일치</b></td></tr>
+<tr><th scope="row">결과</th><td><b>Java · C# 두 구현 520건 일치</b> · 무작위 시험으로 기존 시험이 놓친 결함 2건 발견</td></tr>
 <tr><th scope="row">기술</th><td>Java · C# · PIT 95%</td></tr>
 <tr><th scope="row">코드</th><td><a href="https://github.com/Haejyn/orbit-pass-sim/blob/main/src/test/java/orbitsim/DifferentialTest.java">차분 시험</a> · <a href="https://github.com/Haejyn/orbit-pass-sim/blob/main/csharp/OrbitSim.Tests/DifferentialGoldenTests.cs">C# 대조</a> · <a href="https://github.com/Haejyn/orbit-pass-sim">저장소</a></td></tr>
   </tbody></table>
   <h4>Description</h4>
   <ul class="desc">
-<li><b>배경</b> 지상국 운용에 위성 가시 시간·고도각 예측 필요</li>
-<li><b>구현</b> 궤도·패스 예측을 Java · C#으로 각각 구현</li>
-<li><b>검증</b> 두 구현 520건 차분 시험 · 무작위 시험 · PIT 뮤테이션(95%)</li>
-<li><b>성과</b> 520건 일치 · 무작위 시험으로 제품 결함 발견</li>
+<li><b>배경</b> 지상국은 위성이 하늘에 보이는 몇 분 동안만 교신할 수 있어서, 뜨는 시각 · 지는 시각 · 최대 고도각을 미리 알아야 함</li>
+<li><b>구현</b><ul><li>궤도 요소 → 지상국 기준 패스 목록. 예: 고도 420 km · 경사 51.6° 궤도, 대전 지상국, 24시간 → 패스 5회, 첫 패스 최대 고도각 38.4°</li><li>같은 명세를 보고 Java와 C#으로 따로 구현</li></ul></li>
+<li><b>검증</b> 두 구현에 같은 입력 520건을 넣어 대조 · 성질 기반 무작위 시험 · PIT 뮤테이션 95%</li>
+<li><b>성과</b> 520건 일치(최대 차이 3.6×10⁻¹¹ km) · 예제 시험 73개는 통과했지만 무작위 시험이 결함 2건을 찾음</li>
+<li><b>한계</b> 단순 이체 모델이라 24시간 뒤 SGP4 대비 위치 차이 1,118 km. 2일 넘는 일정 수립에는 쓰지 않음</li>
   </ul>
 </article>
 
