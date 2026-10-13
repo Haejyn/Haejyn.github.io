@@ -44,50 +44,52 @@
 
 <article id="willnew" class="project">
   <h3><img class="app-icon" src="../media/willnew-icon.png" alt="" width="36" height="36">willnew<span class="dot" style="background:#ff7a2f" aria-hidden="true"></span></h3>
-  <p class="oneline">팀 채널 요청 → AI 실행·검증 → 사람 승인으로 이어지는 팀 AI 작업 공간</p>
+  <p class="oneline">AI 에이전트 결과 중 검증을 통과한 것만 사람에게 올리는 팀 AI 작업 공간</p>
   <table class="props"><tbody>
 <tr><th scope="row">결과</th><td><b>자동 해결 67%</b> · 승인 67% · 요청 3건 총비용 $0.55</td></tr>
 <tr><th scope="row">기술</th><td>TypeScript · React · Hono · vitest</td></tr>
 <tr><th scope="row">코드</th><td><a href="https://github.com/Haejyn/willnew/blob/main/src/server/runs.ts#L183">검증 판정</a> · <a href="https://github.com/Haejyn/willnew/blob/main/tests/e2e.test.ts">E2E 테스트</a> · <a href="https://github.com/Haejyn/willnew#실측">측정 근거</a> · <a href="https://github.com/Haejyn/willnew">저장소</a></td></tr>
   </tbody></table>
-  <figure class="media"><video id="willnew-demo" controls muted loop playsinline preload="metadata" poster="../media/willnew-poster.jpg" aria-label="willnew 데모(단계 자막 포함): 요청부터 계획, 병렬 실행, 재작업, 검토, 승인과 병합까지"><source src="../media/willnew-demo.mp4" type="video/mp4">영상 재생을 지원하지 않는 브라우저입니다.</video><img class="print-poster" src="../media/willnew-poster.jpg" alt="willnew 데모(단계 자막 포함): 요청부터 계획, 병렬 실행, 재작업, 검토, 승인과 병합까지"><p class="media-status" aria-live="polite"></p></figure>
+  <figure class="media"><video id="willnew-demo" controls muted loop playsinline preload="metadata" poster="../media/willnew-poster.jpg" aria-label="willnew 데모(단계 자막 포함): 한 줄로 맡기기부터 계획, 실행, 검증, 승인과 병합까지"><source src="../media/willnew-demo.mp4" type="video/mp4">영상 재생을 지원하지 않는 브라우저입니다.</video><img class="print-poster" src="../media/willnew-poster.jpg" alt="willnew 데모(단계 자막 포함): 한 줄로 맡기기부터 계획, 실행, 검증, 승인과 병합까지"><p class="media-status" aria-live="polite"></p></figure>
   <h4>작업 흐름</h4>
   <ol class="flow-steps">
     <li class="flow-step">
-      <figure class="flow-media"><video class="flow-clip" muted loop playsinline preload="none" poster="../media/willnew-flow-request.jpg" aria-label="요청 · 계획"><source src="../media/willnew-flow-request.mp4" type="video/mp4"></video><img class="print-poster" src="../media/willnew-flow-request.jpg" alt="요청 · 계획"></figure>
-      <div class="flow-text"><span class="flow-no">1</span><h5>요청 · 계획</h5><ul><li>작업 유형 · 에이전트 · 검증 명령을 골라 맡김</li><li>계획 에이전트가 실행 단계로 나눔</li></ul></div>
+      <figure class="flow-media"><video class="flow-clip" muted loop playsinline preload="none" poster="../media/willnew-flow-request.jpg" aria-label="맡기기 · 계획"><source src="../media/willnew-flow-request.mp4" type="video/mp4"></video><img class="print-poster" src="../media/willnew-flow-request.jpg" alt="맡기기 · 계획"></figure>
+      <div class="flow-text"><span class="flow-no">1</span><h5>맡기기 · 계획</h5><ul><li>채널이나 ⌘K에 한 줄로 맡김</li><li>계획 에이전트가 유형 · 에이전트 · 검증 명령을 정함</li></ul></div>
     </li>
     <li class="flow-step">
-      <figure class="flow-media"><video class="flow-clip" muted loop playsinline preload="none" poster="../media/willnew-flow-run.jpg" aria-label="병렬 실행 · 재작업"><source src="../media/willnew-flow-run.mp4" type="video/mp4"></video><img class="print-poster" src="../media/willnew-flow-run.jpg" alt="병렬 실행 · 재작업"></figure>
-      <div class="flow-text"><span class="flow-no">2</span><h5>병렬 실행 · 재작업</h5><ul><li>Claude Code · Codex가 각자의 워크트리에서 동시에 작업</li><li>검증에 실패하면 실패 로그를 보고 다시 작업</li></ul></div>
+      <figure class="flow-media"><video class="flow-clip" muted loop playsinline preload="none" poster="../media/willnew-flow-run.jpg" aria-label="실행 · 검증"><source src="../media/willnew-flow-run.mp4" type="video/mp4"></video><img class="print-poster" src="../media/willnew-flow-run.jpg" alt="실행 · 검증"></figure>
+      <div class="flow-text"><span class="flow-no">2</span><h5>실행 · 검증</h5><ul><li>에이전트가 격리된 워크트리에서 작업, 진행 단계를 달 모양으로 표시</li><li>검증 명령이 실패하면 로그를 넘겨 1회 재작업</li></ul></div>
     </li>
     <li class="flow-step">
-      <figure class="flow-media"><video class="flow-clip" muted loop playsinline preload="none" poster="../media/willnew-flow-review.jpg" aria-label="검토 · 승인"><source src="../media/willnew-flow-review.mp4" type="video/mp4"></video><img class="print-poster" src="../media/willnew-flow-review.jpg" alt="검토 · 승인"></figure>
-      <div class="flow-text"><span class="flow-no">3</span><h5>검토 · 승인</h5><ul><li>추천 결과와 병합 전 확인 항목을 한 화면에서</li><li>사람이 승인해야 main에 병합</li></ul></div>
+      <figure class="flow-media"><video class="flow-clip" muted loop playsinline preload="none" poster="../media/willnew-flow-review.jpg" aria-label="내 차례 · 결정"><source src="../media/willnew-flow-review.mp4" type="video/mp4"></video><img class="print-poster" src="../media/willnew-flow-review.jpg" alt="내 차례 · 결정"></figure>
+      <div class="flow-text"><span class="flow-no">3</span><h5>내 차례 · 결정</h5><ul><li>검증을 통과한 결과만 첫 화면 '내 차례'에 올라옴</li><li>승인 · 고쳐 달라 · 반려 중 하나를 고르면 main에 병합</li></ul></div>
     </li>
   </ol>
   <h4>Description</h4>
   <ul class="desc">
 <li><b>배경</b> AI에 맡긴 작업도 결과 확인 · 병합 판단은 사람이 여러 도구를 오가며 처리</li>
-<li><b>구현</b><ul><li>팀 채널 요청 → 계획 에이전트가 실행 단계 · 검증 명령으로 변환</li><li>Claude Code · Codex를 격리된 워크트리에서 병렬 실행</li></ul></li>
-<li><b>검증</b><ul><li>검증 명령 종료 코드로 판정, 실패 시 로그를 넘겨 1회 재작업</li><li>병합 전 확인(테스트 파일 변경 · main 충돌) 후 사람이 승인</li></ul></li>
+<li><b>구현</b><ul><li>팀 채널 요청 → 계획 에이전트가 실행 단계 · 검증 명령으로 변환</li><li>Claude Code · Codex를 격리된 워크트리에서 병렬 실행</li><li>진행 단계를 달 모양 하나로 표시하고, 사람이 결정할 일만 첫 화면에 모음</li></ul></li>
+<li><b>검증</b><ul><li>검증 명령 종료 코드로 판정, 실패 시 로그를 넘겨 1회 재작업</li><li>테스트 파일을 고쳐 통과한 결과와 main 충돌은 바로 승인하지 못하게 막고 검토를 거침</li></ul></li>
 <li><b>성과</b> 실패 테스트 7개 예제 저장소 요청 3건 — 자동 해결 67% · 승인 67% · 총비용 $0.55</li>
   </ul>
   <details class="more">
-    <summary>화면 7개 보기</summary>
+    <summary>화면 8개 보기</summary>
     <div class="shots">
-      <figure><a href="../media/willnew-workspace.png"><img src="../media/willnew-workspace.png" alt="병렬 실행과 재작업 화면" loading="lazy" width="1440" height="900"></a><figcaption>병렬 실행과 재작업</figcaption></figure>
-      <figure><a href="../media/willnew-ide.png"><img src="../media/willnew-ide.png" alt="터미널, 변경 파일, 미리보기 화면" loading="lazy" width="1440" height="900"></a><figcaption>터미널 · 변경 · 미리보기</figcaption></figure>
-      <figure><a href="../media/willnew-review.png"><img src="../media/willnew-review.png" alt="검토와 병합 전 확인 화면" loading="lazy" width="1440" height="900"></a><figcaption>검토와 병합 전 확인</figcaption></figure>
-      <figure><a href="../media/willnew-compose.png"><img src="../media/willnew-compose.png" alt="요청을 실행 계획으로 만드는 화면" loading="lazy" width="1440" height="900"></a><figcaption>요청 → 실행 계획</figcaption></figure>
-      <figure><a href="../media/willnew-chat.png"><img src="../media/willnew-chat.png" alt="팀 채널에서 요청하고 승인하는 화면" loading="lazy" width="1440" height="900"></a><figcaption>팀 채널에서 맡기고 승인</figcaption></figure>
-      <figure><a href="../media/willnew-metrics.png"><img src="../media/willnew-metrics.png" alt="자동 해결률과 비용 지표 화면" loading="lazy" width="1440" height="900"></a><figcaption>결과를 지표로 확인</figcaption></figure>
-      <figure class="phone"><a href="../media/willnew-mobile.png"><img src="../media/willnew-mobile.png" alt="휴대폰 승인 화면" loading="lazy" width="804" height="844"></a><figcaption>휴대폰에서 승인</figcaption></figure>
+      <figure><a href="../media/willnew-home.png"><img src="../media/willnew-home.png" alt="내 차례 화면" loading="lazy" width="1440" height="900"></a><figcaption>내 차례</figcaption></figure>
+      <figure><a href="../media/willnew-workspace.png"><img src="../media/willnew-workspace.png" alt="진행 중인 작업 화면" loading="lazy" width="1440" height="900"></a><figcaption>진행 중인 작업</figcaption></figure>
+      <figure><a href="../media/willnew-ide.png"><img src="../media/willnew-ide.png" alt="결과 미리보기 화면" loading="lazy" width="1440" height="900"></a><figcaption>결과 미리보기</figcaption></figure>
+      <figure><a href="../media/willnew-review.png"><img src="../media/willnew-review.png" alt="검토와 결정 바 화면" loading="lazy" width="1440" height="900"></a><figcaption>검토와 결정 바</figcaption></figure>
+      <figure><a href="../media/willnew-compose.png"><img src="../media/willnew-compose.png" alt="맡기기와 계획 한 줄 화면" loading="lazy" width="1440" height="900"></a><figcaption>맡기기와 계획 한 줄</figcaption></figure>
+      <figure><a href="../media/willnew-chat.png"><img src="../media/willnew-chat.png" alt="팀 채널에서 맡기고 승인 화면" loading="lazy" width="1440" height="900"></a><figcaption>팀 채널에서 맡기고 승인</figcaption></figure>
+      <figure><a href="../media/willnew-metrics.png"><img src="../media/willnew-metrics.png" alt="결과를 지표로 확인 화면" loading="lazy" width="1440" height="900"></a><figcaption>결과를 지표로 확인</figcaption></figure>
+      <figure class="phone"><a href="../media/willnew-mobile.png"><img src="../media/willnew-mobile.png" alt="휴대폰 내 차례 화면" loading="lazy" width="600" height="1290"></a><figcaption>휴대폰 내 차례</figcaption></figure>
     </div>
   </details>
   <details class="more">
     <summary>실측 상세 · 요청 3건 (2026.09.30)</summary>
     <p>Windows 11 · Claude Code 2.1 · Codex CLI 0.151. 예제 duration 저장소(실패 테스트 7개)에서 시작한 소규모 실측 · 화면은 데모 모드에서 촬영</p>
+    <p>2026.10.12 새 화면으로 실제 Claude Code를 돌려 다시 확인: 요청 1건, 맡기기부터 병합까지 약 47초.</p>
     <div class="table-scroll"><table class="runs">
       <thead><tr><th scope="col">요청</th><th scope="col">계획</th><th scope="col">실행</th><th scope="col">결과</th></tr></thead>
       <tbody>
