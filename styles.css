@@ -271,3 +271,10 @@ table.compare code { font:13px ui-monospace,"SF Mono",Menlo,Consolas,monospace }
 .flow-text ul { grid-column:1 / -1; margin-top:6px }
 .intro p:has(+ .lead) { margin-bottom:0 }
 .intro .lead { margin:12px 0 40px; font-size:17px; max-width:640px }
+/* willnew feature clips */
+.flow-note { margin:4px 0 0; font-size:14px; opacity:.7 }
+.flow-text p { grid-column:1 / -1; margin:6px 0 0; font-size:13.5px; line-height:1.6 }
+.flow-step.phone .flow-media video, .flow-step.phone .flow-media .print-poster { object-fit:contain; background:#000 }
+#willnew .flow-steps { grid-template-columns:repeat(2,1fr); gap:22px 18px }
+#willnew .flow-step { align-content:start }
+@media (max-width:760px) { #willnew .flow-steps { grid-template-columns:1fr } }
