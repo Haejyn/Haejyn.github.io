@@ -38,7 +38,7 @@
   </tbody></table>
 
   <nav class="toc" aria-label="목차">
-    <a href="#projects">프로젝트</a><a href="#systems">신뢰성 시스템</a><a href="#awards">수상과 논문</a><a href="#stack">기술 스택</a>
+    <a href="#projects">프로젝트</a><a href="#awards">수상과 논문</a><a href="#stack">기술 스택</a>
   </nav>
 
   <h2 id="projects"><span>프로젝트</span></h2>
@@ -208,60 +208,6 @@
 <li><b>설계 수정 에이전트</b><ul><li>「플랜지 폭은 그대로, 첫 타점 거리는 60 이하」 같은 요청을 LLM(qwen3.5 4B)이 제약으로 바꾸고, 후보 탐색 → 시뮬레이션 → 제출 도구를 불러 가장 적게 바꾼 설계를 찾음</li><li>시뮬레이터가 못 하는 타점 0개를 확인한 설계만 제출 가능, 제약 위반은 코드가 거절</li></ul></li>
 <li><b>성과</b><ul><li>1만 안 탐색 약 11시간 → 4.7분. AI는 1차 선별, 경계 근처는 시뮬레이터가 확정</li><li>에이전트: 시작 설계 12개 전부 시뮬레이터 확인까지 성공, 실행당 평균 66초. 단변수 훑기만 주면 8/12였고 후보 탐색 도구를 준 뒤 12/12</li></ul></li>
 <li><b>한계</b> 변수 하나를 고정하면 에이전트 3/12, 전수 탐색 4/12. 제약 해석 12건 중 1건 틀림</li>
-  </ul>
-</article>
-
-  <h2 id="systems"><span>신뢰성 시스템</span></h2>
-
-<article id="ground" class="project">
-  <h3>위성 지상국 수신 처리기<span class="dot" style="background:#1e9bf0" aria-hidden="true"></span></h3>
-  <p class="oneline">위성이 지나갈 때 녹음한 전파 신호(IQ)에서 위성이 보낸 데이터 프레임을 꺼내는 수신 소프트웨어</p>
-  <table class="props"><tbody>
-<tr><th scope="row">결과</th><td><b>프레임 119장 복원</b>. 다른 복호기(gr-satellites)가 꺼낸 115장 전부와 바이트 일치</td></tr>
-<tr><th scope="row">기술</th><td>C# / .NET · SGP4 · DSP</td></tr>
-<tr><th scope="row">코드</th><td><a href="https://github.com/Haejyn/ground-station-rx/blob/main/src/GroundStationRx/Orbit/DopplerResidualFit.cs">도플러 보정</a> · <a href="https://github.com/Haejyn/ground-station-rx/blob/main/tests/GroundStationRx.Tests/Receiver/FullPassTests.cs">실제 패스 대조</a> · <a href="https://github.com/Haejyn/ground-station-rx">저장소</a></td></tr>
-  </tbody></table>
-  <h4>Description</h4>
-  <ul class="desc">
-<li><b>배경</b> 저궤도 위성은 빠르게 지나가서 받는 주파수가 계속 바뀜(도플러). 이걸 따라가지 못하면 신호를 풀 수 없음</li>
-<li><b>구현</b><ul><li>큐브샛 ASRTU-1의 11분 패스 녹음(드빙겔로 25 m 전파망원경 공개 자료)을 입력으로</li><li>궤도(SGP4)로 주파수 변화를 예측해 보정 → 복조와 복호를 C#으로 구현</li></ul></li>
-<li><b>검증</b> 같은 녹음을 gr-satellites로 푼 115장과 바이트 단위 대조, 시험 84개, 뮤테이션 95.53%</li>
-<li><b>성과</b> 119장 복원 중 115장 전부 일치, 4장은 gr-satellites가 반송파를 찾던 구간에서 추가로 받음. 도플러 예측 오차 RMS 5.1 Hz, 11분 패스 처리 약 20초</li>
-  </ul>
-</article>
-
-<article id="downlink" class="project">
-  <h3>SpaceLink (CCSDS 다운링크)<span class="dot" style="background:#8b5cf6" aria-hidden="true"></span></h3>
-  <p class="oneline">위성에서 내려온 비트열을 표준 규격(CCSDS)의 프레임과 패킷으로 풀고, 손상됐을 수 있는 패킷은 내보내지 않는 처리기</p>
-  <table class="props"><tbody>
-<tr><th scope="row">결과</th><td><b>실제 위성 녹음에서 SatNOGS가 못 푼 6장 추가 복원</b> · 시험 139개 · 뮤테이션 94.65%</td></tr>
-<tr><th scope="row">기술</th><td>C# / .NET · CCSDS · 테스트 139개</td></tr>
-<tr><th scope="row">코드</th><td><a href="https://github.com/Haejyn/ccsds-downlink-reliability/blob/main/tests/SpaceLink.Tests/StandardConformanceTests.cs">표준 적합성</a> · <a href="https://github.com/Haejyn/ccsds-downlink-reliability/blob/main/tests/SpaceLink.Tests/LibfecCrossCheckTests.cs">libfec 대조</a> · <a href="https://github.com/Haejyn/ccsds-downlink-reliability">저장소</a></td></tr>
-  </tbody></table>
-  <h4>Description</h4>
-  <ul class="desc">
-<li><b>배경</b> 받은 비트열에는 손상된 프레임이 섞임. 손상된 패킷을 조용히 내보내면 아예 잃는 것보다 나쁨</li>
-<li><b>구현</b><ul><li>프레임 동기, 오류 정정, 가상 채널별 패킷 복원을 C#으로</li><li>손상 가능성이 있는 패킷은 버리고, 손상과 무관한 패킷은 전부 살리는 규칙</li></ul></li>
-<li><b>검증</b><ul><li>실제 위성 녹음(Astrocast 0.1, EIRSAT-1)을 SatNOGS 복호 결과, libfec와 대조</li><li>일부러 넣은 오류 822개 중 시험이 잡은 비율(뮤테이션) 94.65%, 요구사항 30개 전부 시험과 연결</li></ul></li>
-<li><b>성과</b> SatNOGS 결과와 25/26장 바이트 일치, SatNOGS가 못 푼 6장 추가 복원. 처리량 1.9 Gbps(병렬)</li>
-  </ul>
-</article>
-
-<article id="orbit" class="project">
-  <h3>위성 궤도와 패스 예측<span class="dot" style="background:#f2b100" aria-hidden="true"></span></h3>
-  <p class="oneline">지상국에서 위성이 언제 떠서 언제 지는지, 얼마나 높이 뜨는지 계산하는 패스 예측기</p>
-  <table class="props"><tbody>
-<tr><th scope="row">결과</th><td><b>Java와 C# 두 구현 520건 일치</b>. 무작위 시험으로 기존 시험이 놓친 결함 2건 발견</td></tr>
-<tr><th scope="row">기술</th><td>Java · C# · PIT 95%</td></tr>
-<tr><th scope="row">코드</th><td><a href="https://github.com/Haejyn/orbit-pass-sim/blob/main/src/test/java/orbitsim/DifferentialTest.java">차분 시험</a> · <a href="https://github.com/Haejyn/orbit-pass-sim/blob/main/csharp/OrbitSim.Tests/DifferentialGoldenTests.cs">C# 대조</a> · <a href="https://github.com/Haejyn/orbit-pass-sim">저장소</a></td></tr>
-  </tbody></table>
-  <h4>Description</h4>
-  <ul class="desc">
-<li><b>배경</b> 지상국은 위성이 하늘에 보이는 몇 분 동안만 교신할 수 있어서, 뜨는 시각, 지는 시각, 최대 고도각을 미리 알아야 함</li>
-<li><b>구현</b><ul><li>궤도 요소 → 지상국 기준 패스 목록. 예: 고도 420 km, 경사 51.6° 궤도, 대전 지상국, 24시간 → 패스 5회, 첫 패스 최대 고도각 38.4°</li><li>같은 명세를 보고 Java와 C#으로 따로 구현</li></ul></li>
-<li><b>검증</b> 두 구현에 같은 입력 520건을 넣어 대조, 성질 기반 무작위 시험, PIT 뮤테이션 95%</li>
-<li><b>성과</b> 520건 일치(최대 차이 3.6×10⁻¹¹ km). 예제 시험 73개는 통과했지만 무작위 시험이 결함 2건을 찾음</li>
-<li><b>한계</b> 단순 이체 모델이라 24시간 뒤 SGP4 대비 위치 차이 1,118 km. 2일 넘는 일정 수립에는 쓰지 않음</li>
   </ul>
 </article>
 
