@@ -24,8 +24,10 @@ TVING AI Product Builder 지원용으로 구성한 한 단짜리 문서형 포�
 | 파일 | 출처 |
 |---|---|
 | wafer-demo.mp4, wafer-poster.png, demos/wafer | [wafer-defect-agent](https://github.com/Haejyn/wafer-defect-agent) · 기록된 판독 결과를 에이전트 실행 단계(분류 → 처음 보는 패턴 확인 → 위치 → 히트맵 → 유사 사례 → 판독 카드 → 코드 검사)로 재생하는 화면을 녹화 |
+| wasnew-demo.mp4, wasnew-poster.png | [wasnew](https://github.com/Haejyn/wasnew) · Claude Code 헤드리스 세션 실제 실행 기록(Downloads 199개 정리, rm 훅 차단, 전체 롤백) 터미널 리플레이 |
 | willnew-promo.mp4, willnew-promo.jpg | [willnew](https://github.com/Haejyn/willnew) · 프레임마다 그린 HTML 모션 그래픽(1920×1080, 33.8초). 앱 장면은 데모 모드의 실제 화면 캡처 |
 | willnew-c-*.mp4/jpg | willnew 데모 모드를 playwright로 녹화한 기능 영상 7개(채널에 맡기기, 재작업, 테스트 수정 차단, 줄 댓글, 휴대폰 승인, PR → CI → 배포, 요청자 답장) |
+| willnew-threads.png, willnew-pair-compare.png, willnew-annotation.png | willnew 스레드 기반 협업 화면, Playwright 전후 화면 나란히 비교, 화면 상자 그리기 주석 피드백 실제 캡처 |
 | biw-demo.mp4, biw-ai.gif, biw-poster.png | [biw-weld-twin](https://github.com/Haejyn/biw-weld-twin) · demo_weld.mp4, demo_ai.gif, hero.png |
 | downlink-demo.mp4 | [ccsds-downlink-reliability](https://github.com/Haejyn/ccsds-downlink-reliability) · downlink.mp4 |
 | orbit-demo.mp4 | [orbit-pass-sim](https://github.com/Haejyn/orbit-pass-sim) · passes.mp4 |
