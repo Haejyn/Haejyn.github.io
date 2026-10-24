@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<style>.history-band{position:sticky;top:0;z-index:10;margin:0;padding:10px 16px;background:var(--hi,#000);color:var(--bg,#fff);font-size:15px;line-height:1.5;text-align:center}.history-band a{color:inherit;font-weight:700}.history-band a:hover{color:inherit}@media print{.history-band{position:static}}</style>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#faf6f1">
+<title>이해준 | TVING AI Product Builder 포트폴리오</title>
+<meta name="description" content="CJ ENM-TVING AI Product Builder 지원. willnew 팀 AI 에이전트 플랫폼, wasnew 저널링·실행취소 레이어, 웨이퍼 판독 에이전트 등 프로젝트의 구현과 실측 결과.">
+<meta property="og:title" content="이해준 | AI Product Builder (CJ ENM-TVING)">
+<meta property="og:description" content="willnew 맡기기부터 병합까지 47초 & 시각적 전후 검증, wasnew 5,300건 토큰 99.6% 절감 & 12ms 롤백, 웨이퍼 처음 보는 불량 패턴 AUROC 0.92">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://haejyn.github.io/">
+<meta property="og:image" content="https://haejyn.github.io/media/og-tving.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="canonical" href="https://haejyn.github.io/">
+<meta name="facts" content="willnew@manual,wasnew@manual">
+<link rel="stylesheet" href="styles.css">
+<script src="site.js" defer></script>
+</head>
+<body>
+<p class="history-band" role="note">이전 버전 (2026.10.24, <a href="https://github.com/Haejyn/Haejyn.github.io/commit/520f1ef">520f1ef</a>). <a href="/tving/">지금 버전 보기</a> · <a href="/tving/history/">전체 기록</a></p>
+<main class="doc">
+  <header class="intro">
+    <div class="apply">
+      <img class="apply-logo" src="https://raw.githubusercontent.com/Haejyn/Haejyn.github.io/520f1ef/media/tving-icon.png" alt="TVING" width="64" height="64">
+      <p class="apply-role">AI Product Builder <span>(CJ ENM-TVING)</span></p>
+    </div>
+    <h1>이해준 <span>Lee Haejun</span></h1>
+    <p><mark>AI 에이전트 · 시스템 개발</mark></p>
+    <p class="lead">AI나 프로그램이 낸 결과를 그대로 믿지 않고, 테스트 관문, 저널링, 시각적 검증, 다른 구현과의 대조로 확인하는 장치를 함께 만듭니다.</p>
+  </header>
+
+  <table class="info"><tbody>
+    <tr><th scope="row">학력</th><td>서울시립대학교 전자전기컴퓨터공학부 (2027. 02 졸업 예정)</td></tr>
+    <tr><th scope="row">GitHub</th><td><a href="https://github.com/Haejyn">github.com/Haejyn</a></td></tr>
+    <tr><th scope="row">E-mail</th><td><a href="mailto:ssungiven@gmail.com">ssungiven@gmail.com</a></td></tr>
+  </tbody></table>
+
+  <nav class="toc" aria-label="목차">
+    <a href="#projects">프로젝트</a><a href="#awards">수상과 논문</a><a href="#stack">기술 스택</a>
+  </nav>
+
+  <h2 id="projects"><span>프로젝트</span></h2>
+
+<article id="willnew" class="project">
+  <h3><img class="app-icon" src="https://raw.githubusercontent.com/Haejyn/Haejyn.github.io/520f1ef/media/willnew-icon.png" alt="" width="36" height="36">willnew<span class="dot" style="background:#ff7a2f" aria-hidden="true"></span></h3>
+  <p class="oneline">팀 누구나 채널이나 스레드에 한 줄로 맡기면 AI가 고치고, 테스트 관문과 요청자의 시각적 전후 비교를 거쳐 개발자에게 승인 요청으로 올라오는 팀 도구. 승인 시 PR → CI → 배포까지 자동 추적되고, 요청자에게 쉬운 말로 답이 갑니다</p>
+  <table class="props"><tbody>
+<tr><th scope="row">결과</th><td><b>맡기기부터 병합까지 약 47초</b> (실제 Claude Code, 1건). 요청 3건 중 2건 병합, 검증 실패 1건은 승인 차단. 스레드 협업 및 Playwright 전후 시각 비교 지원 (테스트 <!-- fact:willnew.tests.passed -->94<!-- /fact -->개 통과)</td></tr>
+<tr><th scope="row">기술</th><td>TypeScript · React · Hono · Playwright · vitest</td></tr>
+<tr><th scope="row">코드</th><td><a href="https://github.com/Haejyn/willnew/blob/main/src/server/runs.ts">검증 관문</a> · <a href="https://github.com/Haejyn/willnew/blob/main/src/server/visual.ts">시각적 전후 비교</a> · <a href="https://github.com/Haejyn/willnew/blob/main/src/server/threads.ts">스레드 채팅</a> · <a href="https://github.com/Haejyn/willnew/blob/main/src/server/ship.ts">PR → CI → 배포</a> · <a href="https://github.com/Haejyn/willnew/blob/main/src/server/handoff.ts">요청자 답장</a> · <a href="https://github.com/Haejyn/willnew/blob/main/tests/e2e.test.ts">E2E 테스트</a> · <a href="https://github.com/Haejyn/willnew#실측">측정 근거</a> · <a href="https://github.com/Haejyn/willnew">저장소</a></td></tr>
+  </tbody></table>
+  <figure class="media"><video id="willnew-demo" controls muted loop playsinline preload="metadata" poster="https://raw.githubusercontent.com/Haejyn/Haejyn.github.io/520f1ef/media/willnew-promo.jpg" aria-label="willnew 소개 영상: 고객 문의를 채널에 맡기면 AI가 고치고, 테스트와 CI가 확인하고, 개발자가 승인해 배포한 뒤 요청자에게 답이 가는 흐름"><source src="https://raw.githubusercontent.com/Haejyn/Haejyn.github.io/520f1ef/media/willnew-promo.mp4" type="video/mp4">영상 재생을 지원하지 않는 브라우저입니다.</video><img class="print-poster" src="https://raw.githubusercontent.com/Haejyn/Haejyn.github.io/520f1ef/media/willnew-promo.jpg" alt="willnew 소개 영상: 고객 문의를 채널에 맡기면 AI가 고치고, 테스트와 CI가 확인하고, 개발자가 승인해 배포한 뒤 요청자에게 답이 가는 흐름"><p class="media-status" aria-live="polite"></p></figure>
+  <h4>기능</h4>
+  <p class="flow-note">예시: 고객 문의 "1/31 가입자 다음 결제일이 3/3으로 잡혀 있대요. 2월은 말일(2/28)에, 3월엔 다시 31일이어야 하는 거 맞죠?". 인물은 가상이고 화면은 데모 모드에서 촬영</p>
+  <ol class="flow-steps">
+    <li class="flow-step">
+      <figure class="flow-media"><video class="flow-clip" muted loop playsinline preload="none" poster="https://raw.githubusercontent.com/Haejyn/Haejyn.github.io/520f1ef/media/willnew-c-handoff.jpg" aria-label="누구나 채널에 맡기기"><source src="https://raw.githubusercontent.com/Haejyn/Haejyn.github.io/520f1ef/media/willnew-c-handoff.mp4" type="video/mp4"></video><img class="print-poster" src="https://raw.githubusercontent.com/Haejyn/Haejyn.github.io/520f1ef/media/willnew-c-handoff.jpg" alt="누구나 채널에 맡기기"></figure>
+      <div class="flow-text"><span class="flow-no">1</span><h5>누구나 채널에 맡기기 (스레드 분리)</h5><p>CS 담당자가 채널에 고객 문의를 올리면 독립된 카드 스레드가 생성됨. 계획 에이전트가 '버그 수정, 에이전트 1개, npm test로 확인'으로 정리</p></div>
+    </li>
+    <li class="flow-step">
+      <figure class="flow-media"><video class="flow-clip" muted loop playsinline preload="none" poster="https://raw.githubusercontent.com/Haejyn/Haejyn.github.io/520f1ef/media/willnew-c-retry.jpg" aria-label="테스트가 판정, 실패하면 한 번 더"><source src="https://raw.githubusercontent.com/Haejyn/Haejyn.github.io/520f1ef/media/willnew-c-retry.mp4" type="video/mp4"></video><img class="print-poster" src="https://raw.githubusercontent.com/Haejyn/Haejyn.github.io/520f1ef/media/willnew-c-retry.jpg" alt="테스트가 판정, 실패하면 한 번 더"></figure>
+      <div class="flow-text"><span class="flow-no">2</span><h5>테스트가 판정, 실패하면 한 번 더</h5><p>willnew가 npm test를 직접 돌려 종료 코드로 판정. 첫 시도는 '2월 다음 3/31 복귀' 테스트에서 실패 → 실패 로그를 붙여 재작업 → 7개 통과</p></div>
+    </li>
+    <li class="flow-step">
+      <figure class="flow-media"><video class="flow-clip" muted loop playsinline preload="none" poster="https://raw.githubusercontent.com/Haejyn/Haejyn.github.io/520f1ef/media/willnew-c-gate.jpg" aria-label="테스트를 고친 결과는 차단"><source src="https://raw.githubusercontent.com/Haejyn/Haejyn.github.io/520f1ef/media/willnew-c-gate.mp4" type="video/mp4"></video><img class="print-poster" src="https://raw.githubusercontent.com/Haejyn/Haejyn.github.io/520f1ef/media/willnew-c-gate.jpg" alt="테스트를 고친 결과는 차단"></figure>
+      <div class="flow-text"><span class="flow-no">3</span><h5>테스트를 고친 결과는 차단</h5><p>테스트 파일을 고쳐서 통과한 결과는 '테스트 파일 고침'으로 표시하고, 바로 승인하지 못하게 검토 화면으로 보냄</p></div>
+    </li>
+    <li class="flow-step">
+      <figure class="flow-media"><img src="https://raw.githubusercontent.com/Haejyn/Haejyn.github.io/520f1ef/media/willnew-annotation.png" alt="요청자 시각 확인 및 상자 그리기 주석"></figure>
+      <div class="flow-text"><span class="flow-no">4</span><h5>요청자 시각 확인 &amp; 상자 그려 피드백</h5><p>코드를 못 보는 요청자가 main과 변경 화면을 나란히·슬라이더로 비교. 어색한 곳에 직접 네모 상자를 그려 '다시 봐 주세요'를 누르면 같은 브랜치에서 에이전트가 이어서 수정</p></div>
+    </li>
+    <li class="flow-step">
+      <figure class="flow-media"><video class="flow-clip" muted loop playsinline preload="none" poster="https://raw.githubusercontent.com/Haejyn/Haejyn.github.io/520f1ef/media/willnew-c-comment.jpg" aria-label="줄 댓글로 다시 맡기기"><source src="https://raw.githubusercontent.com/Haejyn/Haejyn.github.io/520f1ef/media/willnew-c-comment.mp4" type="video/mp4"></video><img class="print-poster" src="https://raw.githubusercontent.com/Haejyn/Haejyn.github.io/520f1ef/media/willnew-c-comment.jpg" alt="줄 댓글로 다시 맡기기"></figure>
+      <div class="flow-text"><span class="flow-no">5</span><h5>줄 댓글로 다시 맡기기</h5><p>diff 줄에 "date-fns-tz 새로 넣지 말고 lib/time.js 써주세요"라고 남기면 에이전트가 이어서 고치고 다시 검증</p></div>
+    </li>
+    <li class="flow-step phone">
+      <figure class="flow-media"><video class="flow-clip" muted loop playsinline preload="none" poster="https://raw.githubusercontent.com/Haejyn/Haejyn.github.io/520f1ef/media/willnew-c-approve.jpg" aria-label="검토 차례 알림 → 휴대폰 승인"><source src="https://raw.githubusercontent.com/Haejyn/Haejyn.github.io/520f1ef/media/willnew-c-approve.mp4" type="video/mp4"></video><img class="print-poster" src="https://raw.githubusercontent.com/Haejyn/Haejyn.github.io/520f1ef/media/willnew-c-approve.jpg" alt="검토 차례 알림 → 휴대폰 승인"></figure>
+      <div class="flow-text"><span class="flow-no">6</span><h5>검토 차례 알림 → 휴대폰 승인</h5><p>통과하면 채널에서 담당 개발자를 부름("@이해준 검토 차례예요. 테스트 7개 통과, main과 충돌 없음"). 휴대폰에서 밀어서 승인</p></div>
+    </li>
+    <li class="flow-step">
+      <figure class="flow-media"><video class="flow-clip" muted loop playsinline preload="none" poster="https://raw.githubusercontent.com/Haejyn/Haejyn.github.io/520f1ef/media/willnew-c-pipeline.jpg" aria-label="승인 후 PR → CI → 배포"><source src="https://raw.githubusercontent.com/Haejyn/Haejyn.github.io/520f1ef/media/willnew-c-pipeline.mp4" type="video/mp4"></video><img class="print-poster" src="https://raw.githubusercontent.com/Haejyn/Haejyn.github.io/520f1ef/media/willnew-c-pipeline.jpg" alt="승인 후 PR → CI → 배포"></figure>
+      <div class="flow-text"><span class="flow-no">7</span><h5>승인 후 PR → CI → 배포 &amp; 요청자 답장</h5><p>PR 생성 → CI 3개 통과 → squash 병합 → production 배포까지 실시간 추적. 배포가 끝나면 승인한 개발자 이름으로 요청자에게 쉬운 말 답장</p></div>
+    </li>
+  </ol>
+  <h4>Claude Code를 직접 쓸 때와 다른 점</h4>
+  <div class="table-scroll"><table class="runs compare">
+    <thead><tr><th scope="col"></th><th scope="col">Claude Code 직접</th><th scope="col">willnew</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">끝났다는 판단</th><td>에이전트의 "다 고쳤어요"를 보고 사람이 테스트를 다시 돌림</td><td>willnew가 검증 명령을 돌려 <b>종료 코드로 판정</b></td></tr>
+      <tr><th scope="row">실패했을 때</th><td>사람이 로그를 복사해 다시 지시</td><td><b>로그를 붙여 한 번 자동 재작업</b></td></tr>
+      <tr><th scope="row">화면 검증</th><td>개발자가 직접 브라우저를 열어 확인</td><td><b>Playwright 전후 화면 비교(슬라이더) &amp; 상자 주석 피드백</b></td></tr>
+      <tr><th scope="row">테스트를 고쳐 통과</th><td>diff를 끝까지 읽어야 발견</td><td>테스트 파일 변경을 표시하고 <b>바로 승인을 막음</b></td></tr>
+      <tr><th scope="row">main 충돌</th><td>병합할 때 발견</td><td><b>승인 전에 미리 확인</b></td></tr>
+      <tr><th scope="row">협업 방식</th><td>Claude Code를 쓰는 개발자 1인의 작업</td><td><b>채널 카드 스레드</b>로 비개발자 요청자와 개발자 협업</td></tr>
+      <tr><th scope="row">개발자가 하는 일</th><td>지시, 대기, 테스트, diff 확인</td><td>통과한 결과를 보고 <b>승인만</b></td></tr>
+      <tr><th scope="row">병합 이후</th><td>PR, CI, 배포를 따로 챙기고 요청자에게 직접 알림</td><td><b>PR → CI → 배포</b>를 이어서 하고 요청자에게 쉬운 말로 답장</td></tr>
+      <tr><th scope="row">토큰 비용</th><td>지시한 만큼</td><td>기본 에이전트 1개, 실패할 때만 1회 재작업. 두 에이전트 겨루기는 켰을 때만</td></tr>
+    </tbody>
+  </table></div>
+  <h4>Description</h4>
+  <ul class="desc">
+<li><b>배경</b> 고객 문의 같은 작은 버그도 개발자에게 넘어가 순서를 기다림. 에이전트에게 맡겨도 "끝났다"는 말만 믿고 병합할 수 없어 테스트를 다시 돌리고 diff와 화면을 직접 열어 봐야 하며, 끝나면 요청한 사람에게 따로 설명해야 함</li>
+<li><b>구현</b><ul><li>채널과 ⌘K 요청 → 계획 에이전트가 유형, 지시문, 검증 명령으로 변환 후 독립 카드 스레드 생성</li><li>격리된 Git 워크트리에서 Claude Code 실행. (선택 시 Codex와 겨루기 지원)</li><li>Playwright 기반 Main vs 변경 워크트리 전후 화면 캡처(나란히 &amp; 드래그 슬라이더) 제공. 요청자가 화면 위에 직접 사각형 상자를 그려 "다시 봐 주세요"를 누르면 같은 브랜치에서 에이전트가 2차 재작업 수행</li><li>역할(요청자, 개발자)과 채널별 검토자. 검증 통과 시 검토자를 호출하고, 승인 시 PR → CI → 병합 → 배포 확인 후 요청자 맞춤 쉬운 말 답장(`userNote`) 전달</li><li>진행 단계를 달이 차는 모양으로 표시. 보름달(사람이 결정할 차례)이 뜬 일만 '내 차례' 화면에 모음</li></ul></li>
+<li><b>검증</b><ul><li>판정은 검증 명령 종료 코드. 테스트 파일을 고쳤거나 main과 충돌하면 검토 화면을 거쳐야 승인 가능</li><li>가짜 gh, 오프라인 에이전트, 스크린샷 모의 도구로 실행, 재작업, 스레드 분리, 요청자 확인 상태 전이, PR → CI → 배포까지 확인하는 테스트 <!-- fact:willnew.tests.passed -->94<!-- /fact -->개 이상 통과</li></ul></li>
+<li><b>성과</b> 실패 테스트 7개짜리 예제 저장소에 요청 3건 중 2건 병합(1건은 재작업 후 통과), 1건은 재작업 후에도 실패해 승인 차단, 총 $0.55. 실제 Claude Code 기준 맡기기부터 병합까지 약 47초</li>
+<li><b>한계</b> 현재는 단일 로컬 환경 실행 중심. 한 사람의 구독으로 팀원 요청을 처리하는 제약을 해결하기 위해 각 팀원 PC에서 분산 실행되는 허브-러너(Hub &amp; Runner) 아키텍처 설계 중</li>
+  </ul>
+  <details class="more">
+    <summary>화면 11개 보기 (스레드 &amp; 전후 시각 비교 포함)</summary>
+    <div class="shots">
+      <figure><a href="https://raw.githubusercontent.com/Haejyn/Haejyn.github.io/520f1ef/media/willnew-home.png"><img src="https://raw.githubusercontent.com/Haejyn/Haejyn.github.io/520f1ef/media/willnew-home.png" alt="내 차례 화면" loading="lazy" width="1440" height="900"></a><figcaption>내 차례</figcaption></figure>
+      <figure><a href="https://raw.githubusercontent.com/Haejyn/Haejyn.github.io/520f1ef/media/willnew-threads.png"><img src="https://raw.githubusercontent.com/Haejyn/Haejyn.github.io/520f1ef/media/willnew-threads.png" alt="스레드 기반 요청 협업 화면" loading="lazy" width="1440" height="900"></a><figcaption>스레드 기반 요청 카드</figcaption></figure>
+      <figure><a href="https://raw.githubusercontent.com/Haejyn/Haejyn.github.io/520f1ef/media/willnew-pair-compare.png"><img src="https://raw.githubusercontent.com/Haejyn/Haejyn.github.io/520f1ef/media/willnew-pair-compare.png" alt="전후 화면 나란히 비교" loading="lazy" width="1440" height="900"></a><figcaption>전후 화면 나란히 비교</figcaption></figure>
+      <figure><a href="https://raw.githubusercontent.com/Haejyn/Haejyn.github.io/520f1ef/media/willnew-annotation.png"><img src="https://raw.githubusercontent.com/Haejyn/Haejyn.github.io/520f1ef/media/willnew-annotation.png" alt="화면 상자 그리기 주석 피드백" loading="lazy" width="1440" height="900"></a><figcaption>화면 상자 그리기 주석</figcaption></figure>
+      <figure><a href="https://raw.githubusercontent.com/Haejyn/Haejyn.github.io/520f1ef/media/willnew-workspace.png"><img src="https://raw.githubusercontent.com/Haejyn/Haejyn.github.io/520f1ef/media/willnew-workspace.png" alt="진행 중인 작업 화면" loading="lazy" width="1440" height="900"></a><figcaption>진행 중인 작업</figcaption></figure>
+      <figure><a href="https://raw.githubusercontent.com/Haejyn/Haejyn.github.io/520f1ef/media/willnew-ide.png"><img src="https://raw.githubusercontent.com/Haejyn/Haejyn.github.io/520f1ef/media/willnew-ide.png" alt="결과 미리보기 화면" loading="lazy" width="1440" height="900"></a><figcaption>결과 미리보기</figcaption></figure>
+      <figure><a href="https://raw.githubusercontent.com/Haejyn/Haejyn.github.io/520f1ef/media/willnew-review.png"><img src="https://raw.githubusercontent.com/Haejyn/Haejyn.github.io/520f1ef/media/willnew-review.png" alt="검토와 결정 바 화면" loading="lazy" width="1440" height="900"></a><figcaption>검토와 결정 바</figcaption></figure>
+      <figure><a href="https://raw.githubusercontent.com/Haejyn/Haejyn.github.io/520f1ef/media/willnew-compose.png"><img src="https://raw.githubusercontent.com/Haejyn/Haejyn.github.io/520f1ef/media/willnew-compose.png" alt="맡기기와 계획 한 줄 화면" loading="lazy" width="1440" height="900"></a><figcaption>맡기기와 계획 한 줄</figcaption></figure>
+      <figure><a href="https://raw.githubusercontent.com/Haejyn/Haejyn.github.io/520f1ef/media/willnew-chat.png"><img src="https://raw.githubusercontent.com/Haejyn/Haejyn.github.io/520f1ef/media/willnew-chat.png" alt="팀 채널에서 맡기고 승인 화면" loading="lazy" width="1440" height="900"></a><figcaption>팀 채널에서 맡기고 승인</figcaption></figure>
+      <figure><a href="https://raw.githubusercontent.com/Haejyn/Haejyn.github.io/520f1ef/media/willnew-metrics.png"><img src="https://raw.githubusercontent.com/Haejyn/Haejyn.github.io/520f1ef/media/willnew-metrics.png" alt="결과를 지표로 확인 화면" loading="lazy" width="1440" height="900"></a><figcaption>결과를 지표로 확인</figcaption></figure>
+      <figure class="phone"><a href="https://raw.githubusercontent.com/Haejyn/Haejyn.github.io/520f1ef/media/willnew-mobile.png"><img src="https://raw.githubusercontent.com/Haejyn/Haejyn.github.io/520f1ef/media/willnew-mobile.png" alt="휴대폰 내 차례 화면" loading="lazy" width="600" height="1290"></a><figcaption>휴대폰 내 차례</figcaption></figure>
+    </div>
+  </details>
+  <details class="more">
+    <summary>요청 3건 실측 상세 (2026.09.30)</summary>
+    <p>Windows 11 · Claude Code 2.1 · Codex CLI 0.151. 예제 duration 저장소(실패 테스트 7개)에서 시작한 소규모 실측. 화면은 데모 모드에서 촬영</p>
+    <p>2026.10.12 새 화면으로 실제 Claude Code를 돌려 다시 확인: 요청 1건, 맡기기부터 병합까지 약 47초.</p>
+    <div class="table-scroll"><table class="runs">
+      <thead><tr><th scope="col">요청</th><th scope="col">계획</th><th scope="col">실행</th><th scope="col">결과</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">#backend 버그 수정</th><td>24.8초, $0.02</td><td>Sonnet 19초, $0.10 / Codex 45초</td><td>둘 다 첫 검증 통과 → Sonnet 승인 → 병합</td></tr>
+        <tr><th scope="row">#data 테스트 작성</th><td>15.5초, $0.02</td><td>Sonnet 37초, $0.20</td><td>첫 검증 실패 → 재작업 후 통과 → 승인</td></tr>
+        <tr><th scope="row">#content-ops 문서화</th><td>23.1초, $0.02</td><td>Sonnet 33초, $0.19</td><td>재작업 후에도 실패 → 반려</td></tr>
+      </tbody>
+    </table></div>
+    <p>절약 시간은 템플릿 가정치(실측값 아님)</p>
+  </details>
+</article>
+
+<article id="wasnew" class="project">
+  <h3><img class="app-icon" src="https://raw.githubusercontent.com/Haejyn/Haejyn.github.io/520f1ef/media/wasnew-icon.png" alt="" width="36" height="36">wasnew<span class="dot" style="background:#ff153c" aria-hidden="true"></span></h3>
+  <p class="oneline">AI 에이전트의 파일 조작(이동·삭제·이름변경)을 저널링하고, Git이 없거나 커밋되지 않은 폴더에서도 작업 단위로 안전하게 되돌리는 실행취소(Undo) 레이어 (MCP)</p>
+  <table class="props"><tbody>
+<tr><th scope="row">결과</th><td><b>테스트 <!-- fact:wasnew.tests.passed -->131<!-- /fact -->개 All Pass</b>, MCP 도구 <!-- fact:wasnew.mcpTools -->16<!-- /fact -->개, 의존성 0개, <b>5,300건 작업 시 토큰 99.6% 절감</b> (1,687 토큰), 대용량 파일 되돌리기 12ms (Git 대비 약 700배 고속)</td></tr>
+<tr><th scope="row">기술</th><td>TypeScript · Node 20+ · MCP(stdio) · GitHub Actions(Ubuntu, Windows, macOS × Node 20, 22)</td></tr>
+<tr><th scope="row">코드</th><td><a href="https://github.com/Haejyn/wasnew/blob/main/src/index.ts">계획·승인·적용</a> · <a href="https://github.com/Haejyn/wasnew/blob/main/src/policy.ts">경험 학습과 동적 신뢰 정책</a> · <a href="https://github.com/Haejyn/wasnew/blob/main/src/mcp.ts">MCP 도구(<!-- fact:wasnew.mcpTools -->16<!-- /fact -->개)</a> · <a href="https://github.com/Haejyn/wasnew/blob/main/examples/claude-code/guard.mjs">가드 훅</a> · <a href="https://github.com/Haejyn/wasnew#benchmarks">벤치마크</a> · <a href="https://github.com/Haejyn/wasnew">저장소</a></td></tr>
+  </tbody></table>
+  <figure class="media"><video id="wasnew-demo" controls muted loop playsinline preload="metadata" poster="https://raw.githubusercontent.com/Haejyn/Haejyn.github.io/520f1ef/media/wasnew-poster.png" aria-label="wasnew 데모 영상: Claude Code가 199개 다운로드 파일을 정리하고, rm 훅 차단 후 원클릭으로 전체 되돌리는 실제 헤드리스 세션 리플레이"><source src="https://raw.githubusercontent.com/Haejyn/Haejyn.github.io/520f1ef/media/wasnew-demo.mp4" type="video/mp4">영상 재생을 지원하지 않는 브라우저입니다.</video><img class="print-poster" src="https://raw.githubusercontent.com/Haejyn/Haejyn.github.io/520f1ef/media/wasnew-poster.png" alt="wasnew 데모 영상: Claude Code가 199개 다운로드 파일을 정리하고, rm 훅 차단 후 원클릭으로 전체 되돌리는 실제 헤드리스 세션 리플레이"><p class="media-status" aria-live="polite"></p></figure>
+  <h4>이럴 때 씁니다</h4>
+  <ol class="scenario">
+    <li><span class="sc-no">1</span><b>에이전트가 일반 폴더를 정리</b><p>"다운로드 폴더 정리해 줘"라고 하면 파일을 여러 하위 폴더로 옮기고 일부는 지움. git 저장소가 아니므로 git으로는 되돌릴 수 없음</p></li>
+    <li><span class="sc-no">2</span><b>wasnew가 저널에 안전 기록</b><p>모든 이동마다 원래 위치, 에이전트, 모델, 사유를 저널에 남김. 삭제는 실제 지우지 않고 전용 휴지통으로 이동</p><code>wasnew_move · wasnew_trash</code></li>
+    <li><span class="sc-no">3</span><b>한 번에 원래대로 롤백</b><p>결과가 마음에 안 들면 그 작업 묶음을 통째로 되돌림. 그 사이 원래 자리에 새 파일이 생겼으면 덮어쓰지 않고 보호</p><code>wasnew undo --batch</code></li>
+  </ol>
+  <h4>git 및 기존 에이전트 체크포인트와 다른 점</h4>
+  <div class="table-scroll"><table class="runs compare">
+    <thead><tr><th scope="col"></th><th scope="col">git</th><th scope="col">Claude Code 체크포인트</th><th scope="col">wasnew</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">대상</th><td>사람이 커밋하는 코드</td><td>세션 내 편집된 프로젝트 파일</td><td><b>아무 폴더</b> (다운로드, 바탕화면, NAS)</td></tr>
+      <tr><th scope="row">셸 rm / mv</th><td>커밋 전 파일은 영구 유실</td><td><b>추적 불가</b> (공식 문서 명시)</td><td><b>가드 훅으로 차단</b>하고 전용 도구로 안전 이동</td></tr>
+      <tr><th scope="row">삭제 처리</th><td><code>clean</code>은 영구 삭제</td><td>직접 삭제는 복구 불가</td><td><b>휴지통으로만 이동</b>, 영구 삭제는 사람만</td></tr>
+      <tr><th scope="row">되돌리는 단위</th><td>커밋</td><td>세션 스냅샷</td><td><b>에이전트 작업 묶음</b> (누가, 왜 했는지 추적)</td></tr>
+      <tr><th scope="row">대용량 파일 속도</th><td>트리 재작성으로 수십 초 소요</td><td>지원 안 함</td><td><b>경로 리네임 기반 11~12ms 즉각 완료</b></td></tr>
+      <tr><th scope="row">과거 실수 방지</th><td>없음</td><td>없음</td><td><b>과거 취소 패턴을 학습(Lessons)</b>해 피하도록 지시 주입</td></tr>
+      <tr><th scope="row">대량 결과 토큰 비용</th><td>수십만 자 diff로 컨텍스트 소진</td><td>-</td><td><b>요약 압축 반환으로 토큰 99.6% 절감</b></td></tr>
+    </tbody>
+  </table></div>
+  <h4>Description</h4>
+  <ul class="desc">
+<li><b>배경</b> Claude Code 공식 문서에서도 "체크포인트는 Bash 명령어로 수정된 파일(rm, mv, cp 등)을 추적하지 않는다"고 명시함. 다운로드나 문서 폴더처럼 Git 관리를 하지 않는 곳에서 에이전트가 파일을 삭제·이동하면 복구할 방법이 없으며, 수천 개 파일 작업 시 39만 토큰에 달하는 컨텍스트 낭비가 발생함</li>
+<li><b>구현</b><ul><li><!-- fact:wasnew.mcpTools -->16<!-- /fact -->개 MCP 도구 제공. 모든 변경을 `.wasnew/` 저널에 에이전트 이름, 모델, 작업 사유와 함께 기록하고 휴지통으로 안전 격리</li><li><b>Plan → Human Approve → Apply</b>: 대량 작업이나 보호 경로(`protect`) 접근 시 위험 반경을 계산해 사람의 사전 승인을 강제 (에이전트 스스로 승인 불가)</li><li><b>경험 학습(Lessons)과 신뢰 정책(Trust)</b>: 사용자가 되돌린(undo) 패턴을 집계하여 같은 유형의 실수를 피하도록(`avoid`) 새 에이전트 접속 시 MCP 프롬프트에 자동 주입. 취소율이 낮은 검증된 에이전트는 승인 필요 임계값을 20건에서 200건으로 자동 상향</li><li><b>토큰 요약 압축</b>: 5,000건 작업 결과 반환 시 요약 템플릿과 상위 샘플 20개만 반환해 컨텍스트를 보호 (39만 토큰 → 1,687 토큰)</li><li>Claude Code의 Bash 및 PowerShell 도구에서 `rm`, `mv`, `del` 실행을 가로채 `wasnew_trash` 사용을 유도하는 PreToolUse 가드 훅 제공</li></ul></li>
+<li><b>검증</b><ul><li>실제 Claude Code 헤드리스 세션 연동 실측: 199개 다운로드 파일 정렬, 훅 기반 `rm -rf` 차단, 원클릭 일괄 되돌리기 E2E 검증</li><li>사용자 파일을 영구 삭제하지 않음 (사람이 직접 empty-trash 할 때만 비움)</li><li>테스트 <!-- fact:wasnew.tests.passed -->131<!-- /fact -->개 All Pass, CI 3개 OS(Ubuntu, Windows, macOS) × Node 20, 22 환경, 런타임 의존성 0개</li></ul></li>
+<li><b>성과</b> 2GB 대용량 파일(8개) 기준 이동 11ms, 언도 12ms (Git 대비 각각 약 1,000배, 700배 고속). 5,300건 대량 작업 시 토큰 소비 99.6% 절감 (394,569개 → 1,687개)</li>
+<li><b>한계</b> 파일 시스템 커널 드라이버 수준이 아니므로, 에이전트가 만든 임의의 복합 셸 스크립트 내부에서의 직접 삭제는 추가 런타임 샌드박스가 필요함</li>
+  </ul>
+  <details class="more">
+    <summary>Git 대비 실측 벤치마크 상세 (2026.10.17)</summary>
+    <p>Windows 11 · Intel i5-12400F · Node 24 · git 2.53. 3회 측정 중앙값. 대용량 파일은 경로 리네임만 수행하므로 파일 크기에 상관없이 ms 단위로 완료</p>
+    <p><b>대용량 미디어 파일 (8개 × 256 MB = 2 GB 무작위 데이터)</b></p>
+    <div class="table-scroll"><table class="runs">
+      <thead><tr><th scope="col">단계</th><th scope="col">wasnew</th><th scope="col">git</th><th scope="col">git (압축 끔)</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">첫 스냅샷</th><td>4,348 ms (4.3 s)</td><td>71,588 ms (71.6 s)</td><td>23,543 ms (23.5 s)</td></tr>
+        <tr><th scope="row">다시 스냅샷 (변경 없음)</th><td>2 ms</td><td>44 ms</td><td>43 ms</td></tr>
+        <tr><th scope="row">하위 폴더로 이동 정리</th><td><b>11 ms</b></td><td>11,458 ms (11.5 s)</td><td>11,732 ms (11.7 s)</td></tr>
+        <tr><th scope="row">정리 전체 되돌리기</th><td><b>12 ms</b></td><td>8,667 ms (8.7 s)</td><td>8,714 ms (8.7 s)</td></tr>
+        <tr><th scope="row">10% 휴지통 + 되돌리기</th><td><b>9 ms</b></td><td>2,328 ms (2.3 s)</td><td>2,351 ms (2.4 s)</td></tr>
+        <tr><th scope="row">저장소 크기</th><td>2,048.0 MB</td><td>2,048.7 MB</td><td>2,048.3 MB</td></tr>
+      </tbody>
+    </table></div>
+    <p><b>소형 파일 (5,000개 × 4 KB)</b></p>
+    <div class="table-scroll"><table class="runs">
+      <thead><tr><th scope="col">단계</th><th scope="col">wasnew</th><th scope="col">git</th><th scope="col">git (압축 끔)</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">첫 스냅샷</th><td>2,336 ms (2.3 s)</td><td>7,034 ms (7.0 s)</td><td>7,880 ms (7.9 s)</td></tr>
+        <tr><th scope="row">다시 스냅샷 (변경 없음)</th><td>151 ms</td><td>57 ms</td><td>53 ms</td></tr>
+        <tr><th scope="row">하위 폴더로 이동 정리</th><td>2,646 ms (2.6 s)</td><td>3,699 ms (3.7 s)</td><td>3,797 ms (3.8 s)</td></tr>
+        <tr><th scope="row">정리 전체 되돌리기</th><td>2,572 ms (2.6 s)</td><td>2,566 ms (2.6 s)</td><td>2,647 ms (2.6 s)</td></tr>
+        <tr><th scope="row">10% 휴지통 + 되돌리기</th><td>555 ms</td><td>659 ms</td><td>630 ms</td></tr>
+        <tr><th scope="row">저장소 크기</th><td>21.9 MB</td><td>20.3 MB</td><td>20.5 MB</td></tr>
+      </tbody>
+    </table></div>
+  </details>
+</article>
+
+<article id="wafer" class="project">
+  <h3>웨이퍼 맵 불량 패턴 판독 에이전트<span class="dot" style="background:#19b5a5" aria-hidden="true"></span></h3>
+  <p class="oneline">웨이퍼 맵을 넣으면 쉬운 건 바로 판정하고, 처음 보는 패턴이나 깨진 맵은 LLM 에이전트가 도구로 조사해 새 패턴 후보, 맵 이상, 사람 확인으로 나누는 판독 시스템</p>
+  <table class="props"><tbody>
+<tr><th scope="row">구분</th><td>개인, 2026.09</td></tr>
+<tr><th scope="row">결과</th><td><b>처음 보는 패턴 감지 AUROC 0.92</b> (분류 확신도로는 0.55). 아는 패턴 96장 중 판정을 낸 79장에서 78장 정답</td></tr>
+<tr><th scope="row">기술</th><td>PyTorch · 임베딩 kNN · Grad-CAM · Ollama(Qwen3.5 4B)</td></tr>
+<tr><th scope="row">데모</th><td><a href="/demos/wafer/">판독 화면 열기</a></td></tr>
+<tr><th scope="row">코드</th><td><a href="https://github.com/Haejyn/wafer-defect-agent/blob/main/src/wafer/ood.py">새 패턴 감지</a> · <a href="https://github.com/Haejyn/wafer-defect-agent/blob/main/src/wafer/agent.py#L81">판독 검사기</a> · <a href="https://github.com/Haejyn/wafer-defect-agent/blob/main/src/wafer/investigate.py">조사 에이전트</a> · <a href="https://github.com/Haejyn/wafer-defect-agent">저장소</a></td></tr>
+  </tbody></table>
+  <figure class="media"><video id="wafer-demo" controls muted loop playsinline preload="metadata" poster="https://raw.githubusercontent.com/Haejyn/Haejyn.github.io/520f1ef/media/wafer-poster.png" aria-label="웨이퍼 판독 데모: 첫 답 검사 통과와 재질문 후 수정"><source src="https://raw.githubusercontent.com/Haejyn/Haejyn.github.io/520f1ef/media/wafer-demo.mp4" type="video/mp4">영상 재생을 지원하지 않는 브라우저입니다.</video><img class="print-poster" src="https://raw.githubusercontent.com/Haejyn/Haejyn.github.io/520f1ef/media/wafer-poster.png" alt="웨이퍼 판독 데모: 첫 답 검사 통과와 재질문 후 수정"><p class="media-status" aria-live="polite"></p></figure>
+  <h4>Description</h4>
+  <ul class="desc">
+<li><b>배경</b> 분류 모델은 처음 보는 패턴도 아는 패턴으로 높은 확신을 붙여 배정함(예: Edge-Ring을 91% 확신으로 Edge-Loc). 확신도로 새 패턴을 가려내면 AUROC 0.55, 동전 던지기 수준</li>
+<li><b>구현</b><ul><li>WM-811K 웨이퍼 맵 → 판정, 위치, Grad-CAM, 비슷한 웨이퍼 5장, 판독 카드</li><li>판정, 위치, 유사 사례는 코드가 계산하고, 로컬 LLM(Qwen3.5 4B)은 논문 근거가 있는 원인 표 안에서 원인 후보와 점검 순서만 작성</li><li>모델 임베딩 거리로 처음 보는 패턴을 경고</li><li>경고가 켜졌거나 확신이 낮거나 맵이 깨진 웨이퍼는 조사 에이전트로. LLM이 분류, 위치, 비슷한 웨이퍼, 이웃 로트, 원인 표 도구 중 무엇을 부를지 정하고, 판정, 새 패턴 후보, 맵 이상, 사람 확인 중 하나로 보냄</li></ul></li>
+<li><b>검증</b><ul><li>불량 8종을 하나씩 빼고 학습해, 뺀 패턴을 가려내는지 평가, 로트 단위 분할</li><li>판독 카드를 코드로 6가지 검사(판정과 위치가 계산값과 같은지, 원인이 표 안인지, 표 밖 공정 용어가 없는지 등), 걸리면 재질문</li><li>에이전트가 근거로 적은 값이 실제 도구 결과와 다르면 코드가 제출을 거절. 새 패턴 후보는 이웃 로트 근거가 있어야 통과</li></ul></li>
+<li><b>성과</b><ul><li>처음 보는 패턴 AUROC 0.55 → 0.92 (확신도 → 임베딩 kNN)</li><li>같은 120장에서 판독 카드 첫 답 규칙 통과 8% → 94% (프롬프트 3차 수정). 규칙을 지킨 비율이지 원인이 맞은 비율은 아님</li><li>160장 평가(파이프라인만 → 에이전트 혼합): 학습에서 뺀 패턴을 판정하지 않고 넘긴 비율 63% → 79%, 깨진 맵 20장 중 16장을 맵 이상으로 분류, 지어낸 근거 18건 거절</li><li>라벨 없는 맵에서 기존 9종에 없는 줄무늬와 혼합 패턴 후보 발견</li><li>나중 로트에서 성능 하락(0.963 → 0.743) 확인</li></ul></li>
+<li><b>한계</b> 아는 패턴 정답률은 파이프라인만 쓸 때보다 낮음(87% → 81%). 확신이 낮은 웨이퍼를 사람에게 넘긴 대가. 4B 모델이라 조사에 장당 수십 초</li>
+  </ul>
+</article>
+
+<article id="biw" class="project">
+  <h3>차체 용접 디지털 트윈 + AI 제조성 판정<span class="dot" style="background:#22b14c" aria-hidden="true"></span></h3>
+  <p class="oneline">신차 차체 설계안을 기존 용접 라인 로봇이 전부 용접할 수 있는지 AI로 먼저 걸러 내고, 못 하는 곳이 있으면 에이전트가 한국어 요청대로 고친 설계를 찾아 시뮬레이터로 확인하는 도구</p>
+  <table class="props"><tbody>
+<tr><th scope="row">결과</th><td><b>설계 1만 안 탐색 약 11시간 → 4.7분</b>. 용접 못 하는 타점 재현율 99.9% (학습에 없던 설계 200개)</td></tr>
+<tr><th scope="row">기술</th><td>Python · KUKA KR210 기구학 · LightGBM · Ollama(Qwen3.5 4B) 도구 호출</td></tr>
+<tr><th scope="row">코드</th><td><a href="https://github.com/Haejyn/biw-weld-twin/blob/main/src/surrogate.py">대리 모델</a> · <a href="https://github.com/Haejyn/biw-weld-twin/blob/main/src/agent.py">설계 수정 에이전트</a> · <a href="https://github.com/Haejyn/biw-weld-twin/blob/main/tests/test_core.py">테스트</a> · <a href="https://github.com/Haejyn/biw-weld-twin">저장소</a></td></tr>
+  </tbody></table>
+  <figure class="media"><video id="biw-demo" controls muted loop playsinline preload="metadata" poster="https://raw.githubusercontent.com/Haejyn/Haejyn.github.io/520f1ef/media/biw-poster.png" aria-label="차체 용접 로봇 시뮬레이션 데모"><source src="https://raw.githubusercontent.com/Haejyn/Haejyn.github.io/520f1ef/media/biw-demo.mp4" type="video/mp4">영상 재생을 지원하지 않는 브라우저입니다.</video><img class="print-poster" src="https://raw.githubusercontent.com/Haejyn/Haejyn.github.io/520f1ef/media/biw-poster.png" alt="차체 용접 로봇 시뮬레이션 데모"><figcaption><button class="swap" type="button" data-gif="https://raw.githubusercontent.com/Haejyn/Haejyn.github.io/520f1ef/media/biw-ai.gif">AI 제조성 판정 데모 보기</button></figcaption><p class="media-status" aria-live="polite"></p></figure>
+  <h4>Description</h4>
+  <ul class="desc">
+<li><b>배경</b> 설계안 하나를 로봇 시뮬레이션으로 확인하면 판정만 약 10초, 로봇 배정까지 약 3분. 설계 1만 안을 보려면 약 11시간(3코어)</li>
+<li><b>구현</b><ul><li>설계 변수 10개(플랜지 폭, 첫 타점 거리 등) → 판재 15장, 스폿 용접 타점 75개 생성</li><li>KUKA KR210 기구학으로 타점마다 로봇이 닿는지 판정(관절 한계, 간섭, 접근 경로)</li><li>LightGBM 대리 모델이 같은 판정을 설계 1개당 0.05초에</li></ul></li>
+<li><b>예시</b> 설계안 A는 못 하는 타점 2개(S23, M00) → 플랜지만 넓힌 B도 2개 → 첫 타점 거리 80 mm, 실–B필러 간격 50 mm로 바꾼 C는 0개</li>
+<li><b>검증</b><ul><li>학습에 없던 설계 200개를 시뮬레이터와 대조. 첫 판 정밀도 93.4%에서 특징 계산 버그를 찾아 고친 뒤 100%</li><li>AI가 추천한 20안을 시뮬레이터로 다시 돌려 18안 일치, 틀린 2안은 경계 바로 옆</li></ul></li>
+<li><b>설계 수정 에이전트</b><ul><li>「플랜지 폭은 그대로, 첫 타점 거리는 60 이하」 같은 요청을 LLM(qwen3.5 4B)이 제약으로 바꾸고, 후보 탐색 → 시뮬레이션 → 제출 도구를 불러 가장 적게 바꾼 설계를 찾음</li><li>시뮬레이터가 못 하는 타점 0개를 확인한 설계만 제출 가능, 제약 위반은 코드가 거절</li></ul></li>
+<li><b>성과</b><ul><li>1만 안 탐색 약 11시간 → 4.7분. AI는 1차 선별, 경계 근처는 시뮬레이터가 확정</li><li>에이전트: 시작 설계 12개 전부 시뮬레이터 확인까지 성공, 실행당 평균 66초. 단변수 훑기만 주면 8/12였고 후보 탐색 도구를 준 뒤 12/12</li></ul></li>
+<li><b>한계</b> 변수 하나를 고정하면 에이전트 3/12, 전수 탐색 4/12. 제약 해석 12건 중 1건 틀림</li>
+  </ul>
+</article>
+
+  <h2 id="awards"><span>수상과 논문</span></h2>
+  <h3 class="year">2025</h3>
+  <ul class="desc">
+    <li><b>전국학생설계경진대회 동상</b><br>AI 해양 쓰레기 수거기. 약 1,000팀 참가, 물고기 탐지 AP50 0.43 → 0.79</li>
+  </ul>
+  <h3 class="year">2026</h3>
+  <ul class="desc">
+    <li><b>한국수자원공사 사장상</b><br>드론 다중분광 영상 녹조 탐지 AI, 스컴 미탐지 22.1% → 3.9%</li>
+    <li><b>서울시립대학교 총장 최우수상</b><br>2026 공공기관 AI 프로젝트 챌린지, 녹조 탐지 AI</li>
+    <li><b>대한기계학회 국문논문집 C 게재</b><br>Vol.14 No.2, AI 해양 쓰레기 수거기, SW와 AI 담당</li>
+    <li><b>Action Chunking with Mamba</b><br>로봇팔 정책 모델, Knowledge-Based Systems 투고 중, 연구 주도</li>
+  </ul>
+
+  <h2 id="stack"><span>기술 스택</span></h2>
+  <table class="props"><tbody>
+    <tr><th scope="row">AI와 비전</th><td>PyTorch · U-Net · CNN · ResNet · YOLOv11 · OOD · Grad-CAM · UMAP</td></tr>
+    <tr><th scope="row">에이전트 플랫폼</th><td>Claude Code · Codex · MCP(Model Context Protocol) · 경험 학습(Lessons) · PreToolUse 훅 · Git 워크트리</td></tr>
+    <tr><th scope="row">웹과 시스템</th><td>TypeScript · React · Hono · Node.js · Playwright(시각 검증 자동화)</td></tr>
+    <tr><th scope="row">검증과 CI</th><td>vitest · pytest · hypothesis · JUnit 5 · Stryker 뮤테이션 · GitHub Actions</td></tr>
+    <tr><th scope="row">언어</th><td>TypeScript · Python · Java · C#</td></tr>
+  </tbody></table>
+
+<!-- changelog -->
+  <section class="changelog" aria-labelledby="changelog-title">
+  <h2 id="changelog-title"><span>변경 기록</span></h2>
+  <ol class="changes">
+    <li><time datetime="2026-10-24">2026.10.24</time><span class="change-kind">내용</span><span class="change-text">wasnew 가드 훅 링크를 저장소에 있는 파일(guard.mjs)로 고침</span></li>
+    <li><time datetime="2026-10-20">2026.10.20</time><span class="change-kind">내용</span><span class="change-text">헤더에서 제조 AI 제거, wasnew 실측 벤치마크 상세 표(단위 명시) 추가 <a class="change-old" href="/tving/history/3e474a6/">이 버전 보기</a></span></li>
+    <li><time datetime="2026-10-20">2026.10.20</time><span class="change-kind">내용</span><span class="change-text">wasnew 데모 영상과 최신 실측 추가, willnew 스레드와 시각 전후 검증 반영 <a class="change-old" href="/tving/history/55cc72f/">이 버전 보기</a></span></li>
+    <li><time datetime="2026-10-17">2026.10.17</time><span class="change-kind">내용</span><span class="change-text">TVING 페이지에서 위성 프로젝트 3개 빼기 <a class="change-old" href="/tving/history/6f77c5f/">이 버전 보기</a></span></li>
+    <li><time datetime="2026-10-14">2026.10.14</time><span class="change-kind">내용</span><span class="change-text">willnew를 팀 협업 흐름으로 다시 소개, 모션 홍보 영상과 기능 영상 7개, 대시와 가운데점 정리 <a class="change-old" href="/tving/history/0d1b45b/">이 버전 보기</a></span></li>
+  </ol>
+  <p class="changes-more"><a href="/tving/history/">전체 변경 기록과 이전 버전</a></p>
+  </section>
+<!-- /changelog -->
+
+  <p class="updated">2026.10</p>
+</main>
+</body>
+</html>
+
