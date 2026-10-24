@@ -152,5 +152,12 @@
     "kind": "content",
     "scope": "tving",
     "summary": "TVING 페이지 영상 포스터와 차체 데모 GIF 경로 고침 (재생 전 이미지가 깨져 보이던 것)"
+  },
+  {
+    "date": "2026-10-24",
+    "commit": "",
+    "kind": "facts",
+    "scope": "tving",
+    "summary": "숫자 갱신: willnew 전체 테스트 94 → 95"
   }
 ]

@@ -2,8 +2,13 @@
   "schema": 1,
   "project": "wasnew",
   "version": "0.3.0",
-  "commit": "manual",
-  "date": "2026-10-20",
-  "tests": { "passed": 131, "failed": 0, "total": 131, "files": null },
+  "commit": "2f4cc635463e1e144bd166710a9b48ef3a677148",
+  "date": "2026-10-24",
+  "tests": {
+    "passed": 130,
+    "failed": 0,
+    "total": 131,
+    "files": 10
+  },
   "mcpTools": 16
 }
