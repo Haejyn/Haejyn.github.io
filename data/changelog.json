@@ -1,0 +1,156 @@
+[
+  {
+    "date": "2026-10-02",
+    "commit": "b02c057",
+    "kind": "content",
+    "scope": "tving",
+    "summary": "/tving/에서도 TVING 포트폴리오 표시 (임시)"
+  },
+  {
+    "date": "2026-10-02",
+    "commit": "00e67af",
+    "kind": "content",
+    "scope": "tving",
+    "summary": "willnew 다음에 wasnew 추가"
+  },
+  {
+    "date": "2026-10-02",
+    "commit": "e0a523a",
+    "kind": "content",
+    "scope": "tving",
+    "summary": "wasnew 한 줄 요약 문구 수정"
+  },
+  {
+    "date": "2026-10-02",
+    "commit": "24cd690",
+    "kind": "content",
+    "scope": "tving",
+    "summary": "wasnew 소개에서 git과의 차이 강조"
+  },
+  {
+    "date": "2026-10-02",
+    "commit": "4d5a880",
+    "kind": "content",
+    "scope": "tving",
+    "summary": "TVING용 링크 미리보기 카드와 인쇄/PDF 스타일"
+  },
+  {
+    "date": "2026-10-02",
+    "commit": "0b2670d",
+    "kind": "content",
+    "scope": "site",
+    "summary": "회사 선택 화면에 선택지 4개와 회사별 포트폴리오 틀 추가"
+  },
+  {
+    "date": "2026-10-02",
+    "commit": "0b06405",
+    "kind": "content",
+    "scope": "site",
+    "summary": "회사 로고 적용, 선택 화면을 중립 디자인으로"
+  },
+  {
+    "date": "2026-10-02",
+    "commit": "4bb6c6c",
+    "kind": "content",
+    "scope": "tving",
+    "summary": "willnew 작업 흐름 영상 3개와 핵심 화면 2장 추가"
+  },
+  {
+    "date": "2026-10-02",
+    "commit": "8a0fa3a",
+    "kind": "content",
+    "scope": "tving",
+    "summary": "willnew 데모 영상을 해설판으로 교체"
+  },
+  {
+    "date": "2026-10-02",
+    "commit": "5f069f4",
+    "kind": "content",
+    "scope": "tving",
+    "summary": "분량 정리, 문구 수정, wasnew 구성, 웨이퍼 에이전트 UI"
+  },
+  {
+    "date": "2026-10-11",
+    "commit": "069ecea",
+    "kind": "content",
+    "scope": "tving",
+    "summary": "사장상 줄에서 비공개 저장소 링크 빼기 (방문자에게 404)"
+  },
+  {
+    "date": "2026-10-13",
+    "commit": "f339c9f",
+    "kind": "content",
+    "scope": "tving",
+    "summary": "willnew 새 화면으로 데모 영상, 작업 흐름 클립, 화면 8장 다시 촬영, 소개 문구 수정"
+  },
+  {
+    "date": "2026-10-13",
+    "commit": "4ce2974",
+    "kind": "content",
+    "scope": "tving",
+    "summary": "프로젝트마다 하는 일을 구체적으로 적음: 소개 한 줄, 비교표, 웨이퍼와 차체 에이전트 추가, TVING 페이지의 비공개 저장소 링크 제거"
+  },
+  {
+    "date": "2026-10-14",
+    "commit": "0d1b45b",
+    "kind": "content",
+    "scope": "tving",
+    "summary": "willnew를 팀 협업 흐름으로 다시 소개, 모션 홍보 영상과 기능 영상 7개, 대시와 가운데점 정리"
+  },
+  {
+    "date": "2026-10-17",
+    "commit": "6f77c5f",
+    "kind": "content",
+    "scope": "tving",
+    "summary": "TVING 페이지에서 위성 프로젝트 3개 빼기"
+  },
+  {
+    "date": "2026-10-17",
+    "commit": "6f77c5f",
+    "kind": "content",
+    "scope": "site",
+    "summary": "쎄트렉아이와 SK하이닉스 페이지 삭제"
+  },
+  {
+    "date": "2026-10-20",
+    "commit": "55cc72f",
+    "kind": "content",
+    "scope": "tving",
+    "summary": "wasnew 데모 영상과 최신 실측 추가, willnew 스레드와 시각 전후 검증 반영"
+  },
+  {
+    "date": "2026-10-20",
+    "commit": "3e474a6",
+    "kind": "content",
+    "scope": "tving",
+    "summary": "헤더에서 제조 AI 제거, wasnew 실측 벤치마크 상세 표(단위 명시) 추가"
+  },
+  {
+    "date": "2026-10-24",
+    "commit": "",
+    "kind": "content",
+    "scope": "tving",
+    "summary": "wasnew 가드 훅 링크를 저장소에 있는 파일(guard.mjs)로 고침"
+  },
+  {
+    "date": "2026-10-24",
+    "commit": "",
+    "kind": "content",
+    "scope": "site",
+    "summary": "오토에버 페이지 사장상 줄에서 비공개 저장소 링크 빼기"
+  },
+  {
+    "date": "2026-10-24",
+    "commit": "",
+    "kind": "content",
+    "scope": "tving",
+    "summary": "테스트 수와 MCP 도구 수를 willnew, wasnew facts 에서 받게 바꾸고 변경 기록 칸과 이전 버전 페이지 추가"
+  },
+  {
+    "date": "2026-10-24",
+    "commit": "",
+    "kind": "content",
+    "scope": "tving",
+    "summary": "TVING 페이지 영상 포스터와 차체 데모 GIF 경로 고침 (재생 전 이미지가 깨져 보이던 것)"
+  }
+]

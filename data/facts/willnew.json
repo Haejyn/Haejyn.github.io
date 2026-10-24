@@ -1,0 +1,8 @@
+{
+  "schema": 1,
+  "project": "willnew",
+  "version": "0.1.0",
+  "commit": "manual",
+  "date": "2026-10-20",
+  "tests": { "passed": 94, "failed": null, "total": null, "files": null }
+}

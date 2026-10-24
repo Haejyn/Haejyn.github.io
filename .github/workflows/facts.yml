@@ -1,0 +1,114 @@
+name: facts
+
+# willnew, wasnew CI 가 facts.json 을 올리면 표시 자리를 갱신한다.
+# 받기 → apply → check → PR → (숫자만 바뀌었으면) 병합 → 배포 확인
+# GITHUB_TOKEN 으로 만든 PR 은 check.yml 을 깨우지 않으므로 검사는 이 잡 안에서 돈다.
+on:
+  repository_dispatch:
+    types: [facts-updated]
+  workflow_dispatch:
+  schedule:
+    - cron: "17 21 * * *" # 매일 06:17 KST
+
+permissions:
+  contents: write
+  pull-requests: write
+  pages: read
+
+concurrency:
+  group: facts
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: facts 받기
+        run: node scripts/fetch-facts.mjs
+
+      - name: 표시 자리 채우기
+        run: node scripts/apply-facts.mjs --summary-out "$RUNNER_TEMP/summary.txt"
+
+      - name: 검사
+        run: node scripts/check.mjs
+
+      - name: 바뀐 것 확인
+        id: diff
+        run: |
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "바뀐 것 없음"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            git status --short
+          fi
+
+      - name: PR 만들기
+        id: pr
+        if: steps.diff.outputs.changed == 'true'
+        run: |
+          branch="facts/$(TZ=Asia/Seoul date +%Y%m%d-%H%M%S)"
+          summary="$(cat "$RUNNER_TEMP/summary.txt")"
+          meta="$(grep -o '<meta name="facts" content="[^"]*">' tving/index.html | sed 's/.*content="\([^"]*\)".*/\1/')"
+          title="${summary:-숫자 갱신: facts 출처 커밋 ${meta}}"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -c "$branch"
+          git add -A
+          git commit -m "$title"
+          git push origin "$branch"
+          {
+            echo "willnew, wasnew 의 facts-latest 릴리스에서 받은 값으로 표시 자리를 채웠습니다."
+            echo
+            echo "- 바뀐 숫자: ${summary:-없음 (출처 커밋만 바뀜)}"
+            echo "- facts: ${meta}"
+            echo "- 확인: node scripts/check.mjs 통과"
+            echo
+            echo "변경 기록: ${summary:-없음}"
+          } > "$RUNNER_TEMP/body.md"
+          url="$(gh pr create --base main --head "$branch" --title "$title" --body-file "$RUNNER_TEMP/body.md")"
+          echo "PR $url"
+          echo "url=$url" >> "$GITHUB_OUTPUT"
+
+      - name: 자동 병합 판정
+        id: gate
+        if: steps.diff.outputs.changed == 'true'
+        run: |
+          git fetch origin main
+          if node scripts/only-facts-changed.mjs origin/main; then
+            echo "auto=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "auto=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::표시 자리 밖이 바뀌어 사람 검토가 필요합니다. PR 을 열어 두었습니다."
+          fi
+
+      - name: 병합
+        id: merge
+        if: steps.gate.outputs.auto == 'true'
+        run: |
+          pr="${{ steps.pr.outputs.url }}"
+          # 방금 만든 PR 은 병합 가능 여부 계산이 끝나기 전일 수 있어 몇 번 다시 시도한다.
+          for i in 1 2 3 4 5; do
+            gh pr merge "$pr" --squash --delete-branch && break
+            [ "$(gh pr view "$pr" --json state --jq .state)" = "MERGED" ] && break
+            [ "$i" = 5 ] && exit 1
+            sleep 10
+          done
+          sha="$(gh pr view "$pr" --json mergeCommit --jq .mergeCommit.oid)"
+          echo "병합 커밋 $sha"
+          echo "sha=$sha" >> "$GITHUB_OUTPUT"
+
+      - name: 배포 확인
+        if: steps.merge.outputs.sha != ''
+        run: node scripts/live-has-sha.mjs "${{ steps.merge.outputs.sha }}"
