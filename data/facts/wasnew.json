@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "project": "wasnew",
+  "version": "0.3.0",
+  "commit": "manual",
+  "date": "2026-10-20",
+  "tests": { "passed": 131, "failed": 0, "total": 131, "files": null },
+  "mcpTools": 16
+}
