@@ -217,13 +217,21 @@ export function renderPage(html, facts, entries) {
   return out;
 }
 
+// Keep the line endings a checkout gave the file (core.autocrlf on Windows), so a second run
+// writes nothing.
+const sameEol = (text, like) => {
+  const lf = text.replace(/\r\n/g, "\n");
+  return like?.includes("\r\n") ? lf.replace(/\n/g, "\r\n") : lf;
+};
+const writeGenerated = (p, text) => writeIfChanged(p, sameEol(text, exists(p) ? read(p) : null));
+
 /** Re-render every generated file from data/. Returns the list of files written. */
 export function renderAll(facts = loadFacts(), entries = loadChangelog()) {
   const written = [];
   for (const p of PAGES) {
     if (!exists(p)) continue;
-    if (writeIfChanged(p, renderPage(read(p), facts, entries))) written.push(p);
+    if (writeGenerated(p, renderPage(read(p), facts, entries))) written.push(p);
   }
-  if (writeIfChanged(HISTORY_INDEX, renderHistoryIndex(entries))) written.push(HISTORY_INDEX);
+  if (writeGenerated(HISTORY_INDEX, renderHistoryIndex(entries))) written.push(HISTORY_INDEX);
   return written;
 }
