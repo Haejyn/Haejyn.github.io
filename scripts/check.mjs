@@ -14,6 +14,7 @@ import {
   ROOT, PAGES, HISTORY_DIR, HISTORY_INDEX, CHANGELOG, read, exists, git,
   loadFacts, loadChangelog, validateFacts, placeholders, lookup, formatFact, factsMeta,
   META_RE, CHANGELOG_RE, renderChangelogBlock, renderHistoryIndex, stripGenerated,
+  SCOPES, PAGE_SCOPE, HIDDEN_WORDS,
 } from "./lib/portfolio.mjs";
 
 const args = process.argv.slice(2);
@@ -57,6 +58,8 @@ entries.forEach((e, i) => {
   if (!["facts", "content"].includes(e.kind)) fail(CHANGELOG, `${i}번 항목 kind 는 facts 또는 content`);
   if (typeof e.summary !== "string" || !e.summary.trim()) fail(CHANGELOG, `${i}번 항목 summary 비어 있음`);
   if (typeof e.commit !== "string") fail(CHANGELOG, `${i}번 항목 commit 은 문자열`);
+  if (!SCOPES.includes(e.scope)) fail(CHANGELOG, `${i}번 항목 scope 는 ${SCOPES.join(" 또는 ")}`);
+  else if (e.kind === "facts" && e.scope !== PAGE_SCOPE) fail(CHANGELOG, `${i}번 facts 항목 scope 는 ${PAGE_SCOPE}`);
 });
 
 for (const p of htmlPages) {
@@ -81,6 +84,23 @@ for (const p of htmlPages) {
 }
 if (!exists(HISTORY_INDEX) || lf(read(HISTORY_INDEX)) !== renderHistoryIndex(entries)) {
   fail(HISTORY_INDEX, "data/changelog.json 과 다름 (node scripts/apply-facts.mjs)");
+}
+
+// ---------- 1b. other company names in the TVING changelog ----------
+// Only the generated changelog block and the history list. Awards and project text are not checked.
+const hiddenRegions = [];
+for (const p of files.filter(f => f.endsWith(".html") && (PAGES.includes(f) || f.startsWith(`${HISTORY_DIR}/`)))) {
+  const html = read(p);
+  const block = html.match(CHANGELOG_RE);
+  if (block) hiddenRegions.push([p, block[0]]);
+  if (p === HISTORY_INDEX) {
+    const list = html.match(/<tbody>[\s\S]*?<\/tbody>/);
+    if (list) hiddenRegions.push([p, list[0]]);
+  }
+}
+for (const [p, region] of hiddenRegions) {
+  const text = region.replace(/<[^>]+>/g, " ");
+  for (const w of HIDDEN_WORDS) if (text.toLowerCase().includes(w.toLowerCase())) fail(p, `변경 기록에 TVING 밖 내용("${w}")이 보임`);
 }
 
 // ---------- 3. benchmark cells ----------
@@ -119,17 +139,27 @@ for (const p of textFiles) {
 // ---------- 5. --base ----------
 if (base) {
   const show = path => { try { return git(["show", `${base}:${path}`], { stdio: ["ignore", "pipe", "ignore"] }); } catch { return null; } };
-  const key = e => JSON.stringify([e.date, e.kind, e.summary]);
+  const key = e => JSON.stringify([e.date, e.kind, e.scope, e.summary]);
   let baseEntries = [];
   try { baseEntries = loadChangelog(show(CHANGELOG) ?? "[]"); } catch { /* treat as empty */ }
   const before = new Set(baseEntries.map(key));
-  const newContent = entries.filter(e => e.kind === "content" && !before.has(key(e)));
+  const newContent = scope => entries.filter(e => e.kind === "content" && e.scope === scope && !before.has(key(e)));
+  // TVING page or its copy at /: needs a new "tving" content entry.
   for (const p of PAGES) {
     const old = show(p);
     if (old === null || !exists(p)) continue;
-    if (lf(stripGenerated(old)) !== lf(stripGenerated(read(p))) && !newContent.length) {
-      fail(p, `${base} 대비 표시 자리 밖 문장이 바뀌었는데 ${CHANGELOG} 에 새 content 항목이 없음`);
+    if (lf(stripGenerated(old)) !== lf(stripGenerated(read(p))) && !newContent("tving").length) {
+      fail(p, `${base} 대비 표시 자리 밖 문장이 바뀌었는데 ${CHANGELOG} 에 새 content 항목(scope tving)이 없음`);
     }
+  }
+  // Other pages (chooser, other companies): a new "site" content entry is enough.
+  const names = s => s.split("\n").map(l => l.trim()).filter(Boolean);
+  const otherPages = [...new Set([
+    ...names(git(["-c", "core.quotepath=false", "diff", "--name-only", base, "--", "*.html"])),
+    ...names(git(["-c", "core.quotepath=false", "ls-files", "--others", "--exclude-standard", "--", "*.html"])),
+  ])].filter(p => !PAGES.includes(p) && !p.startsWith(`${HISTORY_DIR}/`));
+  if (otherPages.length && !newContent("site").length) {
+    fail(otherPages.join(", "), `${base} 대비 바뀌었는데 ${CHANGELOG} 에 새 content 항목(scope site)이 없음`);
   }
 }
 

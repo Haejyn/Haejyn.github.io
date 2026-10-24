@@ -41,7 +41,7 @@ let summary = "";
 if (changes.size) {
   const parts = [...changes].map(([key, c]) => `${labelFor(key)} ${c.from || "(빈 값)"} → ${c.to}`);
   summary = `숫자 갱신: ${parts.join(", ")}`;
-  entries = [...entries, { date: todayKST(), commit: "", kind: "facts", summary }];
+  entries = [...entries, { date: todayKST(), commit: "", kind: "facts", scope: "tving", summary }];
 }
 
 const written = [];

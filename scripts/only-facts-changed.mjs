@@ -43,7 +43,7 @@ for (const p of changed) {
       const kept = before.every((e, i) => JSON.stringify(e) === JSON.stringify(after[i]));
       const added = after.slice(before.length);
       if (!kept) problems.push(`${p}: 기존 항목이 바뀜`);
-      else if (added.some(e => e.kind !== "facts")) problems.push(`${p}: facts 가 아닌 항목 추가`);
+      else if (added.some(e => e.kind !== "facts" || e.scope !== "tving")) problems.push(`${p}: facts (scope tving) 가 아닌 항목 추가`);
     } catch (e) { problems.push(`${p}: ${e.message}`); }
     continue;
   }

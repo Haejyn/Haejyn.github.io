@@ -7,8 +7,8 @@
 //
 //   node scripts/snapshot-history.mjs [--force]
 import {
-  CHANGELOG, HISTORY_DIR, SNAPSHOT_FROM, REPO, git, esc, dotDate, exists,
-  loadChangelog, changelogText, writeIfChanged, renderAll,
+  CHANGELOG, CHANGELOG_RE, HISTORY_DIR, SNAPSHOT_FROM, REPO, PAGE_SCOPE, git, esc, dotDate, exists,
+  renderChangelogBlock, loadChangelog, changelogText, writeIfChanged, renderAll,
 } from "./lib/portfolio.mjs";
 
 const force = process.argv.includes("--force");
@@ -39,7 +39,7 @@ const changedPage = sha => {
   return !!out && out.trim().length > 0;
 };
 
-function rewrite(html, sha, date) {
+function rewrite(html, sha, date, upTo) {
   const media = `${RAW}/${sha}/media/`;
   let out = html
     // Media from the commit itself, so files deleted later still load.
@@ -47,7 +47,9 @@ function rewrite(html, sha, date) {
     .replace(/(["'])\.\.\/styles\.css\1/g, "$1styles.css$1")
     .replace(/(["'])\.\.\/site\.js\1/g, "$1site.js$1")
     // Other relative links pointed at the site root.
-    .replace(/(href|src)="\.\.\//g, '$1="/');
+    .replace(/(href|src)="\.\.\//g, '$1="/')
+    // The block saved in that commit may list entries that are now hidden (scope "site").
+    .replace(CHANGELOG_RE, () => renderChangelogBlock(upTo));
   const head = [
     '<meta name="robots" content="noindex">',
     "<style>.history-band{position:sticky;top:0;z-index:10;margin:0;padding:10px 16px;background:var(--hi,#000);color:var(--bg,#fff);font-size:15px;line-height:1.5;text-align:center}.history-band a{color:inherit;font-weight:700}.history-band a:hover{color:inherit}@media print{.history-band{position:static}}</style>",
@@ -61,8 +63,8 @@ function rewrite(html, sha, date) {
 }
 
 let saved = 0;
-for (const e of entries) {
-  if (e.kind !== "content" || !e.commit) continue;
+for (const [i, e] of entries.entries()) {
+  if (e.kind !== "content" || e.scope !== PAGE_SCOPE || !e.commit) continue;
   const sha = e.commit;
   if (!isAfterCutoff(sha)) continue;
   if (!changedPage(sha)) continue; // page identical to an earlier version
@@ -70,7 +72,7 @@ for (const e of entries) {
   if (exists(`${dir}/index.html`) && !force) continue;
   const page = tryGit(["show", `${sha}:tving/index.html`]);
   if (page === null) { console.warn(`${sha}: tving/index.html 없음, 건너뜀`); continue; }
-  writeIfChanged(`${dir}/index.html`, rewrite(page, sha, e.date));
+  writeIfChanged(`${dir}/index.html`, rewrite(page, sha, e.date, entries.slice(0, i + 1)));
   for (const f of ["styles.css", "site.js"]) {
     const body = tryGit(["show", `${sha}:${f}`]);
     if (body !== null) writeIfChanged(`${dir}/${f}`, body);

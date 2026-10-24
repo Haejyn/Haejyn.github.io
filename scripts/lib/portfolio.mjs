@@ -16,6 +16,13 @@ export const CHANGELOG = "data/changelog.json";
 // Snapshots start here: earlier versions still linked a private repository.
 export const SNAPSHOT_FROM = "069ecea";
 export const PROJECT_ORDER = ["willnew", "wasnew"];
+// Changelog scope: "tving" when the commit changed tving/index.html or its copy at /index.html,
+// "site" when it only changed the chooser or other company pages. Only "tving" entries are shown.
+export const SCOPES = ["tving", "site"];
+export const PAGE_SCOPE = "tving";
+export const shown = entries => entries.filter(e => e.scope === PAGE_SCOPE);
+// Words that must not appear in the TVING changelog block or the history list.
+export const HIDDEN_WORDS = ["쎄트렉아이", "SK하이닉스", "하이닉스", "오토에버", "현대", "satreci", "skhynix", "autoever", "회사 선택", "선택 화면"];
 
 export const FACT_RE = /<!-- fact:([A-Za-z0-9_.-]+) -->([\s\S]*?)<!-- \/fact -->/g;
 export const META_RE = /<meta name="facts" content="([^"]*)">/;
@@ -153,7 +160,7 @@ function commitLink(sha) {
 
 /** Recent entries for the bottom of the portfolio page. */
 export function renderChangelogBlock(entries, limit = 5) {
-  const recent = [...entries].reverse().slice(0, limit);
+  const recent = shown(entries).reverse().slice(0, limit);
   const items = recent.map(e => {
     const old = e.kind === "content" && snapshotExists(e.commit)
       ? ` <a class="change-old" href="/${HISTORY_DIR}/${esc(e.commit)}/">이 버전 보기</a>` : "";
@@ -174,7 +181,7 @@ export function renderChangelogBlock(entries, limit = 5) {
 
 /** Full table at /tving/history/. */
 export function renderHistoryIndex(entries) {
-  const rows = [...entries].reverse().map(e => {
+  const rows = shown(entries).reverse().map(e => {
     const snap = e.kind === "content" && snapshotExists(e.commit) ? `<a href="./${esc(e.commit)}/">열기</a>` : "";
     return `        <tr><td><time datetime="${esc(e.date)}">${esc(dotDate(e.date))}</time></td><td>${KIND[e.kind] ?? esc(e.kind)}</td><td>${esc(e.summary)}</td><td>${commitLink(e.commit)}</td><td>${snap}</td></tr>`;
   });
