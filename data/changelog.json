@@ -166,5 +166,12 @@
     "kind": "facts",
     "scope": "tving",
     "summary": "숫자 갱신: willnew 전체 테스트 95 → 115"
+  },
+  {
+    "date": "2026-10-28",
+    "commit": "",
+    "kind": "content",
+    "scope": "tving",
+    "summary": "TVING 포트폴리오 하단 변경 기록과 이전 버전 링크 제거, 자동 갱신 시에도 표시하지 않도록 수정"
   }
 ]

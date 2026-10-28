@@ -7,7 +7,7 @@ import { execFileSync } from "node:child_process";
 export const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..", "..");
 export const REPO = "Haejyn/Haejyn.github.io";
 export const SITE = "https://haejyn.github.io";
-// Pages that carry fact placeholders and the changelog block. `/` is a copy of `/tving/`.
+// Pages that carry fact placeholders. `/` is a copy of `/tving/`.
 export const PAGES = ["tving/index.html", "index.html"];
 export const HISTORY_DIR = "tving/history";
 export const HISTORY_INDEX = `${HISTORY_DIR}/index.html`;
@@ -213,14 +213,14 @@ ${rows.join("\n")}
 `;
 }
 
-/** Fill placeholders, meta and changelog block in one page's HTML. */
-export function renderPage(html, facts, entries) {
+/** Fill placeholders and meta, removing the legacy changelog from the portfolio. */
+export function renderPage(html, facts) {
   let out = html.replace(FACT_RE, (whole, key, value) => {
     const v = lookup(facts, key);
     return v == null ? whole : `<!-- fact:${key} -->${formatFact(v)}<!-- /fact -->`;
   });
   out = out.replace(META_RE, `<meta name="facts" content="${esc(factsMeta(facts))}">`);
-  out = out.replace(CHANGELOG_RE, renderChangelogBlock(entries));
+  out = out.replace(CHANGELOG_RE, "");
   return out;
 }
 
@@ -237,7 +237,7 @@ export function renderAll(facts = loadFacts(), entries = loadChangelog()) {
   const written = [];
   for (const p of PAGES) {
     if (!exists(p)) continue;
-    if (writeGenerated(p, renderPage(read(p), facts, entries))) written.push(p);
+    if (writeGenerated(p, renderPage(read(p), facts))) written.push(p);
   }
   if (writeGenerated(HISTORY_INDEX, renderHistoryIndex(entries))) written.push(HISTORY_INDEX);
   return written;

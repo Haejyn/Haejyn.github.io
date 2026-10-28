@@ -13,7 +13,7 @@ import { join } from "node:path";
 import {
   ROOT, PAGES, HISTORY_DIR, HISTORY_INDEX, CHANGELOG, read, exists, git,
   loadFacts, loadChangelog, validateFacts, placeholders, lookup, formatFact, factsMeta,
-  META_RE, CHANGELOG_RE, renderChangelogBlock, renderHistoryIndex, stripGenerated,
+  META_RE, CHANGELOG_RE, renderHistoryIndex, stripGenerated,
   SCOPES, PAGE_SCOPE, HIDDEN_WORDS,
 } from "./lib/portfolio.mjs";
 
@@ -77,9 +77,9 @@ for (const p of htmlPages) {
     const meta = html.match(META_RE);
     if (!meta) fail(p, '<meta name="facts"> 없음');
     else if (meta[1] !== factsMeta(facts)) fail(p, `meta facts = "${meta[1]}", data/facts 는 "${factsMeta(facts)}"`);
-    const block = html.match(CHANGELOG_RE);
-    if (!block) fail(p, "<!-- changelog --> 자리 없음");
-    else if (lf(block[0]) !== renderChangelogBlock(entries)) fail(p, "변경 기록 칸이 data/changelog.json 과 다름 (node scripts/apply-facts.mjs)");
+    if (CHANGELOG_RE.test(html) || /\bid="changelog-title"|\bhref="\/tving\/history\//.test(html)) {
+      fail(p, "포트폴리오에 변경 기록이나 이전 버전 링크가 표시됨");
+    }
   }
 }
 if (!exists(HISTORY_INDEX) || lf(read(HISTORY_INDEX)) !== renderHistoryIndex(entries)) {
