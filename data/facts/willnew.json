@@ -2,12 +2,12 @@
   "schema": 1,
   "project": "willnew",
   "version": "0.1.0",
-  "commit": "b068ca9477894c8b43487cc547e4b9e07cdb0a51",
-  "date": "2026-10-24",
+  "commit": "9c94357923335c9bcdd41b9549cc029e13a8714b",
+  "date": "2026-10-28",
   "tests": {
-    "passed": 95,
+    "passed": 115,
     "failed": 0,
-    "total": 95,
-    "files": 7
+    "total": 115,
+    "files": 8
   }
 }
