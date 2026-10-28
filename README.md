@@ -25,22 +25,23 @@ TVING AI Product Builder 지원용으로 구성한 한 단짜리 문서형 포�
 
 facts 받기 → `node scripts/apply-facts.mjs` → `node scripts/check.mjs` → `facts/<날짜시각>` 브랜치로 PR → `node scripts/only-facts-changed.mjs origin/main` 통과 시 squash 병합 → `node scripts/live-has-sha.mjs <병합 커밋>` 로 Pages 배포 확인
 
-숫자가 실제로 바뀌면 apply 가 `data/changelog.json` 에 `facts` 항목을 붙이고, 페이지 아래 변경 기록 칸과 `/tving/history/` 표를 다시 그립니다. 바뀐 게 없으면 파일을 건드리지 않습니다.
+숫자가 실제로 바뀌면 apply 가 `data/changelog.json` 에 `facts` 항목을 붙이고, `/tving/history/` 표를 다시 그립니다. 포트폴리오 본문에는 변경 기록과 이전 버전 링크를 표시하지 않습니다. 바뀐 게 없으면 파일을 건드리지 않습니다.
 
 문장을 바꿀 때
 
-1. 페이지를 고치고 `data/changelog.json` 끝에 `{ "date": "YYYY-MM-DD", "commit": "", "kind": "content", "scope": "tving", "summary": "…" }` 를 넣습니다. 커밋은 병합 전에는 모르니 비워 둡니다. `scope` 는 `tving/index.html` 이나 그 사본인 `/index.html` 을 바꿨으면 `tving`, 선택 화면이나 다른 회사 페이지만 바꿨으면 `site` 입니다. 페이지 아래 변경 기록 칸과 `/tving/history/` 에는 `tving` 항목만 보이고, 둘 다 바꾼 커밋은 같은 커밋으로 항목을 두 개 넣습니다.
-2. `node scripts/apply-facts.mjs` 로 변경 기록 칸을 다시 그리고 `node scripts/check.mjs --base origin/main` 을 돌립니다. TVING 페이지가 표시 자리 밖에서 바뀌었는데 새 `tving` content 항목이 없거나, 다른 페이지가 바뀌었는데 새 `site` 항목이 없으면 실패합니다.
+1. 페이지를 고치고 `data/changelog.json` 끝에 `{ "date": "YYYY-MM-DD", "commit": "", "kind": "content", "scope": "tving", "summary": "…" }` 를 넣습니다. 커밋은 병합 전에는 모르니 비워 둡니다. `scope` 는 `tving/index.html` 이나 그 사본인 `/index.html` 을 바꿨으면 `tving`, 선택 화면이나 다른 회사 페이지만 바꿨으면 `site` 입니다. `/tving/history/` 에는 `tving` 항목만 보이고, 둘 다 바꾼 커밋은 같은 커밋으로 항목을 두 개 넣습니다.
+2. `node scripts/apply-facts.mjs` 로 숫자와 별도 기록 페이지를 갱신하고 `node scripts/check.mjs --base origin/main` 을 돌립니다. TVING 페이지가 표시 자리 밖에서 바뀌었는데 새 `tving` content 항목이 없거나, 다른 페이지가 바뀌었는데 새 `site` 항목이 없으면 실패합니다.
 3. PR 본문의 "변경 기록:" 줄에 같은 문장을 적고, 사람이 승인한 뒤 병합합니다. 이런 PR 은 자동 병합하지 않습니다.
 4. 병합 뒤 `node scripts/snapshot-history.mjs` 를 돌려 커밋하면 빈 `commit` 을 병합 커밋으로 채우고 그 시점 페이지를 `tving/history/<sha>/` 에 저장합니다.
 
 검사 (`node scripts/check.mjs`, PR 과 main push 마다 `.github/workflows/check.yml`)
 
-- 표시 자리가 비었거나 data/facts 와 다름, meta facts 와 변경 기록 칸이 오래됨
+- 표시 자리가 비었거나 data/facts 와 다름, meta facts 와 별도 기록 페이지가 오래됨
+- TVING 포트폴리오 본문에 변경 기록이나 이전 버전 링크가 표시됨
 - 외부 링크가 200 이 아님. Haejyn 저장소 링크가 404 면 비공개 저장소 링크로 표시. `--offline` 으로 끔
 - wasnew 벤치마크 표 셀의 숫자에 단위(ms, s, MB 등)가 없음
 - 휴대폰 번호, 주민등록번호 꼴, 허용 목록(ssungiven@gmail.com) 밖의 이메일
-- TVING 변경 기록 칸과 `/tving/history/` 목록에 다른 회사 이름이나 "회사 선택" 이 보임
+- 이전 버전의 변경 기록 칸과 `/tving/history/` 목록에 다른 회사 이름이나 "회사 선택" 이 보임
 
 이전 버전 (`/tving/history/`)
 
