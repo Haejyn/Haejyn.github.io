@@ -16,7 +16,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link rel="canonical" href="https://haejyn.github.io/">
-<meta name="facts" content="willnew@b068ca9,wasnew@2f4cc63">
+<meta name="facts" content="willnew@9c94357,wasnew@2f4cc63">
 <link rel="stylesheet" href="../styles.css">
 <script src="../site.js" defer></script>
 </head>
@@ -48,7 +48,7 @@
   <h3><img class="app-icon" src="../media/willnew-icon.png" alt="" width="36" height="36">willnew<span class="dot" style="background:#ff7a2f" aria-hidden="true"></span></h3>
   <p class="oneline">팀 누구나 채널이나 스레드에 한 줄로 맡기면 AI가 고치고, 테스트 관문과 요청자의 시각적 전후 비교를 거쳐 개발자에게 승인 요청으로 올라오는 팀 도구. 승인 시 PR → CI → 배포까지 자동 추적되고, 요청자에게 쉬운 말로 답이 갑니다</p>
   <table class="props"><tbody>
-<tr><th scope="row">결과</th><td><b>맡기기부터 병합까지 약 47초</b> (실제 Claude Code, 1건). 요청 3건 중 2건 병합, 검증 실패 1건은 승인 차단. 스레드 협업 및 Playwright 전후 시각 비교 지원 (테스트 <!-- fact:willnew.tests.total -->95<!-- /fact -->개 통과)</td></tr>
+<tr><th scope="row">결과</th><td><b>맡기기부터 병합까지 약 47초</b> (실제 Claude Code, 1건). 요청 3건 중 2건 병합, 검증 실패 1건은 승인 차단. 스레드 협업 및 Playwright 전후 시각 비교 지원 (테스트 <!-- fact:willnew.tests.total -->115<!-- /fact -->개 통과)</td></tr>
 <tr><th scope="row">기술</th><td>TypeScript · React · Hono · Playwright · vitest</td></tr>
 <tr><th scope="row">코드</th><td><a href="https://github.com/Haejyn/willnew/blob/main/src/server/runs.ts">검증 관문</a> · <a href="https://github.com/Haejyn/willnew/blob/main/src/server/visual.ts">시각적 전후 비교</a> · <a href="https://github.com/Haejyn/willnew/blob/main/src/server/threads.ts">스레드 채팅</a> · <a href="https://github.com/Haejyn/willnew/blob/main/src/server/ship.ts">PR → CI → 배포</a> · <a href="https://github.com/Haejyn/willnew/blob/main/src/server/handoff.ts">요청자 답장</a> · <a href="https://github.com/Haejyn/willnew/blob/main/tests/e2e.test.ts">E2E 테스트</a> · <a href="https://github.com/Haejyn/willnew#실측">측정 근거</a> · <a href="https://github.com/Haejyn/willnew">저장소</a></td></tr>
   </tbody></table>
@@ -104,7 +104,7 @@
   <ul class="desc">
 <li><b>배경</b> 고객 문의 같은 작은 버그도 개발자에게 넘어가 순서를 기다림. 에이전트에게 맡겨도 "끝났다"는 말만 믿고 병합할 수 없어 테스트를 다시 돌리고 diff와 화면을 직접 열어 봐야 하며, 끝나면 요청한 사람에게 따로 설명해야 함</li>
 <li><b>구현</b><ul><li>채널과 ⌘K 요청 → 계획 에이전트가 유형, 지시문, 검증 명령으로 변환 후 독립 카드 스레드 생성</li><li>격리된 Git 워크트리에서 Claude Code 실행. (선택 시 Codex와 겨루기 지원)</li><li>Playwright 기반 Main vs 변경 워크트리 전후 화면 캡처(나란히 &amp; 드래그 슬라이더) 제공. 요청자가 화면 위에 직접 사각형 상자를 그려 "다시 봐 주세요"를 누르면 같은 브랜치에서 에이전트가 2차 재작업 수행</li><li>역할(요청자, 개발자)과 채널별 검토자. 검증 통과 시 검토자를 호출하고, 승인 시 PR → CI → 병합 → 배포 확인 후 요청자 맞춤 쉬운 말 답장(`userNote`) 전달</li><li>진행 단계를 달이 차는 모양으로 표시. 보름달(사람이 결정할 차례)이 뜬 일만 '내 차례' 화면에 모음</li></ul></li>
-<li><b>검증</b><ul><li>판정은 검증 명령 종료 코드. 테스트 파일을 고쳤거나 main과 충돌하면 검토 화면을 거쳐야 승인 가능</li><li>가짜 gh, 오프라인 에이전트, 스크린샷 모의 도구로 실행, 재작업, 스레드 분리, 요청자 확인 상태 전이, PR → CI → 배포까지 확인하는 테스트 <!-- fact:willnew.tests.total -->95<!-- /fact -->개 이상 통과</li></ul></li>
+<li><b>검증</b><ul><li>판정은 검증 명령 종료 코드. 테스트 파일을 고쳤거나 main과 충돌하면 검토 화면을 거쳐야 승인 가능</li><li>가짜 gh, 오프라인 에이전트, 스크린샷 모의 도구로 실행, 재작업, 스레드 분리, 요청자 확인 상태 전이, PR → CI → 배포까지 확인하는 테스트 <!-- fact:willnew.tests.total -->115<!-- /fact -->개 이상 통과</li></ul></li>
 <li><b>성과</b> 실패 테스트 7개짜리 예제 저장소에 요청 3건 중 2건 병합(1건은 재작업 후 통과), 1건은 재작업 후에도 실패해 승인 차단, 총 $0.55. 실제 Claude Code 기준 맡기기부터 병합까지 약 47초</li>
 <li><b>한계</b> 현재는 단일 로컬 환경 실행 중심. 한 사람의 구독으로 팀원 요청을 처리하는 제약을 해결하기 위해 각 팀원 PC에서 분산 실행되는 허브-러너(Hub &amp; Runner) 아키텍처 설계 중</li>
   </ul>
@@ -274,11 +274,11 @@
   <section class="changelog" aria-labelledby="changelog-title">
   <h2 id="changelog-title"><span>변경 기록</span></h2>
   <ol class="changes">
+    <li><time datetime="2026-10-28">2026.10.28</time><span class="change-kind">숫자</span><span class="change-text">숫자 갱신: willnew 전체 테스트 95 → 115</span></li>
     <li><time datetime="2026-10-24">2026.10.24</time><span class="change-kind">숫자</span><span class="change-text">숫자 갱신: willnew 전체 테스트 94 → 95</span></li>
     <li><time datetime="2026-10-24">2026.10.24</time><span class="change-kind">내용</span><span class="change-text">TVING 페이지 영상 포스터와 차체 데모 GIF 경로 고침 (재생 전 이미지가 깨져 보이던 것) <a class="change-old" href="/tving/history/520f1ef/">이 버전 보기</a></span></li>
     <li><time datetime="2026-10-24">2026.10.24</time><span class="change-kind">내용</span><span class="change-text">테스트 수와 MCP 도구 수를 willnew, wasnew facts 에서 받게 바꾸고 변경 기록 칸과 이전 버전 페이지 추가 <a class="change-old" href="/tving/history/520f1ef/">이 버전 보기</a></span></li>
     <li><time datetime="2026-10-24">2026.10.24</time><span class="change-kind">내용</span><span class="change-text">wasnew 가드 훅 링크를 저장소에 있는 파일(guard.mjs)로 고침 <a class="change-old" href="/tving/history/520f1ef/">이 버전 보기</a></span></li>
-    <li><time datetime="2026-10-20">2026.10.20</time><span class="change-kind">내용</span><span class="change-text">헤더에서 제조 AI 제거, wasnew 실측 벤치마크 상세 표(단위 명시) 추가 <a class="change-old" href="/tving/history/3e474a6/">이 버전 보기</a></span></li>
   </ol>
   <p class="changes-more"><a href="/tving/history/">전체 변경 기록과 이전 버전</a></p>
   </section>

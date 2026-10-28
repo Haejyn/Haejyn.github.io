@@ -159,5 +159,12 @@
     "kind": "facts",
     "scope": "tving",
     "summary": "숫자 갱신: willnew 전체 테스트 94 → 95"
+  },
+  {
+    "date": "2026-10-28",
+    "commit": "",
+    "kind": "facts",
+    "scope": "tving",
+    "summary": "숫자 갱신: willnew 전체 테스트 95 → 115"
   }
 ]
